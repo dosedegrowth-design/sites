@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier — Barbearia | Demo Moderno</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --petrol: #1f4847;
+    --petrol-light: #2d6261;
+    --sage: #c8d4cd;
+    --bone: #faf9f6;
+    --ink: #1a1a1a;
+  }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bone); color: var(--ink); -webkit-font-smoothing: antialiased; }
+  .font-display { font-family: 'Fraunces', serif; font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 0; }
+  .text-petrol { color: var(--petrol); }
+  .bg-petrol { background: var(--petrol); }
+  .border-petrol { border-color: var(--petrol); }
+  .bg-sage { background: var(--sage); }
+  .bg-bone { background: var(--bone); }
+</style>
+</head>
+<body class="bg-bone">
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-bone/85 backdrop-blur border-b border-black/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-full bg-petrol flex items-center justify-center">
+        <div class="w-2 h-2 rounded-full bg-bone"></div>
+      </div>
+      <span class="font-display text-2xl">Atelier</span>
+    </div>
+    <div class="hidden md:flex gap-10 text-sm">
+      <a href="#sobre" class="hover:text-petrol transition">Sobre</a>
+      <a href="#servicos" class="hover:text-petrol transition">Serviços</a>
+      <a href="#equipe" class="hover:text-petrol transition">Equipe</a>
+      <a href="#contato" class="hover:text-petrol transition">Visitar</a>
+    </div>
+    <a href="#contato" class="bg-petrol text-bone px-5 py-2.5 rounded-full text-sm hover:bg-[#2d6261] transition">Agendar →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="px-6 lg:px-12 pt-12 pb-20 md:pt-20 md:pb-32">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-end">
+    <div class="md:col-span-7">
+      <div class="inline-flex items-center gap-2 bg-sage/50 px-4 py-2 rounded-full text-xs mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-petrol"></span>
+        <span class="text-petrol font-medium">Disponível para agendamento esta semana</span>
+      </div>
+      <h1 class="font-display text-6xl md:text-7xl lg:text-[8rem] leading-[0.9] tracking-tight mb-8">
+        Cabelo é<br>
+        <em class="text-petrol">detalhe.</em><br>
+        Estilo é forma.
+      </h1>
+      <p class="text-lg text-black/60 max-w-md leading-relaxed mb-8">
+        Barbearia contemporânea no Itaim Bibi. Cortes precisos, atendimento sem pressa, ambiente que respira calma.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="#contato" class="bg-petrol text-bone px-7 py-4 rounded-full text-sm font-medium hover:bg-[#2d6261] transition text-center">Agendar horário</a>
+        <a href="#servicos" class="bg-white border border-black/10 px-7 py-4 rounded-full text-sm font-medium hover:border-black/30 transition text-center">Ver carta de serviços</a>
+      </div>
+    </div>
+    <div class="md:col-span-5">
+      <div class="relative">
+        <div class="aspect-[4/5] rounded-3xl overflow-hidden bg-sage">
+          <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=800&q=80" class="w-full h-full object-cover" alt="">
+        </div>
+        <div class="absolute -bottom-6 -left-6 bg-bone rounded-2xl p-5 shadow-xl border border-black/5">
+          <div class="flex items-center gap-3">
+            <div class="flex -space-x-2">
+              <div class="w-9 h-9 rounded-full bg-sage border-2 border-bone"></div>
+              <div class="w-9 h-9 rounded-full bg-petrol border-2 border-bone"></div>
+              <div class="w-9 h-9 rounded-full bg-[#d4a373] border-2 border-bone"></div>
+            </div>
+            <div>
+              <div class="text-sm font-semibold">2.1k clientes</div>
+              <div class="text-xs text-black/50">avaliação 4.9★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS / TRUSTBAR -->
+<section class="py-10 border-y border-black/5 bg-white/50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <p class="text-center text-xs uppercase tracking-widest text-black/40 mb-6">Reconhecidos por</p>
+    <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-4 text-black/40 font-display text-xl">
+      <span>Vogue</span>
+      <span class="text-black/15">/</span>
+      <span>GQ Brasil</span>
+      <span class="text-black/15">/</span>
+      <span>Veja SP</span>
+      <span class="text-black/15">/</span>
+      <span>Time Out</span>
+      <span class="text-black/15">/</span>
+      <span>Folha</span>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="py-24 md:py-32 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-12 gap-12 items-center">
+      <div class="md:col-span-5">
+        <p class="text-xs uppercase tracking-widest text-petrol mb-4">Sobre o Atelier</p>
+        <h2 class="font-display text-5xl md:text-6xl leading-[1.05] mb-8">
+          Espaço pensado<br>para o <em class="text-petrol">homem</em><br>contemporâneo.
+        </h2>
+        <p class="text-black/65 leading-relaxed text-lg">
+          Inspirado nas barbearias de Copenhagen, abrimos em 2021 com uma proposta clara: combinar o ritual da barbearia tradicional com a estética do design escandinavo.
+        </p>
+      </div>
+      <div class="md:col-span-7 grid grid-cols-2 gap-4">
+        <div class="bg-sage/40 rounded-3xl p-8 aspect-square flex flex-col justify-between">
+          <div class="text-petrol font-display text-7xl">5</div>
+          <div>
+            <div class="font-semibold">Anos no Itaim</div>
+            <div class="text-sm text-black/55">Mesma equipe, mesma filosofia</div>
+          </div>
+        </div>
+        <div class="bg-petrol text-bone rounded-3xl p-8 aspect-square flex flex-col justify-between">
+          <div class="font-display text-7xl">+2k</div>
+          <div>
+            <div class="font-semibold">Clientes recorrentes</div>
+            <div class="text-sm text-bone/70">Frequência média de 28 dias</div>
+          </div>
+        </div>
+        <div class="bg-white rounded-3xl p-8 aspect-square flex flex-col justify-between border border-black/5 col-span-2">
+          <div>
+            <div class="text-xs uppercase tracking-widest text-petrol mb-3">Filosofia da casa</div>
+            <p class="font-display text-3xl leading-tight">"Não cortamos cabelo. Construímos a versão melhor de quem chega."</p>
+          </div>
+          <p class="text-sm text-black/50">— Marco Vasconcellos, fundador</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICOS -->
+<section id="servicos" class="py-24 md:py-32 bg-petrol text-bone">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="flex items-end justify-between flex-wrap gap-4 mb-16">
+      <div>
+        <p class="text-xs uppercase tracking-widest text-bone/60 mb-4">Carta de serviços</p>
+        <h2 class="font-display text-5xl md:text-6xl leading-tight">
+          Cada serviço,<br>
+          uma <em>experiência.</em>
+        </h2>
+      </div>
+      <a href="#contato" class="bg-bone text-petrol px-6 py-3 rounded-full text-sm font-medium hover:bg-sage transition">Reservar →</a>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-petrol-light rounded-3xl p-8 hover:bg-[#346e6d] transition cursor-pointer">
+        <div class="flex justify-between items-start mb-12">
+          <div class="w-12 h-12 rounded-full border border-bone/30 flex items-center justify-center font-display text-xl">01</div>
+          <div class="font-display text-3xl">R$ 90</div>
+        </div>
+        <h3 class="font-display text-2xl mb-2">Corte assinatura</h3>
+        <p class="text-bone/70 text-sm leading-relaxed">Análise do tipo de cabelo, lavagem, corte personalizado, finalização com produto premium.</p>
+      </div>
+      <div class="bg-petrol-light rounded-3xl p-8 hover:bg-[#346e6d] transition cursor-pointer">
+        <div class="flex justify-between items-start mb-12">
+          <div class="w-12 h-12 rounded-full border border-bone/30 flex items-center justify-center font-display text-xl">02</div>
+          <div class="font-display text-3xl">R$ 75</div>
+        </div>
+        <h3 class="font-display text-2xl mb-2">Barba ritual</h3>
+        <p class="text-bone/70 text-sm leading-relaxed">Toalha quente, óleo pré-barba, navalha tradicional, calmante pós-barba e hidratante.</p>
+      </div>
+      <div class="bg-bone text-petrol rounded-3xl p-8 hover:scale-[1.02] transition cursor-pointer">
+        <div class="flex justify-between items-start mb-12">
+          <div class="w-12 h-12 rounded-full border border-petrol/20 flex items-center justify-center font-display text-xl">03</div>
+          <div class="font-display text-3xl">R$ 145</div>
+        </div>
+        <div class="inline-block bg-petrol text-bone px-3 py-1 rounded-full text-xs font-medium mb-3">Mais escolhido</div>
+        <h3 class="font-display text-2xl mb-2">Combo completo</h3>
+        <p class="text-petrol/70 text-sm leading-relaxed">Corte assinatura + barba ritual + sobrancelha. ~70min de cuidado completo.</p>
+      </div>
+      <div class="bg-petrol-light rounded-3xl p-8 hover:bg-[#346e6d] transition cursor-pointer">
+        <div class="flex justify-between items-start mb-12">
+          <div class="w-12 h-12 rounded-full border border-bone/30 flex items-center justify-center font-display text-xl">04</div>
+          <div class="font-display text-3xl">R$ 110</div>
+        </div>
+        <h3 class="font-display text-2xl mb-2">Pigmentação</h3>
+        <p class="text-bone/70 text-sm leading-relaxed">Disfarce sutil de cabelo branco com produtos de origem japonesa. 30 dias de duração.</p>
+      </div>
+      <div class="bg-petrol-light rounded-3xl p-8 hover:bg-[#346e6d] transition cursor-pointer">
+        <div class="flex justify-between items-start mb-12">
+          <div class="w-12 h-12 rounded-full border border-bone/30 flex items-center justify-center font-display text-xl">05</div>
+          <div class="font-display text-3xl">R$ 85</div>
+        </div>
+        <h3 class="font-display text-2xl mb-2">Hidratação capilar</h3>
+        <p class="text-bone/70 text-sm leading-relaxed">Tratamento profundo com massagem capilar e máscara reparadora.</p>
+      </div>
+      <div class="bg-petrol-light rounded-3xl p-8 hover:bg-[#346e6d] transition cursor-pointer">
+        <div class="flex justify-between items-start mb-12">
+          <div class="w-12 h-12 rounded-full border border-bone/30 flex items-center justify-center font-display text-xl">06</div>
+          <div class="font-display text-3xl">R$ 45</div>
+        </div>
+        <h3 class="font-display text-2xl mb-2">Sobrancelha masculina</h3>
+        <p class="text-bone/70 text-sm leading-relaxed">Design discreto, navalha e pinça. Acabamento natural respeitando o desenho original.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section id="equipe" class="py-24 md:py-32 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto">
+    <p class="text-xs uppercase tracking-widest text-petrol mb-4">Equipe</p>
+    <h2 class="font-display text-5xl md:text-6xl leading-tight mb-16 max-w-3xl">
+      Mestres com mais<br>de uma <em class="text-petrol">década</em> de prática.
+    </h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="group">
+        <div class="aspect-[3/4] rounded-3xl overflow-hidden bg-sage mb-4">
+          <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="">
+        </div>
+        <h3 class="font-display text-2xl">Marco Vasconcellos</h3>
+        <p class="text-sm text-black/55 mt-1">Fundador · 14 anos de barbearia</p>
+      </div>
+      <div class="group">
+        <div class="aspect-[3/4] rounded-3xl overflow-hidden bg-sage mb-4">
+          <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="">
+        </div>
+        <h3 class="font-display text-2xl">Igor Ferreira</h3>
+        <p class="text-sm text-black/55 mt-1">Barber · especialista em fade</p>
+      </div>
+      <div class="group">
+        <div class="aspect-[3/4] rounded-3xl overflow-hidden bg-sage mb-4">
+          <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="">
+        </div>
+        <h3 class="font-display text-2xl">Rafael Otsuka</h3>
+        <p class="text-sm text-black/55 mt-1">Barber · ritual de barba</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="py-24 bg-sage/30">
+  <div class="max-w-5xl mx-auto px-6 lg:px-12">
+    <p class="text-xs uppercase tracking-widest text-petrol mb-4 text-center">Depoimentos</p>
+    <h2 class="font-display text-5xl md:text-6xl leading-tight mb-16 text-center">
+      Avaliados por quem volta sempre.
+    </h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-3xl p-7 border border-black/5">
+        <div class="text-petrol mb-3">★★★★★</div>
+        <p class="text-black/75 leading-relaxed mb-5">Lugar zen, atendimento impecável. Saio diferente do que entro toda vez.</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-black/5">
+          <div class="w-10 h-10 rounded-full bg-sage"></div>
+          <div>
+            <div class="font-semibold text-sm">Pedro Almeida</div>
+            <div class="text-xs text-black/50">cliente desde 2022</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-3xl p-7 border border-black/5">
+        <div class="text-petrol mb-3">★★★★★</div>
+        <p class="text-black/75 leading-relaxed mb-5">A combinação perfeita: ambiente bonito, atendimento humano e corte sempre certo.</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-black/5">
+          <div class="w-10 h-10 rounded-full bg-petrol"></div>
+          <div>
+            <div class="font-semibold text-sm">André Costa</div>
+            <div class="text-xs text-black/50">cliente desde 2023</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-petrol text-bone rounded-3xl p-7">
+        <div class="text-bone mb-3">★★★★★</div>
+        <p class="leading-relaxed mb-5">Trouxe meu sócio, ele virou cliente. Trouxe meu pai, virou cliente. É um vício.</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-bone/15">
+          <div class="w-10 h-10 rounded-full bg-bone"></div>
+          <div>
+            <div class="font-semibold text-sm">Caio Mendes</div>
+            <div class="text-xs text-bone/65">cliente desde 2021</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="py-24 md:py-32 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto bg-bone rounded-[2.5rem] grid md:grid-cols-2 gap-0 overflow-hidden border border-black/10">
+    <div class="p-10 md:p-16">
+      <p class="text-xs uppercase tracking-widest text-petrol mb-4">Visite-nos</p>
+      <h2 class="font-display text-4xl md:text-5xl leading-tight mb-10">
+        Estamos te<br>esperando.
+      </h2>
+      <div class="space-y-6">
+        <div>
+          <div class="text-xs uppercase tracking-widest text-black/50 mb-2">Endereço</div>
+          <div class="text-lg">Rua Joaquim Floriano, 820<br>Itaim Bibi, São Paulo</div>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-widest text-black/50 mb-2">Horário</div>
+          <div class="text-lg">Ter–Sex · 10h às 21h<br>Sáb · 9h às 19h · Dom · 10h às 16h</div>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-widest text-black/50 mb-2">Contato</div>
+          <div class="text-lg">(11) 3456-7890<br>ola@atelierbarbearia.com.br</div>
+        </div>
+      </div>
+      <a href="#" class="inline-block mt-10 bg-petrol text-bone px-8 py-4 rounded-full text-sm font-medium hover:bg-[#2d6261] transition">Agendar pelo WhatsApp →</a>
+    </div>
+    <div class="bg-sage/50 min-h-[400px] flex items-center justify-center text-petrol/40 text-sm">
+      [Mapa Google embedado aqui]
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-10 px-6 lg:px-12 border-t border-black/5">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-black/45">
+    <div class="font-display text-base text-ink">Atelier · Barbearia</div>
+    <div>© 2026 · Itaim Bibi, São Paulo</div>
+    <div class="flex gap-6">
+      <a href="#" class="hover:text-petrol transition">Instagram</a>
+      <a href="#" class="hover:text-petrol transition">WhatsApp</a>
+      <a href="#" class="hover:text-petrol transition">Maps</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

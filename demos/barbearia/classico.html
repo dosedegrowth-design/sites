@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbearia do Zé — Pinheiros | Demo Clássico</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a96e;
+    --gold-dark: #8b6f3f;
+    --black: #0a0a0a;
+    --cream: #f5f1ea;
+  }
+  body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--cream); }
+  .font-display { font-family: 'Playfair Display', serif; }
+  .text-gold { color: var(--gold); }
+  .bg-gold { background: var(--gold); }
+  .border-gold { border-color: var(--gold); }
+  .hero-img { background: linear-gradient(rgba(10,10,10,0.55), rgba(10,10,10,0.85)), url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80') center/cover; }
+  .grain::before { content:''; position:absolute; inset:0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.85' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"); pointer-events:none; }
+</style>
+</head>
+<body class="bg-[#0a0a0a] text-[#f5f1ea]">
+
+<!-- NAV -->
+<nav class="fixed top-0 inset-x-0 z-50 bg-[#0a0a0a]/85 backdrop-blur border-b border-[#c9a96e]/15">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="font-display text-xl tracking-wide">
+      <span class="text-gold">Barbearia</span> do Zé
+    </div>
+    <div class="hidden md:flex gap-8 text-sm tracking-wider uppercase">
+      <a href="#sobre" class="hover:text-gold transition">Sobre</a>
+      <a href="#servicos" class="hover:text-gold transition">Serviços</a>
+      <a href="#galeria" class="hover:text-gold transition">Galeria</a>
+      <a href="#contato" class="hover:text-gold transition">Contato</a>
+    </div>
+    <a href="#contato" class="hidden md:inline-block bg-gold text-black px-5 py-2.5 text-xs font-semibold tracking-widest uppercase hover:bg-[#b8975c] transition">Agendar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-img relative grain min-h-screen flex items-center pt-20">
+  <div class="max-w-6xl mx-auto px-6 py-32 relative">
+    <p class="text-gold text-xs tracking-[0.4em] uppercase mb-6">Desde 1998 · Pinheiros, SP</p>
+    <h1 class="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-8">
+      A arte de bem<br>
+      <span class="italic text-gold">se apresentar</span>
+    </h1>
+    <p class="max-w-xl text-[#f5f1ea]/75 text-lg leading-relaxed mb-10">
+      Cortes clássicos, barbas trabalhadas e o ritual completo do cavalheiro paulistano. Tradição que atravessa gerações.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a href="#contato" class="inline-block bg-gold text-black px-8 py-4 text-sm font-semibold tracking-widest uppercase hover:bg-[#b8975c] transition text-center">Agendar horário</a>
+      <a href="#servicos" class="inline-block border border-gold text-gold px-8 py-4 text-sm font-semibold tracking-widest uppercase hover:bg-gold hover:text-black transition text-center">Ver serviços</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="py-24 md:py-32 border-t border-[#c9a96e]/15">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+    <div>
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-6">A casa</p>
+      <h2 class="font-display text-4xl md:text-5xl leading-tight mb-8">
+        Mais de duas<br>décadas <span class="italic text-gold">moldando</span> estilo
+      </h2>
+      <div class="space-y-5 text-[#f5f1ea]/75 leading-relaxed">
+        <p>Fundada em 1998 por Seu Zé Ribeiro, a Barbearia do Zé nasceu da vontade de resgatar o ritual do bom barbeiro: a poltrona de couro, a navalha, o cheiro de aftershave e a conversa boa.</p>
+        <p>Hoje somos quatro barbeiros formados na escola tradicional italiana, atendendo desde executivos até artistas no coração de Pinheiros.</p>
+      </div>
+      <div class="mt-10 flex gap-12 pt-8 border-t border-[#c9a96e]/20">
+        <div>
+          <div class="font-display text-4xl text-gold">25+</div>
+          <div class="text-xs tracking-widest uppercase text-[#f5f1ea]/60 mt-1">Anos de história</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl text-gold">4</div>
+          <div class="text-xs tracking-widest uppercase text-[#f5f1ea]/60 mt-1">Barbeiros mestres</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl text-gold">12k</div>
+          <div class="text-xs tracking-widest uppercase text-[#f5f1ea]/60 mt-1">Clientes atendidos</div>
+        </div>
+      </div>
+    </div>
+    <div class="relative">
+      <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=800&q=80" alt="" class="w-full h-[600px] object-cover">
+      <div class="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-gold -z-10"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICOS -->
+<section id="servicos" class="py-24 md:py-32 bg-[#080808] border-t border-[#c9a96e]/15">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Carta de serviços</p>
+      <h2 class="font-display text-4xl md:text-5xl">O <span class="italic text-gold">ritual</span> completo</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-x-16 gap-y-2">
+      <div class="border-b border-[#c9a96e]/15 py-6 flex justify-between items-baseline gap-4">
+        <div>
+          <h3 class="font-display text-xl mb-1">Corte clássico</h3>
+          <p class="text-sm text-[#f5f1ea]/55">Tesoura e máquina, finalização toalha quente</p>
+        </div>
+        <div class="font-display text-2xl text-gold whitespace-nowrap">R$ 75</div>
+      </div>
+      <div class="border-b border-[#c9a96e]/15 py-6 flex justify-between items-baseline gap-4">
+        <div>
+          <h3 class="font-display text-xl mb-1">Barba completa</h3>
+          <p class="text-sm text-[#f5f1ea]/55">Navalha, óleos e tonificante</p>
+        </div>
+        <div class="font-display text-2xl text-gold whitespace-nowrap">R$ 65</div>
+      </div>
+      <div class="border-b border-[#c9a96e]/15 py-6 flex justify-between items-baseline gap-4">
+        <div>
+          <h3 class="font-display text-xl mb-1">Combo cavalheiro</h3>
+          <p class="text-sm text-[#f5f1ea]/55">Corte + barba + ritual de toalha quente</p>
+        </div>
+        <div class="font-display text-2xl text-gold whitespace-nowrap">R$ 120</div>
+      </div>
+      <div class="border-b border-[#c9a96e]/15 py-6 flex justify-between items-baseline gap-4">
+        <div>
+          <h3 class="font-display text-xl mb-1">Pigmentação</h3>
+          <p class="text-sm text-[#f5f1ea]/55">Disfarce de cabelo branco, durabilidade 30 dias</p>
+        </div>
+        <div class="font-display text-2xl text-gold whitespace-nowrap">R$ 90</div>
+      </div>
+      <div class="border-b border-[#c9a96e]/15 py-6 flex justify-between items-baseline gap-4">
+        <div>
+          <h3 class="font-display text-xl mb-1">Sobrancelha masculina</h3>
+          <p class="text-sm text-[#f5f1ea]/55">Design discreto, navalha e pinça</p>
+        </div>
+        <div class="font-display text-2xl text-gold whitespace-nowrap">R$ 35</div>
+      </div>
+      <div class="border-b border-[#c9a96e]/15 py-6 flex justify-between items-baseline gap-4">
+        <div>
+          <h3 class="font-display text-xl mb-1">Hidratação capilar</h3>
+          <p class="text-sm text-[#f5f1ea]/55">Tratamento profundo com massagem</p>
+        </div>
+        <div class="font-display text-2xl text-gold whitespace-nowrap">R$ 55</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section id="galeria" class="py-24 md:py-32 border-t border-[#c9a96e]/15">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">A casa em detalhes</p>
+      <h2 class="font-display text-4xl md:text-5xl">Galeria</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+      <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" class="w-full h-72 object-cover hover:scale-105 transition duration-700" alt="">
+      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" class="w-full h-72 object-cover hover:scale-105 transition duration-700" alt="">
+      <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" class="w-full h-72 object-cover hover:scale-105 transition duration-700" alt="">
+      <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=80" class="w-full h-72 object-cover hover:scale-105 transition duration-700" alt="">
+      <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80" class="w-full h-72 object-cover hover:scale-105 transition duration-700" alt="">
+      <img src="https://images.unsplash.com/photo-1620975661059-c1cf86bb91c4?w=600&q=80" class="w-full h-72 object-cover hover:scale-105 transition duration-700" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="py-24 md:py-32 bg-[#080808] border-t border-[#c9a96e]/15">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Depoimentos</p>
+    <h2 class="font-display text-4xl md:text-5xl mb-16">O que dizem nossos <span class="italic text-gold">clientes</span></h2>
+    <div class="grid md:grid-cols-3 gap-12">
+      <div>
+        <div class="text-gold text-3xl font-display mb-4">"</div>
+        <p class="text-[#f5f1ea]/80 leading-relaxed mb-6">Frequento há 15 anos. Lugar onde tempo passa diferente — barbeiro que sabe ouvir vale ouro.</p>
+        <p class="text-sm tracking-widest uppercase text-gold">Roberto M.</p>
+      </div>
+      <div>
+        <div class="text-gold text-3xl font-display mb-4">"</div>
+        <p class="text-[#f5f1ea]/80 leading-relaxed mb-6">A toalha quente, o óleo, a navalha. Não é só um corte, é uma cerimônia. Voltei pra ficar.</p>
+        <p class="text-sm tracking-widest uppercase text-gold">Carlos S.</p>
+      </div>
+      <div>
+        <div class="text-gold text-3xl font-display mb-4">"</div>
+        <p class="text-[#f5f1ea]/80 leading-relaxed mb-6">Cuido do meu pai e do meu filho aqui. Três gerações no mesmo lugar — isso diz tudo.</p>
+        <p class="text-sm tracking-widest uppercase text-gold">Fernando A.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="py-24 md:py-32 border-t border-[#c9a96e]/15">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+    <div>
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Encontre-nos</p>
+      <h2 class="font-display text-4xl md:text-5xl mb-10">Visite a casa</h2>
+      <div class="space-y-6 text-[#f5f1ea]/80">
+        <div>
+          <p class="text-xs tracking-widest uppercase text-gold mb-2">Endereço</p>
+          <p>Rua dos Pinheiros, 1234<br>Pinheiros, São Paulo · 05422-001</p>
+        </div>
+        <div>
+          <p class="text-xs tracking-widest uppercase text-gold mb-2">Horário</p>
+          <p>Terça a sábado · 9h às 20h<br>Domingo · 9h às 14h</p>
+        </div>
+        <div>
+          <p class="text-xs tracking-widest uppercase text-gold mb-2">Contato</p>
+          <p>(11) 9 8765-4321<br>contato@barbeariadoze.com.br</p>
+        </div>
+      </div>
+      <div class="mt-10">
+        <a href="#" class="inline-block bg-gold text-black px-8 py-4 text-sm font-semibold tracking-widest uppercase hover:bg-[#b8975c] transition">Agendar via WhatsApp</a>
+      </div>
+    </div>
+    <div class="bg-[#1a1a1a] aspect-square flex items-center justify-center text-[#f5f1ea]/40 text-sm">
+      [Mapa Google embedado aqui]
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-12 border-t border-[#c9a96e]/15 bg-[#050505]">
+  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-xs tracking-wider uppercase text-[#f5f1ea]/40">
+    <div class="font-display text-base text-gold normal-case tracking-normal">Barbearia do Zé</div>
+    <div>© 2026 · Todos os direitos reservados</div>
+    <div class="flex gap-6">
+      <a href="#" class="hover:text-gold transition">Instagram</a>
+      <a href="#" class="hover:text-gold transition">Facebook</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

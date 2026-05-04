@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SiteFlow · Vamos desenhar seu site</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Playfair+Display:wght@500;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=Archivo+Black&family=DM+Serif+Display&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --bone: #f8f6f1;
+    --paper: #fdfcf8;
+    --accent: #ff5c1f;
+    --accent-soft: #fff1ea;
+    --line: rgba(10,10,10,0.08);
+  }
+  * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bone);
+    color: var(--ink);
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  .font-display { font-family: 'Fraunces', serif; font-variation-settings: 'opsz' 144, 'SOFT' 50; letter-spacing: -0.02em; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .text-accent { color: var(--accent); }
+  .bg-paper { background: var(--paper); }
+
+  /* Step transitions */
+  .step { display: none; }
+  .step.active { display: block; animation: stepIn 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+  @keyframes stepIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Progress bar */
+  .progress-bar { transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+
+  /* Option cards (premium feel) */
+  .opt {
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid var(--line);
+    background: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+  .opt::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity 0.25s;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+  }
+  .opt:hover { transform: translateY(-3px); border-color: rgba(10,10,10,0.18); box-shadow: 0 8px 30px -10px rgba(10,10,10,0.12); }
+  .opt.selected {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--bone);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px -10px rgba(10,10,10,0.35);
+  }
+  .opt.selected .opt-sub { color: rgba(248,246,241,0.55); }
+  .opt.selected .opt-link { color: rgba(248,246,241,0.8); border-color: rgba(248,246,241,0.3); }
+  .opt-check {
+    width: 22px; height: 22px;
+    border-radius: 999px;
+    border: 1px solid currentColor;
+    opacity: 0.4;
+    transition: all 0.25s;
+    position: relative;
+  }
+  .opt.selected .opt-check { opacity: 1; border-color: var(--accent); background: var(--accent); }
+  .opt.selected .opt-check::after { content: ''; position: absolute; top: 6px; left: 8px; width: 4px; height: 9px; border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+
+  /* Mini option (logo, fotos) */
+  .opt-mini {
+    cursor: pointer;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    transition: all 0.25s;
+  }
+  .opt-mini:hover { border-color: rgba(10,10,10,0.25); }
+  .opt-mini.selected { background: var(--ink); color: var(--bone); border-color: var(--ink); }
+
+  /* Inputs premium */
+  .field {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    transition: all 0.25s;
+  }
+  .field:focus-within { border-color: var(--ink); box-shadow: 0 0 0 4px rgba(10,10,10,0.04); }
+  input:focus, textarea:focus { outline: none; }
+
+  /* Swatches */
+  .swatch {
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+  }
+
+  /* Number sequence (premium signature) */
+  .num-display {
+    font-feature-settings: 'tnum';
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Pulse on accent */
+  .accent-dot {
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.3); }
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(10,10,10,0.15); border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(10,10,10,0.3); }
+</style>
+</head>
+<body class="bg-[#f8f6f1]">
+
+<!-- HEADER -->
+<header class="border-b border-black/[0.06] bg-paper/80 backdrop-blur-sm sticky top-0 z-40">
+  <div class="max-w-2xl mx-auto px-6 py-5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="relative w-7 h-7">
+        <div class="absolute inset-0 bg-[#ff5c1f] rounded-md"></div>
+        <div class="absolute inset-1 bg-[#0a0a0a] rounded-sm"></div>
+      </div>
+      <div class="leading-tight">
+        <div class="font-display text-lg leading-none">Site<em>Flow</em></div>
+        <div class="text-[10px] tracking-[0.2em] uppercase text-black/40 mt-0.5">por Dose de Growth</div>
+      </div>
+    </div>
+    <div class="font-mono text-xs text-black/45 num-display tracking-wider">
+      <span id="stepCounter">01</span><span class="text-black/20"> · 08</span>
+    </div>
+  </div>
+  <div class="h-[2px] bg-black/[0.06]">
+    <div id="progressBar" class="progress-bar h-full bg-[#0a0a0a]" style="width: 12.5%"></div>
+  </div>
+</header>
+
+<main class="max-w-2xl mx-auto px-6 py-12 md:py-16 pb-40 min-h-[calc(100vh-100px)]">
+
+<!-- STEP 0: WELCOME -->
+<section class="step active" data-step="0">
+  <div class="pt-4 mb-12">
+    <div class="flex items-center gap-2.5 mb-10">
+      <span class="w-2 h-2 rounded-full bg-[#ff5c1f] accent-dot"></span>
+      <span class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/55">Briefing visual · 02 min</span>
+    </div>
+    <h1 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-8 tracking-tight">
+      Vamos desenhar<br>
+      o seu site<br>
+      <em class="text-[#ff5c1f]">do jeito certo.</em>
+    </h1>
+    <p class="text-xl text-black/65 leading-relaxed max-w-lg">
+      Oito perguntas curtas. Sem termos técnicos, sem rodeios. Só pra entender exatamente o seu gosto antes de começar.
+    </p>
+  </div>
+
+  <div class="border-t border-black/[0.08] pt-10 mb-10">
+    <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-6">Como funciona</div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
+      <div class="flex gap-4">
+        <span class="font-display text-3xl text-[#ff5c1f] leading-none">01</span>
+        <div>
+          <div class="font-semibold mb-0.5">Você responde</div>
+          <p class="text-sm text-black/55 leading-relaxed">Cor, fonte, vibe, blocos do site. Tudo visual.</p>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <span class="font-display text-3xl text-[#ff5c1f] leading-none">02</span>
+        <div>
+          <div class="font-semibold mb-0.5">Nosso time cria</div>
+          <p class="text-sm text-black/55 leading-relaxed">Designer + IA Claude Opus. Em 2-3 dias.</p>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <span class="font-display text-3xl text-[#ff5c1f] leading-none">03</span>
+        <div>
+          <div class="font-semibold mb-0.5">Você revisa</div>
+          <p class="text-sm text-black/55 leading-relaxed">Até 3 ajustes inclusos. Sem pressa.</p>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <span class="font-display text-3xl text-[#ff5c1f] leading-none">04</span>
+        <div>
+          <div class="font-semibold mb-0.5">Aprovou? Aí paga.</div>
+          <p class="text-sm text-black/55 leading-relaxed">Risco zero. Domínio próprio incluso.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button onclick="next()" class="group w-full bg-[#0a0a0a] hover:bg-[#1a1a1a] text-[#f8f6f1] font-medium py-5 rounded-2xl transition flex items-center justify-center gap-3">
+    <span>Começar briefing</span>
+    <span class="transition-transform group-hover:translate-x-1">→</span>
+  </button>
+  <p class="text-center text-xs text-black/40 mt-4">Leva uns 2 minutinhos. Pode pausar quando quiser.</p>
+</section>
+
+<!-- STEP 1: NICHO -->
+<section class="step" data-step="1">
+  <div class="mb-10">
+    <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-4">Pergunta 01 / 07</div>
+    <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Qual seu tipo de negócio?</h2>
+    <p class="text-black/55 text-lg">Isso direciona a estrutura inteira do site.</p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <label class="opt rounded-2xl p-6 block" data-name="nicho" data-value="barbearia">
+      <div class="flex items-start justify-between mb-8">
+        <span class="font-mono text-xs tracking-widest opt-sub text-black/40">A</span>
+        <div class="opt-check"></div>
+      </div>
+      <div class="font-display text-3xl mb-1">Barbearia</div>
+      <div class="opt-sub text-sm text-black/50">Cortes masculinos, barba, estilo</div>
+    </label>
+    <label class="opt rounded-2xl p-6 block" data-name="nicho" data-value="salao">
+      <div class="flex items-start justify-between mb-8">
+        <span class="font-mono text-xs tracking-widest opt-sub text-black/40">B</span>
+        <div class="opt-check"></div>
+      </div>
+      <div class="font-display text-3xl mb-1">Salão de beleza</div>
+      <div class="opt-sub text-sm text-black/50">Cabelo, escova, química, manicure</div>
+    </label>
+    <label class="opt rounded-2xl p-6 block" data-name="nicho" data-value="estetica">
+      <div class="flex items-start justify-between mb-8">
+        <span class="font-mono text-xs tracking-widest opt-sub text-black/40">C</span>
+        <div class="opt-check"></div>
+      </div>
+      <div class="font-display text-3xl mb-1">Estética facial</div>
+      <div class="opt-sub text-sm text-black/50">Limpeza, peeling, tratamentos</div>
+    </label>
+    <label class="opt rounded-2xl p-6 block" data-name="nicho" data-value="outro">
+      <div class="flex items-start justify-between mb-8">
+        <span class="font-mono text-xs tracking-widest opt-sub text-black/40">D</span>
+        <div class="opt-check"></div>
+      </div>
+      <div class="font-display text-3xl mb-1">Outro</div>
+      <div class="opt-sub text-sm text-black/50">A gente conversa em seguida</div>
+    </label>
+  </div>
+</section>
+
+<!-- STEP 2: VIBE -->
+<section class="step" data-step="2">
+  <div class="mb-10">
+    <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-4">Pergunta 02 / 07</div>
+    <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Qual <em class="text-[#ff5c1f]">vibe</em> combina com você?</h2>
+    <p class="text-black/55 text-lg">Pode clicar em "Ver exemplo" pra dar uma olhada antes de escolher.</p>
+  </div>
+  <div class="space-y-3">
+    <label class="opt rounded-2xl p-6 flex items-center gap-5" data-name="vibe" data-value="classico">
+      <div class="w-16 h-16 rounded-2xl flex-shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, #0a0a0a 0%, #c9a96e 100%);">
+        <span class="font-display text-2xl text-white">A</span>
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="font-display text-2xl mb-1">Clássico & Elegante</div>
+        <div class="opt-sub text-sm text-black/55 leading-relaxed">Preto + dourado, fontes serifadas. Tradição, sofisticação, premium.</div>
+        <a href="../demos/barbearia/classico.html" target="_blank" onclick="event.stopPropagation()" class="opt-link inline-flex items-center gap-1.5 text-xs font-medium mt-2.5 pb-0.5 border-b border-black/20 text-black/65 hover:text-[#ff5c1f] hover:border-[#ff5c1f] transition">
+          Ver exemplo <span>↗</span>
+        </a>
+      </div>
+      <div class="opt-check flex-shrink-0"></div>
+    </label>
+    <label class="opt rounded-2xl p-6 flex items-center gap-5" data-name="vibe" data-value="industrial">
+      <div class="w-16 h-16 rounded-2xl flex-shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, #1c1c1e 0%, #ff5c1f 100%);">
+        <span class="font-mono text-xl text-white font-bold">B</span>
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="font-display text-2xl mb-1">Industrial & Urbano</div>
+        <div class="opt-sub text-sm text-black/55 leading-relaxed">Escuro, brutalist, fontes condensadas. Atitude, raiz, cidade.</div>
+        <a href="../demos/barbearia/industrial.html" target="_blank" onclick="event.stopPropagation()" class="opt-link inline-flex items-center gap-1.5 text-xs font-medium mt-2.5 pb-0.5 border-b border-black/20 text-black/65 hover:text-[#ff5c1f] hover:border-[#ff5c1f] transition">
+          Ver exemplo <span>↗</span>
+        </a>
+      </div>
+      <div class="opt-check flex-shrink-0"></div>
+    </label>
+    <label class="opt rounded-2xl p-6 flex items-center gap-5" data-name="vibe" data-value="moderno">
+      <div class="w-16 h-16 rounded-2xl flex-shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, #faf9f6 0%, #1f4847 100%);">
+        <span class="font-display text-2xl text-[#1f4847]">C</span>
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="font-display text-2xl mb-1">Moderno & Minimalista</div>
+        <div class="opt-sub text-sm text-black/55 leading-relaxed">Branco + petróleo, espaço amplo. Contemporâneo, premium, limpo.</div>
+        <a href="../demos/barbearia/moderno.html" target="_blank" onclick="event.stopPropagation()" class="opt-link inline-flex items-center gap-1.5 text-xs font-medium mt-2.5 pb-0.5 border-b border-black/20 text-black/65 hover:text-[#ff5c1f] hover:border-[#ff5c1f] transition">
+          Ver exemplo <span>↗</span>
+        </a>
+      </div>
+      <div class="opt-check flex-shrink-0"></div>
+    </label>
+    <label class="opt rounded-2xl p-6 flex items-center gap-5" data-name="vibe" data-value="acolhedor">
+      <div class="w-16 h-16 rounded-2xl flex-shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, #fde2e4 0%, #d4a373 100%);">
+        <span class="font-display text-2xl text-[#8b4d3f]">D</span>
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="font-display text-2xl mb-1">Acolhedor & Suave</div>
+        <div class="opt-sub text-sm text-black/55 leading-relaxed">Rosa pastel + beige, fontes delicadas. Convidativo, feminino, calmo.</div>
+        <span class="opt-sub inline-block mt-2.5 text-xs text-black/35">Exemplo em breve</span>
+      </div>
+      <div class="opt-check flex-shrink-0"></div>
+    </label>
+  </div>
+</section>
+
+<!-- STEP 3: PALETA -->
+<section class="step" data-step="3">
+  <div class="mb-10">
+    <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-4">Pergunta 03 / 07</div>
+    <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Qual paleta te <em class="text-[#ff5c1f]">chama</em>?</h2>
+    <p class="text-black/55 text-lg">Vai pela intuição. Pode ser ajustada depois pelo nosso time.</p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <label class="opt rounded-2xl p-5" data-name="paleta" data-value="preto-dourado">
+      <div class="flex gap-1.5 mb-5 h-20">
+        <span class="swatch flex-1 rounded-lg" style="background: #0a0a0a"></span>
+        <span class="swatch flex-1 rounded-lg" style="background: #c9a96e"></span>
+        <span class="swatch flex-1 rounded-lg" style="background: #f5f1ea"></span>
+      </div>
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="font-display text-xl">Preto & Dourado</div>
+          <div class="opt-sub text-xs text-black/50 mt-0.5">Sofisticado · atemporal</div>
+        </div>
+        <div class="opt-check"></div>
+      </div>
+    </label>
+    <label class="opt rounded-2xl p-5" data-name="paleta" data-value="escuro-laranja">
+      <div class="flex gap-1.5 mb-5 h-20">
+        <span class="swatch flex-1 rounded-lg" style="background: #1c1c1e"></span>
+        <span class="swatch flex-1 rounded-lg" style="background: #ff5c1f"></span>
+        <span class="swatch flex-1 rounded-lg" style="background: #e8e6e0"></span>
+      </div>
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="font-display text-xl">Escuro & Laranja</div>
+          <div class="opt-sub text-xs text-black/50 mt-0.5">Urbano · vibrante</div>
+        </div>
+        <div class="opt-check"></div>
+      </div>
+    </label>
+    <label class="opt rounded-2xl p-5" data-name="paleta" data-value="branco-petroleo">
+      <div class="flex gap-1.5 mb-5 h-20">
+        <span class="swatch flex-1 rounded-lg" style="background: #faf9f6"></span>
+        <span class="swatch flex-1 rounded-lg" style="background: #1f4847"></span>
+        <span class="swatch flex-1 rounded-lg" style="background: #c8d4cd"></span>
+      </div>
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="font-display text-xl">Branco & Petróleo</div>
+          <div class="opt-sub text-xs text-black/50 mt-0.5">Premium · limpo</div>
+        </div>
+        <div class="opt-check"></div>
+      </div>
+    </label>
+    <label class="opt rounded-2xl p-5" data-name="paleta" data-value="rosa-beige">
+      <div class="flex gap-1.5 mb-5 h-20">
+        <span class="swatch flex-1 rounded-lg" style="background: #fde2e4"></span>
+        <span class="swatch flex-1 rounded-lg" style="background: #d4a373"></span>
+        <span class="swatch flex-1 rounded-lg" style="background: #faedcd"></span>
+      </div>
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="font-display text-xl">Rosa & Beige</div>
+          <div class="opt-sub text-xs text-black/50 mt-0.5">Suave · acolhedor</div>
+        </div>
+        <div class="opt-check"></div>
+      </div>
+    </label>
+    <label class="opt rounded-2xl p-5" data-name="paleta" data-value="azul-marinho">
+      <div class="flex gap-1.5 mb-5 h-20">
+        <span class="swatch flex-1 rounded-lg" style="background: #1e3a5f"></span>
+        <span class="swatch flex-1 rounded-lg" style="background: #f5f5f0"></span>
+        <span class="swatch flex-1 rounded-lg" style="background: #d4af37"></span>
+      </div>
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="font-display text-xl">Marinho & Areia</div>
+          <div class="opt-sub text-xs text-black/50 mt-0.5">Confiável · sério</div>
+        </div>
+        <div class="opt-check"></div>
+      </div>
+    </label>
+    <label class="opt rounded-2xl p-5" data-name="paleta" data-value="terracota">
+      <div class="flex gap-1.5 mb-5 h-20">
+        <span class="swatch flex-1 rounded-lg" style="background: #c1666b"></span>
+        <span class="swatch flex-1 rounded-lg" style="background: #e4b363"></span>
+        <span class="swatch flex-1 rounded-lg" style="background: #4a4238"></span>
+      </div>
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="font-display text-xl">Terracota & Oliva</div>
+          <div class="opt-sub text-xs text-black/50 mt-0.5">Orgânico · natural</div>
+        </div>
+        <div class="opt-check"></div>
+      </div>
+    </label>
+  </div>
+</section>
+
+<!-- STEP 4: TIPOGRAFIA -->
+<section class="step" data-step="4">
+  <div class="mb-10">
+    <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-4">Pergunta 04 / 07</div>
+    <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Que <em class="text-[#ff5c1f]">tipografia</em> fala com você?</h2>
+    <p class="text-black/55 text-lg">A fonte muda totalmente a personalidade da marca.</p>
+  </div>
+  <div class="space-y-3">
+    <label class="opt rounded-2xl p-7" data-name="fonte" data-value="serif-elegante">
+      <div class="flex items-end justify-between mb-3">
+        <div style="font-family: 'Fraunces', serif; font-variation-settings: 'opsz' 144;" class="text-5xl tracking-tight">Atelier Aa</div>
+        <div class="opt-check flex-shrink-0"></div>
+      </div>
+      <div class="opt-sub text-sm text-black/55 leading-relaxed">Serif elegante · Fraunces, Playfair · atemporal, sofisticado, editorial</div>
+    </label>
+    <label class="opt rounded-2xl p-7" data-name="fonte" data-value="sans-clean">
+      <div class="flex items-end justify-between mb-3">
+        <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;" class="text-5xl tracking-tight">Atelier Aa</div>
+        <div class="opt-check flex-shrink-0"></div>
+      </div>
+      <div class="opt-sub text-sm text-black/55 leading-relaxed">Sans-serif clean · Inter, Plus Jakarta · moderno, profissional, legível</div>
+    </label>
+    <label class="opt rounded-2xl p-7" data-name="fonte" data-value="sans-bold">
+      <div class="flex items-end justify-between mb-3">
+        <div style="font-family: 'Archivo Black', sans-serif; letter-spacing: -0.02em;" class="text-5xl">ATELIER AA</div>
+        <div class="opt-check flex-shrink-0"></div>
+      </div>
+      <div class="opt-sub text-sm text-black/55 leading-relaxed">Sans pesada · Archivo Black · atitude, marcante, urbano</div>
+    </label>
+    <label class="opt rounded-2xl p-7" data-name="fonte" data-value="mono-tech">
+      <div class="flex items-end justify-between mb-3">
+        <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700;" class="text-4xl tracking-tight">{atelier}</div>
+        <div class="opt-check flex-shrink-0"></div>
+      </div>
+      <div class="opt-sub text-sm text-black/55 leading-relaxed">Monoespaçada · JetBrains Mono · tech, raw, brutalist</div>
+    </label>
+  </div>
+</section>
+
+<!-- STEP 5: SECOES -->
+<section class="step" data-step="5">
+  <div class="mb-10">
+    <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-4">Pergunta 05 / 07</div>
+    <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Quais <em class="text-[#ff5c1f]">seções</em> seu site precisa?</h2>
+    <p class="text-black/55 text-lg">Marque tudo que faz sentido. Pode quantas quiser.</p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <label class="opt rounded-2xl p-5" data-name="secoes" data-value="hero" data-multi="true">
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <div class="font-display text-xl mb-0.5">Apresentação</div>
+          <div class="opt-sub text-xs text-black/50">Imagem grande + slogan forte</div>
+        </div>
+        <div class="opt-check flex-shrink-0"></div>
+      </div>
+    </label>
+    <label class="opt rounded-2xl p-5" data-name="secoes" data-value="sobre" data-multi="true">
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <div class="font-display text-xl mb-0.5">Sobre nós</div>
+          <div class="opt-sub text-xs text-black/50">História, valores, diferenciais</div>
+        </div>
+        <div class="opt-check flex-shrink-0"></div>
+      </div>
+    </label>
+    <label class="opt rounded-2xl p-5" data-name="secoes" data-value="servicos" data-multi="true">
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <div class="font-display text-xl mb-0.5">Serviços + Preços</div>
+          <div class="opt-sub text-xs text-black/50">Tabela ou cards detalhados</div>
+        </div>
+        <div class="opt-check flex-shrink-0"></div>
+      </div>
+    </label>
+    <label class="opt rounded-2xl p-5" data-name="secoes" data-value="galeria" data-multi="true">
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <div class="font-display text-xl mb-0.5">Galeria</div>
+          <div class="opt-sub text-xs text-black/50">Espaço, trabalhos, antes/depois</div>
+        </div>
+        <div class="opt-check flex-shrink-0"></div>
+      </div>
+    </label>
+    <label class="opt rounded-2xl p-5" data-name="secoes" data-value="depoimentos" data-multi="true">
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <div class="font-display text-xl mb-0.5">Depoimentos</div>
+          <div class="opt-sub text-xs text-black/50">O que dizem clientes reais</div>
+        </div>
+        <div class="opt-check flex-shrink-0"></div>
+      </div>
+    </label>
+    <label class="opt rounded-2xl p-5" data-name="secoes" data-value="equipe" data-multi="true">
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <div class="font-display text-xl mb-0.5">Equipe</div>
+          <div class="opt-sub text-xs text-black/50">Foto + bio do time</div>
+        </div>
+        <div class="opt-check flex-shrink-0"></div>
+      </div>
+    </label>
+    <label class="opt rounded-2xl p-5" data-name="secoes" data-value="contato" data-multi="true">
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <div class="font-display text-xl mb-0.5">Contato + Mapa</div>
+          <div class="opt-sub text-xs text-black/50">Endereço, horários, telefone</div>
+        </div>
+        <div class="opt-check flex-shrink-0"></div>
+      </div>
+    </label>
+    <label class="opt rounded-2xl p-5" data-name="secoes" data-value="agendamento" data-multi="true">
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <div class="font-display text-xl mb-0.5">Agendamento</div>
+          <div class="opt-sub text-xs text-black/50">CTA WhatsApp, Booksy, link</div>
+        </div>
+        <div class="opt-check flex-shrink-0"></div>
+      </div>
+    </label>
+  </div>
+</section>
+
+<!-- STEP 6: INFO BASICAS -->
+<section class="step" data-step="6">
+  <div class="mb-10">
+    <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-4">Pergunta 06 / 07</div>
+    <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Conta sobre o <em class="text-[#ff5c1f]">negócio</em>.</h2>
+    <p class="text-black/55 text-lg">Vamos começar a alimentar com dados reais.</p>
+  </div>
+  <div class="space-y-5">
+    <div class="field rounded-2xl px-5 py-4">
+      <label class="block text-[11px] tracking-[0.2em] uppercase text-black/45 mb-1.5 font-mono">Nome do negócio</label>
+      <input type="text" id="nomeEmpresa" placeholder="Ex: Barbearia do Zé" class="w-full bg-transparent text-lg font-medium placeholder:text-black/25">
+    </div>
+    <div class="field rounded-2xl px-5 py-4">
+      <label class="block text-[11px] tracking-[0.2em] uppercase text-black/45 mb-1.5 font-mono">Cidade · Bairro</label>
+      <input type="text" id="cidadeBairro" placeholder="Ex: Pinheiros, São Paulo" class="w-full bg-transparent text-lg font-medium placeholder:text-black/25">
+    </div>
+    <div class="field rounded-2xl px-5 py-4">
+      <label class="block text-[11px] tracking-[0.2em] uppercase text-black/45 mb-1.5 font-mono">Slogan / frase forte <span class="text-black/30 normal-case lowercase tracking-normal">— opcional</span></label>
+      <input type="text" id="slogan" placeholder="Ex: Tradição que atravessa gerações" class="w-full bg-transparent text-lg font-medium placeholder:text-black/25">
+    </div>
+    <div>
+      <label class="block text-[11px] tracking-[0.2em] uppercase text-black/45 mb-3 font-mono">Você tem logo?</label>
+      <div class="grid grid-cols-3 gap-2">
+        <label class="opt-mini rounded-xl px-4 py-3 text-center text-sm font-medium" data-name="logo" data-value="sim">Sim, tenho</label>
+        <label class="opt-mini rounded-xl px-4 py-3 text-center text-sm font-medium" data-name="logo" data-value="nao">Não tenho</label>
+        <label class="opt-mini rounded-xl px-4 py-3 text-center text-sm font-medium" data-name="logo" data-value="cria">Vocês criam</label>
+      </div>
+    </div>
+    <div>
+      <label class="block text-[11px] tracking-[0.2em] uppercase text-black/45 mb-3 font-mono">Tem fotos do espaço/trabalhos?</label>
+      <div class="grid grid-cols-3 gap-2">
+        <label class="opt-mini rounded-xl px-4 py-3 text-center text-sm font-medium" data-name="fotos" data-value="muitas">Muitas</label>
+        <label class="opt-mini rounded-xl px-4 py-3 text-center text-sm font-medium" data-name="fotos" data-value="poucas">Algumas</label>
+        <label class="opt-mini rounded-xl px-4 py-3 text-center text-sm font-medium" data-name="fotos" data-value="usar-banco">Usar banco</label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 7: CONTATO + DOMINIO -->
+<section class="step" data-step="7">
+  <div class="mb-10">
+    <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-4">Pergunta 07 / 07</div>
+    <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Pra <em class="text-[#ff5c1f]">finalizar</em>...</h2>
+    <p class="text-black/55 text-lg">Como o cliente chega até você + qual o domínio.</p>
+  </div>
+  <div class="space-y-5">
+    <div class="field rounded-2xl px-5 py-4">
+      <label class="block text-[11px] tracking-[0.2em] uppercase text-black/45 mb-1.5 font-mono">WhatsApp do negócio</label>
+      <input type="tel" id="whatsappNegocio" placeholder="(11) 9 9999-9999" class="w-full bg-transparent text-lg font-medium placeholder:text-black/25">
+    </div>
+    <div class="field rounded-2xl px-5 py-4">
+      <label class="block text-[11px] tracking-[0.2em] uppercase text-black/45 mb-1.5 font-mono">Instagram <span class="text-black/30 normal-case lowercase tracking-normal">— sem @</span></label>
+      <input type="text" id="instagram" placeholder="barbearia.do.ze" class="w-full bg-transparent text-lg font-medium placeholder:text-black/25">
+    </div>
+    <div class="field rounded-2xl px-5 py-4">
+      <label class="block text-[11px] tracking-[0.2em] uppercase text-black/45 mb-1.5 font-mono">Endereço completo</label>
+      <input type="text" id="endereco" placeholder="Rua dos Pinheiros, 1234, Pinheiros, SP" class="w-full bg-transparent text-lg font-medium placeholder:text-black/25">
+    </div>
+    <div class="field rounded-2xl px-5 py-4">
+      <label class="block text-[11px] tracking-[0.2em] uppercase text-black/45 mb-1.5 font-mono">Domínio desejado</label>
+      <div class="flex items-baseline gap-1.5">
+        <span class="text-lg text-black/35 font-medium">www.</span>
+        <input type="text" id="dominio" placeholder="barbeariadoze" class="flex-1 bg-transparent text-lg font-medium placeholder:text-black/25">
+        <span class="text-lg text-black/55 font-medium">.com.br</span>
+      </div>
+      <p class="text-xs text-black/45 mt-2">Verificamos disponibilidade e compramos no seu CPF · incluso no preço.</p>
+    </div>
+    <div class="field rounded-2xl px-5 py-4">
+      <label class="block text-[11px] tracking-[0.2em] uppercase text-black/45 mb-1.5 font-mono">Sites/refs que você gosta <span class="text-black/30 normal-case lowercase tracking-normal">— opcional</span></label>
+      <textarea id="referencias" rows="3" placeholder="Cola URLs ou descreve o que gosta..." class="w-full bg-transparent text-base font-medium placeholder:text-black/25 resize-none"></textarea>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 8: RESUMO -->
+<section class="step" data-step="8">
+  <div class="mb-10">
+    <div class="flex items-center gap-2.5 mb-4">
+      <span class="w-2 h-2 rounded-full bg-[#ff5c1f] accent-dot"></span>
+      <span class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/55">Briefing completo</span>
+    </div>
+    <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Pronto. <em class="text-[#ff5c1f]">É isso.</em></h2>
+    <p class="text-black/55 text-lg">Confere o resumo abaixo. Se algo precisar ajustar, é só voltar.</p>
+  </div>
+
+  <div class="bg-paper border border-black/[0.08] rounded-3xl p-7 mb-5">
+    <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-5">Seu briefing</div>
+    <div id="resumo" class="space-y-0"></div>
+  </div>
+
+  <div class="bg-[#0a0a0a] text-[#f8f6f1] rounded-3xl p-7 mb-6">
+    <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-[#ff5c1f] mb-5">O que vem agora</div>
+    <ol class="space-y-4">
+      <li class="flex gap-4">
+        <span class="font-display text-2xl text-[#ff5c1f] leading-none">01</span>
+        <div>
+          <div class="font-semibold mb-0.5">Recebemos seu briefing</div>
+          <div class="text-sm text-white/55">Fica disponível pro nosso time imediatamente.</div>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="font-display text-2xl text-[#ff5c1f] leading-none">02</span>
+        <div>
+          <div class="font-semibold mb-0.5">Designer + IA Claude criam seu site</div>
+          <div class="text-sm text-white/55">Em 2-3 dias úteis, você recebe um link de preview.</div>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="font-display text-2xl text-[#ff5c1f] leading-none">03</span>
+        <div>
+          <div class="font-semibold mb-0.5">Você revisa</div>
+          <div class="text-sm text-white/55">Até 3 ajustes inclusos. Comunicação pelo WhatsApp.</div>
+        </div>
+      </li>
+      <li class="flex gap-4">
+        <span class="font-display text-2xl text-[#ff5c1f] leading-none">04</span>
+        <div>
+          <div class="font-semibold mb-0.5">Aprovou? Aí paga.</div>
+          <div class="text-sm text-white/55">Pagamento via PIX, e a gente sobe pro seu domínio próprio.</div>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <button onclick="finalizar()" id="btnFinalizar" class="group w-full bg-[#ff5c1f] hover:bg-[#e64a0e] text-white font-semibold py-5 rounded-2xl transition flex items-center justify-center gap-3 mb-3">
+    <span>Enviar briefing</span>
+    <span class="transition-transform group-hover:translate-x-1">→</span>
+  </button>
+  <button onclick="goTo(1)" class="w-full text-black/55 hover:text-black font-medium py-3 transition text-sm underline-offset-4 hover:underline">
+    Quero revisar minhas respostas
+  </button>
+</section>
+
+<!-- STEP 9: ENVIADO -->
+<section class="step" data-step="9">
+  <div class="text-center pt-12">
+    <div class="inline-flex w-20 h-20 rounded-full bg-[#0a0a0a] items-center justify-center mb-8 relative">
+      <span class="text-3xl text-[#ff5c1f]">✓</span>
+      <span class="absolute inset-0 rounded-full border-2 border-[#ff5c1f] animate-ping opacity-75"></span>
+    </div>
+    <h2 class="font-display text-5xl md:text-6xl leading-[0.95] tracking-tight mb-5">Briefing<br><em class="text-[#ff5c1f]">recebido.</em></h2>
+    <p class="text-black/55 text-lg max-w-md mx-auto mb-10 leading-relaxed">Agora é com a gente. Em até 3 dias úteis você recebe o link do seu site pronto pelo mesmo WhatsApp.</p>
+    <div class="bg-paper border border-black/[0.08] rounded-2xl p-6 max-w-sm mx-auto text-left">
+      <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-2">Lembrete</div>
+      <p class="font-medium leading-relaxed">Você só paga depois de aprovar o site. Se não gostar, não tem cobrança nenhuma.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- NAV BUTTONS -->
+<div id="navBtns" class="fixed bottom-0 inset-x-0 bg-paper/95 backdrop-blur-md border-t border-black/[0.06] py-4 z-30 hidden">
+  <div class="max-w-2xl mx-auto px-6 flex gap-3">
+    <button id="prevBtn" onclick="prev()" class="flex-shrink-0 px-6 py-4 rounded-2xl font-medium text-black/65 hover:text-black hover:bg-black/[0.04] transition flex items-center gap-2">
+      <span>←</span><span class="hidden sm:inline">Voltar</span>
+    </button>
+    <button id="nextBtn" onclick="next()" class="group flex-1 bg-[#0a0a0a] hover:bg-[#1a1a1a] disabled:bg-black/20 disabled:cursor-not-allowed text-[#f8f6f1] font-semibold py-4 rounded-2xl transition flex items-center justify-center gap-3">
+      <span>Continuar</span>
+      <span class="transition-transform group-hover:translate-x-1">→</span>
+    </button>
+  </div>
+</div>
+
+<script>
+const TOTAL_VISIBLE = 8;
+let currentStep = 0;
+const answers = {
+  nicho: null, vibe: null, paleta: null, fonte: null,
+  secoes: [], logo: null, fotos: null,
+  nomeEmpresa: '', cidadeBairro: '', slogan: '',
+  whatsappNegocio: '', instagram: '', endereco: '',
+  dominio: '', referencias: ''
+};
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  const target = document.querySelector(`[data-step="${n}"]`);
+  if (target) target.classList.add('active');
+  currentStep = n;
+  // Counter (visual: 01..08)
+  const visibleN = Math.min(n + 1, TOTAL_VISIBLE);
+  document.getElementById('stepCounter').textContent = String(visibleN).padStart(2, '0');
+  // Progress
+  const pct = (n / TOTAL_VISIBLE) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+  // Nav
+  const navBtns = document.getElementById('navBtns');
+  if (n === 0 || n === 8 || n === 9) navBtns.classList.add('hidden');
+  else {
+    navBtns.classList.remove('hidden');
+    document.getElementById('prevBtn').style.visibility = n === 1 ? 'hidden' : 'visible';
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  validateStep();
+}
+
+function validateStep() {
+  const nextBtn = document.getElementById('nextBtn');
+  if (!nextBtn) return;
+  let valid = true;
+  if (currentStep === 1) valid = !!answers.nicho;
+  else if (currentStep === 2) valid = !!answers.vibe;
+  else if (currentStep === 3) valid = !!answers.paleta;
+  else if (currentStep === 4) valid = !!answers.fonte;
+  else if (currentStep === 5) valid = answers.secoes.length > 0;
+  else if (currentStep === 6) {
+    answers.nomeEmpresa = document.getElementById('nomeEmpresa').value.trim();
+    answers.cidadeBairro = document.getElementById('cidadeBairro').value.trim();
+    answers.slogan = document.getElementById('slogan').value.trim();
+    valid = answers.nomeEmpresa.length > 1 && answers.cidadeBairro.length > 1 && !!answers.logo && !!answers.fotos;
+  } else if (currentStep === 7) {
+    answers.whatsappNegocio = document.getElementById('whatsappNegocio').value.trim();
+    answers.instagram = document.getElementById('instagram').value.trim();
+    answers.endereco = document.getElementById('endereco').value.trim();
+    answers.dominio = document.getElementById('dominio').value.trim();
+    answers.referencias = document.getElementById('referencias').value.trim();
+    valid = answers.whatsappNegocio.length > 8 && answers.endereco.length > 5 && answers.dominio.length > 1;
+  }
+  nextBtn.disabled = !valid;
+  nextBtn.querySelector('span:first-child').textContent = currentStep === 7 ? 'Ver resumo' : 'Continuar';
+}
+
+function next() {
+  if (currentStep === 7) renderResumo();
+  if (currentStep < 9) showStep(currentStep + 1);
+}
+function prev() { if (currentStep > 0) showStep(currentStep - 1); }
+function goTo(n) { showStep(n); }
+
+// Selection logic
+document.querySelectorAll('.opt').forEach(el => {
+  el.addEventListener('click', () => {
+    const name = el.dataset.name;
+    const value = el.dataset.value;
+    const multi = el.dataset.multi === 'true';
+    if (multi) {
+      el.classList.toggle('selected');
+      if (el.classList.contains('selected')) {
+        if (!answers[name].includes(value)) answers[name].push(value);
+      } else {
+        answers[name] = answers[name].filter(v => v !== value);
+      }
+    } else {
+      document.querySelectorAll(`.opt[data-name="${name}"]`).forEach(o => o.classList.remove('selected'));
+      el.classList.add('selected');
+      answers[name] = value;
+    }
+    validateStep();
+  });
+});
+
+document.querySelectorAll('.opt-mini').forEach(el => {
+  el.addEventListener('click', () => {
+    const name = el.dataset.name;
+    const value = el.dataset.value;
+    document.querySelectorAll(`.opt-mini[data-name="${name}"]`).forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    answers[name] = value;
+    validateStep();
+  });
+});
+
+['nomeEmpresa','cidadeBairro','slogan','whatsappNegocio','instagram','endereco','dominio','referencias'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', validateStep);
+});
+
+const VIBE_LABELS = { classico: 'Clássico & Elegante', industrial: 'Industrial & Urbano', moderno: 'Moderno & Minimalista', acolhedor: 'Acolhedor & Suave' };
+const PALETA_LABELS = { 'preto-dourado': 'Preto & Dourado', 'escuro-laranja': 'Escuro & Laranja', 'branco-petroleo': 'Branco & Petróleo', 'rosa-beige': 'Rosa & Beige', 'azul-marinho': 'Marinho & Areia', 'terracota': 'Terracota & Oliva' };
+const FONTE_LABELS = { 'serif-elegante': 'Serif elegante (Fraunces)', 'sans-clean': 'Sans clean (Plus Jakarta)', 'sans-bold': 'Sans pesada (Archivo Black)', 'mono-tech': 'Mono (JetBrains)' };
+const NICHO_LABELS = { barbearia: 'Barbearia', salao: 'Salão de beleza', estetica: 'Estética facial', outro: 'Outro' };
+const SECOES_LABELS = { hero: 'Apresentação', sobre: 'Sobre nós', servicos: 'Serviços + Preços', galeria: 'Galeria', depoimentos: 'Depoimentos', equipe: 'Equipe', contato: 'Contato + Mapa', agendamento: 'Agendamento' };
+const LOGO_LABELS = { sim: 'Já tem', nao: 'Não tem', cria: 'Vocês criam' };
+const FOTOS_LABELS = { muitas: 'Muitas', poucas: 'Algumas', 'usar-banco': 'Banco de imagens' };
+
+function renderResumo() {
+  const el = document.getElementById('resumo');
+  const linha = (rotulo, valor) => `<div class="flex justify-between gap-6 py-3.5 border-b border-black/[0.06] last:border-0"><span class="text-black/45 text-sm">${rotulo}</span><span class="font-medium text-right">${valor}</span></div>`;
+  el.innerHTML = [
+    linha('Negócio', answers.nomeEmpresa || '—'),
+    linha('Localização', answers.cidadeBairro || '—'),
+    linha('Tipo', NICHO_LABELS[answers.nicho] || '—'),
+    linha('Vibe', VIBE_LABELS[answers.vibe] || '—'),
+    linha('Paleta', PALETA_LABELS[answers.paleta] || '—'),
+    linha('Tipografia', FONTE_LABELS[answers.fonte] || '—'),
+    linha('Seções', answers.secoes.map(s => SECOES_LABELS[s]).join(' · ') || '—'),
+    linha('Logo', LOGO_LABELS[answers.logo] || '—'),
+    linha('Fotos', FOTOS_LABELS[answers.fotos] || '—'),
+    linha('Domínio', answers.dominio ? 'www.' + answers.dominio + '.com.br' : '—'),
+    linha('WhatsApp', answers.whatsappNegocio || '—'),
+    linha('Instagram', answers.instagram ? '@' + answers.instagram : '—'),
+    answers.referencias ? `<div class="pt-4 mt-2 border-t border-black/[0.06]"><div class="text-black/45 text-xs uppercase font-mono tracking-widest mb-2">Referências</div><div class="text-sm leading-relaxed">${answers.referencias.replace(/\n/g, '<br>')}</div></div>` : ''
+  ].join('');
+}
+
+function finalizar() {
+  const btn = document.getElementById('btnFinalizar');
+  btn.disabled = true;
+  btn.querySelector('span:first-child').textContent = 'Enviando...';
+  const payload = {
+    ...answers,
+    submitted_at: new Date().toISOString(),
+    token: new URLSearchParams(window.location.search).get('token') || null
+  };
+  console.log('SiteFlow briefing:', payload);
+  // TODO: POST pra Supabase Edge Function ou webhook n8n
+  setTimeout(() => showStep(9), 600);
+}
+
+showStep(0);
+</script>
+
+</body>
+</html>

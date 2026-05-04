@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SiteFlow · Dose de Growth</title>
+<meta name="description" content="Site profissional pronto em poucos dias. Você só paga se gostar.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { -webkit-font-smoothing: antialiased; }
+  body { font-family: 'Inter', sans-serif; background: #f8f6f1; color: #0a0a0a; }
+  .font-display { font-family: 'Fraunces', serif; font-variation-settings: 'opsz' 144, 'SOFT' 50; letter-spacing: -0.02em; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .accent-dot { animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.3); } }
+  .demo-card { transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+  .demo-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px -20px rgba(0,0,0,0.2); }
+</style>
+</head>
+<body class="bg-[#f8f6f1]">
+
+<header class="border-b border-black/[0.06] bg-[#fdfcf8]/80 backdrop-blur-sm sticky top-0 z-40">
+  <div class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="relative w-7 h-7">
+        <div class="absolute inset-0 bg-[#ff5c1f] rounded-md"></div>
+        <div class="absolute inset-1 bg-[#0a0a0a] rounded-sm"></div>
+      </div>
+      <div class="leading-tight">
+        <div class="font-display text-lg leading-none">Site<em>Flow</em></div>
+        <div class="text-[10px] tracking-[0.2em] uppercase text-black/40 mt-0.5">por Dose de Growth</div>
+      </div>
+    </div>
+    <span class="font-mono text-xs text-black/45 tracking-wider">v0.1 · MVP</span>
+  </div>
+</header>
+
+<main class="max-w-5xl mx-auto px-6 py-16 md:py-24">
+
+  <div class="flex items-center gap-2.5 mb-10">
+    <span class="w-2 h-2 rounded-full bg-[#ff5c1f] accent-dot"></span>
+    <span class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/55">Repositório de demos · Acesso interno DDG</span>
+  </div>
+
+  <h1 class="font-display text-5xl md:text-7xl leading-[0.95] tracking-tight mb-8 max-w-3xl">
+    Site profissional pronto em <em class="text-[#ff5c1f]">3 dias</em>.<br>
+    Você só paga se gostar.
+  </h1>
+  <p class="text-xl text-black/65 leading-relaxed max-w-2xl mb-14">
+    Página de testes do projeto SiteFlow DDG — wizard de briefing visual e demos de referência por estilo. Para clientes, este link sempre vem direto da nossa equipe via WhatsApp.
+  </p>
+
+  <!-- WIZARD CARD -->
+  <a href="/wizard/" class="block bg-[#0a0a0a] text-[#f8f6f1] rounded-3xl p-10 md:p-14 mb-6 demo-card group">
+    <div class="flex items-start justify-between flex-wrap gap-6">
+      <div class="flex-1 min-w-0">
+        <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-[#ff5c1f] mb-4">Briefing Wizard</div>
+        <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4">
+          Vamos desenhar<br>seu site <em class="text-[#ff5c1f]">do jeito certo</em>.
+        </h2>
+        <p class="text-white/65 max-w-md leading-relaxed">
+          7 perguntas curtas em 2 minutos. Cor, fonte, vibe, blocos. No final, nosso time recebe um brief estruturado e começa a criação.
+        </p>
+        <div class="mt-8 inline-flex items-center gap-3 text-[#ff5c1f] font-medium border-b border-[#ff5c1f]/40 pb-1 group-hover:border-[#ff5c1f] transition">
+          <span>Abrir wizard</span>
+          <span class="transition-transform group-hover:translate-x-1">→</span>
+        </div>
+      </div>
+      <div class="font-display text-7xl md:text-8xl text-[#ff5c1f] leading-none opacity-90">01</div>
+    </div>
+  </a>
+
+  <!-- DEMOS HEADER -->
+  <div class="mt-16 mb-8 flex items-end justify-between flex-wrap gap-4">
+    <div>
+      <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/45 mb-3">Demos de referência · Barbearia</div>
+      <h2 class="font-display text-3xl md:text-4xl tracking-tight">3 polos estéticos pra mostrar pro cliente</h2>
+    </div>
+  </div>
+
+  <!-- DEMO GRID -->
+  <div class="grid md:grid-cols-3 gap-4">
+
+    <a href="/demos/barbearia/classico.html" class="demo-card group block bg-[#fdfcf8] rounded-3xl overflow-hidden border border-black/[0.06]">
+      <div class="aspect-[4/5] flex items-center justify-center" style="background: linear-gradient(135deg, #0a0a0a 0%, #c9a96e 100%);">
+        <span class="font-display text-7xl text-white">A</span>
+      </div>
+      <div class="p-6">
+        <div class="font-display text-2xl mb-1">Clássico</div>
+        <p class="text-sm text-black/55 leading-relaxed">Preto + dourado, serif editorial, fotos em P&B. Tradição, premium.</p>
+        <div class="mt-4 inline-flex items-center gap-2 text-xs text-[#ff5c1f] font-medium">
+          <span>Abrir demo</span>
+          <span class="transition-transform group-hover:translate-x-1">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="/demos/barbearia/industrial.html" class="demo-card group block bg-[#fdfcf8] rounded-3xl overflow-hidden border border-black/[0.06]">
+      <div class="aspect-[4/5] flex items-center justify-center" style="background: linear-gradient(135deg, #1c1c1e 0%, #ff5c1f 100%);">
+        <span class="font-mono text-6xl text-white font-bold">B</span>
+      </div>
+      <div class="p-6">
+        <div class="font-display text-2xl mb-1">Industrial</div>
+        <p class="text-sm text-black/55 leading-relaxed">Escuro + laranja, brutalist, mono+sans condensada. Atitude, urbano.</p>
+        <div class="mt-4 inline-flex items-center gap-2 text-xs text-[#ff5c1f] font-medium">
+          <span>Abrir demo</span>
+          <span class="transition-transform group-hover:translate-x-1">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="/demos/barbearia/moderno.html" class="demo-card group block bg-[#fdfcf8] rounded-3xl overflow-hidden border border-black/[0.06]">
+      <div class="aspect-[4/5] flex items-center justify-center" style="background: linear-gradient(135deg, #faf9f6 0%, #1f4847 100%);">
+        <span class="font-display text-7xl text-[#1f4847]">C</span>
+      </div>
+      <div class="p-6">
+        <div class="font-display text-2xl mb-1">Moderno</div>
+        <p class="text-sm text-black/55 leading-relaxed">Branco + verde-petróleo, sans clean, muito espaço. Premium contemporâneo.</p>
+        <div class="mt-4 inline-flex items-center gap-2 text-xs text-[#ff5c1f] font-medium">
+          <span>Abrir demo</span>
+          <span class="transition-transform group-hover:translate-x-1">→</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="mt-16 pt-10 border-t border-black/[0.08]">
+    <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/45 mb-4">Status</div>
+    <div class="grid sm:grid-cols-3 gap-6 text-sm">
+      <div>
+        <div class="font-display text-2xl text-[#ff5c1f] mb-1">Fase 0</div>
+        <div class="text-black/60">Validação manual em andamento</div>
+      </div>
+      <div>
+        <div class="font-display text-2xl text-[#ff5c1f] mb-1">2 nichos</div>
+        <div class="text-black/60">Barbearia · Salão/Estética</div>
+      </div>
+      <div>
+        <div class="font-display text-2xl text-[#ff5c1f] mb-1">SP</div>
+        <div class="text-black/60">Capital, expansão futura</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="border-t border-black/[0.08] py-10 mt-12">
+  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-black/45">
+    <div class="font-display text-base text-[#0a0a0a]">SiteFlow · Dose de Growth</div>
+    <div class="font-mono text-xs">© 2026 · Repositório interno</div>
+  </div>
+</footer>
+
+</body>
+</html>

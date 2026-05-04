@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NORTE Barber Co. — Vila Madalena | Demo Industrial</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #ff5c1f;
+    --concrete: #1c1c1e;
+    --steel: #2a2a2c;
+    --bone: #e8e6e0;
+  }
+  body { font-family: 'Inter', sans-serif; background: var(--concrete); color: var(--bone); }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .font-heavy { font-family: 'Archivo Black', sans-serif; letter-spacing:-0.02em; }
+  .text-orange { color: var(--orange); }
+  .bg-orange { background: var(--orange); }
+  .border-orange { border-color: var(--orange); }
+  .concrete-bg {
+    background:
+      linear-gradient(135deg, rgba(255,92,31,0.04) 0%, transparent 60%),
+      repeating-linear-gradient(90deg, transparent 0, transparent 60px, rgba(232,230,224,0.025) 60px, rgba(232,230,224,0.025) 61px),
+      var(--concrete);
+  }
+  .grid-pattern {
+    background-image:
+      linear-gradient(rgba(232,230,224,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,230,224,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .scroll-strip {
+    animation: scroll 30s linear infinite;
+    white-space: nowrap;
+  }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+</style>
+</head>
+<body class="concrete-bg">
+
+<!-- TOP STRIP -->
+<div class="bg-orange text-black py-2 overflow-hidden font-mono text-xs font-bold uppercase">
+  <div class="scroll-strip flex gap-12">
+    <span>· Vila Madalena · Open Tue–Sun · Walk-in welcome · Cash + PIX · Vila Madalena · Open Tue–Sun · Walk-in welcome · Cash + PIX</span>
+    <span>· Vila Madalena · Open Tue–Sun · Walk-in welcome · Cash + PIX · Vila Madalena · Open Tue–Sun · Walk-in welcome · Cash + PIX</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-[#1c1c1e]/95 backdrop-blur border-b border-[#2a2a2c]">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 bg-orange flex items-center justify-center">
+        <span class="font-heavy text-black text-lg">N</span>
+      </div>
+      <span class="font-heavy text-xl">NORTE</span>
+      <span class="font-mono text-xs text-[#e8e6e0]/40">/ BARBER CO.</span>
+    </div>
+    <div class="hidden md:flex gap-8 font-mono text-xs uppercase">
+      <a href="#about" class="hover:text-orange transition">[01] About</a>
+      <a href="#services" class="hover:text-orange transition">[02] Services</a>
+      <a href="#shop" class="hover:text-orange transition">[03] Shop</a>
+      <a href="#contact" class="hover:text-orange transition">[04] Contact</a>
+    </div>
+    <a href="#contact" class="bg-orange text-black px-5 py-2.5 font-mono text-xs font-bold uppercase hover:bg-[#ff7140] transition">Book →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative grid-pattern min-h-[90vh] flex items-center overflow-hidden">
+  <div class="absolute right-0 top-0 w-1/2 h-full opacity-30">
+    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1200&q=80" class="w-full h-full object-cover" alt="">
+    <div class="absolute inset-0 bg-gradient-to-l from-transparent to-[#1c1c1e]"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 py-32 relative w-full">
+    <div class="font-mono text-xs text-orange uppercase mb-6 flex items-center gap-3">
+      <span class="w-12 h-px bg-orange"></span>
+      <span>Est. 2019 · São Paulo · BR</span>
+    </div>
+    <h1 class="font-heavy text-6xl md:text-8xl lg:text-9xl leading-[0.85] mb-8">
+      CORTE.<br>
+      BARBA.<br>
+      <span class="text-orange">SEM ENROLAÇÃO.</span>
+    </h1>
+    <p class="max-w-xl text-[#e8e6e0]/70 text-lg leading-relaxed mb-10 font-mono">
+      Barbearia raiz pra galera que sabe o que quer. Sem playlist genérica, sem papo furado. Você senta, a gente entrega.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a href="#contact" class="bg-orange text-black px-8 py-5 font-heavy text-sm uppercase tracking-wider hover:bg-[#ff7140] transition text-center">Agendar agora →</a>
+      <a href="#services" class="border-2 border-[#e8e6e0] text-[#e8e6e0] px-8 py-5 font-heavy text-sm uppercase tracking-wider hover:bg-[#e8e6e0] hover:text-black transition text-center">Ver tabela</a>
+    </div>
+    <div class="mt-16 grid grid-cols-3 gap-6 max-w-2xl border-t border-[#2a2a2c] pt-8">
+      <div>
+        <div class="font-heavy text-3xl text-orange">2.4k+</div>
+        <div class="font-mono text-xs uppercase text-[#e8e6e0]/50 mt-1">cortes/ano</div>
+      </div>
+      <div>
+        <div class="font-heavy text-3xl text-orange">4.9★</div>
+        <div class="font-mono text-xs uppercase text-[#e8e6e0]/50 mt-1">google rating</div>
+      </div>
+      <div>
+        <div class="font-heavy text-3xl text-orange">15min</div>
+        <div class="font-mono text-xs uppercase text-[#e8e6e0]/50 mt-1">corte médio</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-24 border-t border-[#2a2a2c]">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12">
+    <div class="md:col-span-4">
+      <div class="font-mono text-xs text-orange uppercase mb-4">[01] / About</div>
+      <h2 class="font-heavy text-4xl md:text-5xl leading-[0.95] mb-6">
+        Não é<br>
+        salão.<br>
+        <span class="text-orange">É oficina.</span>
+      </h2>
+    </div>
+    <div class="md:col-span-7 md:col-start-6 space-y-5 text-[#e8e6e0]/75 leading-relaxed">
+      <p class="text-xl text-[#e8e6e0]">A NORTE nasceu de uma ideia simples: barbearia tem que ser rápida, boa e barata.</p>
+      <p>Sem espera de 2 horas. Sem assento de couro de R$15k. Sem cerveja artesanal de boas-vindas. Você marca, chega, senta, sai com o cabelo bom. Pronto.</p>
+      <p>Quatro barbeiros experientes, 12 cadeiras, sistema de fila digital, e a melhor relação custo-benefício da Vila Madalena. Faz mais de 5 anos que a gente repete o mesmo método — e dá certo.</p>
+      <div class="pt-6 grid grid-cols-2 gap-6 font-mono text-xs uppercase">
+        <div class="border-l-2 border-orange pl-4">
+          <div class="text-orange mb-1">Filosofia</div>
+          <div class="text-[#e8e6e0]/60">Eficiência · Qualidade · Preço justo</div>
+        </div>
+        <div class="border-l-2 border-orange pl-4">
+          <div class="text-orange mb-1">Método</div>
+          <div class="text-[#e8e6e0]/60">Agendamento · Fila digital · Sem enrolação</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="py-24 bg-[#161618] border-y border-[#2a2a2c]">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-end justify-between mb-12 flex-wrap gap-4">
+      <div>
+        <div class="font-mono text-xs text-orange uppercase mb-4">[02] / Services</div>
+        <h2 class="font-heavy text-5xl md:text-6xl">Tabela <span class="text-orange">/ Preços</span></h2>
+      </div>
+      <div class="font-mono text-sm text-[#e8e6e0]/50">v.2026.04 · sem reajuste há 8 meses</div>
+    </div>
+    <div class="space-y-0">
+      <div class="grid grid-cols-12 items-center py-6 border-t border-[#2a2a2c] gap-4 hover:bg-[#1c1c1e] transition cursor-pointer">
+        <div class="col-span-1 font-mono text-orange">001</div>
+        <div class="col-span-7">
+          <h3 class="font-heavy text-2xl mb-1">CORTE STANDARD</h3>
+          <p class="text-sm text-[#e8e6e0]/55 font-mono">máquina + tesoura · finalização rápida · ~15min</p>
+        </div>
+        <div class="col-span-2 font-mono text-xs text-[#e8e6e0]/40 uppercase">15min</div>
+        <div class="col-span-2 font-heavy text-2xl text-right text-orange">R$ 45</div>
+      </div>
+      <div class="grid grid-cols-12 items-center py-6 border-t border-[#2a2a2c] gap-4 hover:bg-[#1c1c1e] transition cursor-pointer">
+        <div class="col-span-1 font-mono text-orange">002</div>
+        <div class="col-span-7">
+          <h3 class="font-heavy text-2xl mb-1">BARBA NA NAVALHA</h3>
+          <p class="text-sm text-[#e8e6e0]/55 font-mono">toalha quente · óleo · pós-barba · ~20min</p>
+        </div>
+        <div class="col-span-2 font-mono text-xs text-[#e8e6e0]/40 uppercase">20min</div>
+        <div class="col-span-2 font-heavy text-2xl text-right text-orange">R$ 40</div>
+      </div>
+      <div class="grid grid-cols-12 items-center py-6 border-t border-[#2a2a2c] gap-4 hover:bg-[#1c1c1e] transition cursor-pointer relative">
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 font-mono text-[10px] uppercase bg-orange text-black px-2 py-1 -mt-12">+ vendido</div>
+        <div class="col-span-1 font-mono text-orange">003</div>
+        <div class="col-span-7">
+          <h3 class="font-heavy text-2xl mb-1">COMBO COMPLETO</h3>
+          <p class="text-sm text-[#e8e6e0]/55 font-mono">corte + barba + sobrancelha · ~40min</p>
+        </div>
+        <div class="col-span-2 font-mono text-xs text-[#e8e6e0]/40 uppercase">40min</div>
+        <div class="col-span-2 font-heavy text-2xl text-right text-orange">R$ 95</div>
+      </div>
+      <div class="grid grid-cols-12 items-center py-6 border-t border-[#2a2a2c] gap-4 hover:bg-[#1c1c1e] transition cursor-pointer">
+        <div class="col-span-1 font-mono text-orange">004</div>
+        <div class="col-span-7">
+          <h3 class="font-heavy text-2xl mb-1">DESENHO + CORTE</h3>
+          <p class="text-sm text-[#e8e6e0]/55 font-mono">degradê · linhas · listras · estilo livre</p>
+        </div>
+        <div class="col-span-2 font-mono text-xs text-[#e8e6e0]/40 uppercase">25min</div>
+        <div class="col-span-2 font-heavy text-2xl text-right text-orange">R$ 60</div>
+      </div>
+      <div class="grid grid-cols-12 items-center py-6 border-t border-b border-[#2a2a2c] gap-4 hover:bg-[#1c1c1e] transition cursor-pointer">
+        <div class="col-span-1 font-mono text-orange">005</div>
+        <div class="col-span-7">
+          <h3 class="font-heavy text-2xl mb-1">PIGMENTAÇÃO</h3>
+          <p class="text-sm text-[#e8e6e0]/55 font-mono">disfarce de cabelo branco · 30 dias de durabilidade</p>
+        </div>
+        <div class="col-span-2 font-mono text-xs text-[#e8e6e0]/40 uppercase">15min</div>
+        <div class="col-span-2 font-heavy text-2xl text-right text-orange">R$ 70</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP / GALLERY -->
+<section id="shop" class="py-24 border-t border-[#2a2a2c]">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="font-mono text-xs text-orange uppercase mb-4">[03] / The shop</div>
+    <h2 class="font-heavy text-5xl md:text-6xl mb-12">Por dentro <span class="text-orange">da oficina</span></h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-1">
+      <div class="aspect-square overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700 grayscale hover:grayscale-0" alt="">
+      </div>
+      <div class="aspect-square overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700 grayscale hover:grayscale-0" alt="">
+      </div>
+      <div class="aspect-square overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700 grayscale hover:grayscale-0" alt="">
+      </div>
+      <div class="aspect-square overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700 grayscale hover:grayscale-0" alt="">
+      </div>
+      <div class="aspect-square overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700 grayscale hover:grayscale-0" alt="">
+      </div>
+      <div class="aspect-square overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1620975661059-c1cf86bb91c4?w=600&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700 grayscale hover:grayscale-0" alt="">
+      </div>
+      <div class="aspect-square overflow-hidden bg-orange flex items-center justify-center text-black p-6">
+        <div>
+          <div class="font-heavy text-3xl mb-2">Veja mais →</div>
+          <div class="font-mono text-xs uppercase">@nortebarberco</div>
+        </div>
+      </div>
+      <div class="aspect-square overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700 grayscale hover:grayscale-0" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="py-24 bg-[#161618] border-y border-[#2a2a2c]">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="font-mono text-xs text-orange uppercase mb-4">// reviews from google</div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="border-2 border-[#2a2a2c] p-6 hover:border-orange transition">
+        <div class="text-orange text-2xl mb-4">★★★★★</div>
+        <p class="text-[#e8e6e0]/85 mb-4 leading-relaxed">"Sem firula. Marcou, chegou, sentou, saiu com o cabelo top. Voltei pra ficar."</p>
+        <p class="font-mono text-xs uppercase text-[#e8e6e0]/50">— Bruno T. · cliente desde 2022</p>
+      </div>
+      <div class="border-2 border-orange p-6 bg-[#1c1c1e]">
+        <div class="text-orange text-2xl mb-4">★★★★★</div>
+        <p class="text-[#e8e6e0]/85 mb-4 leading-relaxed">"Melhor custo-benefício da Vila Mada. Atendimento rápido e o corte é sempre certo."</p>
+        <p class="font-mono text-xs uppercase text-[#e8e6e0]/50">— Lucas P. · cliente desde 2021</p>
+      </div>
+      <div class="border-2 border-[#2a2a2c] p-6 hover:border-orange transition">
+        <div class="text-orange text-2xl mb-4">★★★★★</div>
+        <p class="text-[#e8e6e0]/85 mb-4 leading-relaxed">"Cara, é uma oficina mesmo. E é isso que eu queria — não enrolação, só serviço bem feito."</p>
+        <p class="font-mono text-xs uppercase text-[#e8e6e0]/50">— Diego R. · cliente desde 2020</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="font-mono text-xs text-orange uppercase mb-4">[04] / Contact</div>
+    <div class="grid md:grid-cols-2 gap-12">
+      <div>
+        <h2 class="font-heavy text-5xl md:text-6xl mb-10">Vem<br>aí.</h2>
+        <div class="space-y-8 font-mono">
+          <div class="border-l-2 border-orange pl-6">
+            <div class="text-xs uppercase text-orange mb-2">Endereço</div>
+            <div class="text-xl">Rua Aspicuelta, 567<br>Vila Madalena · 05433-010</div>
+          </div>
+          <div class="border-l-2 border-orange pl-6">
+            <div class="text-xs uppercase text-orange mb-2">Horário</div>
+            <div class="text-xl">Ter–Sáb · 10h às 21h<br>Dom · 10h às 18h</div>
+          </div>
+          <div class="border-l-2 border-orange pl-6">
+            <div class="text-xs uppercase text-orange mb-2">Direto</div>
+            <div class="text-xl">(11) 9 9888-7766<br>contato@nortebarber.co</div>
+          </div>
+        </div>
+        <a href="#" class="inline-block mt-10 bg-orange text-black px-10 py-5 font-heavy text-base uppercase tracking-wider hover:bg-[#ff7140] transition">Agendar via WhatsApp →</a>
+      </div>
+      <div class="bg-[#161618] border-2 border-[#2a2a2c] aspect-square flex items-center justify-center text-[#e8e6e0]/30 font-mono text-sm">
+        [Mapa Google embedado aqui]
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#0a0a0b] py-10 border-t-2 border-orange">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 font-mono text-xs uppercase text-[#e8e6e0]/40">
+    <div class="flex items-center gap-3">
+      <div class="w-7 h-7 bg-orange flex items-center justify-center font-heavy text-black text-sm">N</div>
+      <span>NORTE BARBER CO. · 2026</span>
+    </div>
+    <div class="flex gap-6">
+      <a href="#" class="hover:text-orange transition">Instagram</a>
+      <a href="#" class="hover:text-orange transition">Maps</a>
+      <a href="#" class="hover:text-orange transition">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
