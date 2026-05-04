@@ -15,7 +15,9 @@
     --black: #0a0a0a;
     --cream: #f5f1ea;
   }
-  body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--cream); }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--cream); overflow-x: hidden; }
   .font-display { font-family: 'Playfair Display', serif; }
   .text-gold { color: var(--gold); }
   .bg-gold { background: var(--gold); }
@@ -28,7 +30,7 @@
 
 <!-- NAV -->
 <nav class="fixed top-0 inset-x-0 z-50 bg-[#0a0a0a]/85 backdrop-blur border-b border-[#c9a96e]/15">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex items-center justify-between">
     <div class="font-display text-xl tracking-wide">
       <span class="text-gold">Barbearia</span> do Zé
     </div>
@@ -43,29 +45,29 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero-img relative grain min-h-screen flex items-center pt-20">
-  <div class="max-w-6xl mx-auto px-6 py-32 relative">
-    <p class="text-gold text-xs tracking-[0.4em] uppercase mb-6">Desde 1998 · Pinheiros, SP</p>
-    <h1 class="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-8">
+<section class="hero-img relative grain min-h-[85vh] md:min-h-screen flex items-center pt-24 md:pt-20">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 py-16 md:py-32 relative">
+    <p class="text-gold text-[10px] sm:text-xs tracking-[0.4em] uppercase mb-5 sm:mb-6">Desde 1998 · Pinheiros, SP</p>
+    <h1 class="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-6 sm:mb-8">
       A arte de bem<br>
       <span class="italic text-gold">se apresentar</span>
     </h1>
-    <p class="max-w-xl text-[#f5f1ea]/75 text-lg leading-relaxed mb-10">
+    <p class="max-w-xl text-[#f5f1ea]/75 text-base sm:text-lg leading-relaxed mb-8 sm:mb-10">
       Cortes clássicos, barbas trabalhadas e o ritual completo do cavalheiro paulistano. Tradição que atravessa gerações.
     </p>
-    <div class="flex flex-col sm:flex-row gap-4">
-      <a href="#contato" class="inline-block bg-gold text-black px-8 py-4 text-sm font-semibold tracking-widest uppercase hover:bg-[#b8975c] transition text-center">Agendar horário</a>
-      <a href="#servicos" class="inline-block border border-gold text-gold px-8 py-4 text-sm font-semibold tracking-widest uppercase hover:bg-gold hover:text-black transition text-center">Ver serviços</a>
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+      <a href="#contato" class="inline-block bg-gold text-black px-7 sm:px-8 py-4 text-xs sm:text-sm font-semibold tracking-widest uppercase hover:bg-[#b8975c] transition text-center">Agendar horário</a>
+      <a href="#servicos" class="inline-block border border-gold text-gold px-7 sm:px-8 py-4 text-xs sm:text-sm font-semibold tracking-widest uppercase hover:bg-gold hover:text-black transition text-center">Ver serviços</a>
     </div>
   </div>
 </section>
 
 <!-- SOBRE -->
-<section id="sobre" class="py-24 md:py-32 border-t border-[#c9a96e]/15">
-  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+<section id="sobre" class="py-16 md:py-32 border-t border-[#c9a96e]/15">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
     <div>
       <p class="text-gold text-xs tracking-[0.4em] uppercase mb-6">A casa</p>
-      <h2 class="font-display text-4xl md:text-5xl leading-tight mb-8">
+      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl leading-tight mb-8">
         Mais de duas<br>décadas <span class="italic text-gold">moldando</span> estilo
       </h2>
       <div class="space-y-5 text-[#f5f1ea]/75 leading-relaxed">
@@ -95,11 +97,11 @@
 </section>
 
 <!-- SERVICOS -->
-<section id="servicos" class="py-24 md:py-32 bg-[#080808] border-t border-[#c9a96e]/15">
-  <div class="max-w-6xl mx-auto px-6">
+<section id="servicos" class="py-16 md:py-32 bg-[#080808] border-t border-[#c9a96e]/15">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6">
     <div class="text-center mb-16">
       <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Carta de serviços</p>
-      <h2 class="font-display text-4xl md:text-5xl">O <span class="italic text-gold">ritual</span> completo</h2>
+      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl">O <span class="italic text-gold">ritual</span> completo</h2>
     </div>
     <div class="grid md:grid-cols-2 gap-x-16 gap-y-2">
       <div class="border-b border-[#c9a96e]/15 py-6 flex justify-between items-baseline gap-4">
@@ -149,28 +151,28 @@
 </section>
 
 <!-- GALERIA -->
-<section id="galeria" class="py-24 md:py-32 border-t border-[#c9a96e]/15">
-  <div class="max-w-6xl mx-auto px-6">
+<section id="galeria" class="py-16 md:py-32 border-t border-[#c9a96e]/15">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6">
     <div class="text-center mb-16">
       <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">A casa em detalhes</p>
-      <h2 class="font-display text-4xl md:text-5xl">Galeria</h2>
+      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl">Galeria</h2>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
-      <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" class="w-full h-72 object-cover hover:scale-105 transition duration-700" alt="">
-      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" class="w-full h-72 object-cover hover:scale-105 transition duration-700" alt="">
-      <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" class="w-full h-72 object-cover hover:scale-105 transition duration-700" alt="">
-      <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=80" class="w-full h-72 object-cover hover:scale-105 transition duration-700" alt="">
-      <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80" class="w-full h-72 object-cover hover:scale-105 transition duration-700" alt="">
-      <img src="https://images.unsplash.com/photo-1620975661059-c1cf86bb91c4?w=600&q=80" class="w-full h-72 object-cover hover:scale-105 transition duration-700" alt="">
+      <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" class="w-full h-48 sm:h-64 md:h-72 object-cover hover:scale-105 transition duration-700" alt="">
+      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" class="w-full h-48 sm:h-64 md:h-72 object-cover hover:scale-105 transition duration-700" alt="">
+      <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" class="w-full h-48 sm:h-64 md:h-72 object-cover hover:scale-105 transition duration-700" alt="">
+      <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=80" class="w-full h-48 sm:h-64 md:h-72 object-cover hover:scale-105 transition duration-700" alt="">
+      <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80" class="w-full h-48 sm:h-64 md:h-72 object-cover hover:scale-105 transition duration-700" alt="">
+      <img src="https://images.unsplash.com/photo-1620975661059-c1cf86bb91c4?w=600&q=80" class="w-full h-48 sm:h-64 md:h-72 object-cover hover:scale-105 transition duration-700" alt="">
     </div>
   </div>
 </section>
 
 <!-- DEPOIMENTOS -->
-<section class="py-24 md:py-32 bg-[#080808] border-t border-[#c9a96e]/15">
+<section class="py-16 md:py-32 bg-[#080808] border-t border-[#c9a96e]/15">
   <div class="max-w-4xl mx-auto px-6 text-center">
     <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Depoimentos</p>
-    <h2 class="font-display text-4xl md:text-5xl mb-16">O que dizem nossos <span class="italic text-gold">clientes</span></h2>
+    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl mb-16">O que dizem nossos <span class="italic text-gold">clientes</span></h2>
     <div class="grid md:grid-cols-3 gap-12">
       <div>
         <div class="text-gold text-3xl font-display mb-4">"</div>
@@ -192,11 +194,11 @@
 </section>
 
 <!-- CONTATO -->
-<section id="contato" class="py-24 md:py-32 border-t border-[#c9a96e]/15">
-  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+<section id="contato" class="py-16 md:py-32 border-t border-[#c9a96e]/15">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 grid md:grid-cols-2 gap-16">
     <div>
       <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Encontre-nos</p>
-      <h2 class="font-display text-4xl md:text-5xl mb-10">Visite a casa</h2>
+      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl mb-10">Visite a casa</h2>
       <div class="space-y-6 text-[#f5f1ea]/80">
         <div>
           <p class="text-xs tracking-widest uppercase text-gold mb-2">Endereço</p>
@@ -223,7 +225,7 @@
 
 <!-- FOOTER -->
 <footer class="py-12 border-t border-[#c9a96e]/15 bg-[#050505]">
-  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-xs tracking-wider uppercase text-[#f5f1ea]/40">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-xs tracking-wider uppercase text-[#f5f1ea]/40">
     <div class="font-display text-base text-gold normal-case tracking-normal">Barbearia do Zé</div>
     <div>© 2026 · Todos os direitos reservados</div>
     <div class="flex gap-6">

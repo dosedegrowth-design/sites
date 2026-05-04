@@ -15,7 +15,9 @@
     --bone: #faf9f6;
     --ink: #1a1a1a;
   }
-  body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bone); color: var(--ink); -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bone); color: var(--ink); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   .font-display { font-family: 'Fraunces', serif; font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 0; }
   .text-petrol { color: var(--petrol); }
   .bg-petrol { background: var(--petrol); }
@@ -28,7 +30,7 @@
 
 <!-- NAV -->
 <nav class="sticky top-0 z-50 bg-bone/85 backdrop-blur border-b border-black/5">
-  <div class="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex items-center justify-between">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-12 py-5 flex items-center justify-between">
     <div class="flex items-center gap-2">
       <div class="w-8 h-8 rounded-full bg-petrol flex items-center justify-center">
         <div class="w-2 h-2 rounded-full bg-bone"></div>
@@ -46,14 +48,14 @@
 </nav>
 
 <!-- HERO -->
-<section class="px-6 lg:px-12 pt-12 pb-20 md:pt-20 md:pb-32">
+<section class="px-5 sm:px-6 lg:px-12 pt-12 pb-20 md:pt-20 md:pb-32">
   <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-end">
     <div class="md:col-span-7">
       <div class="inline-flex items-center gap-2 bg-sage/50 px-4 py-2 rounded-full text-xs mb-8">
         <span class="w-1.5 h-1.5 rounded-full bg-petrol"></span>
         <span class="text-petrol font-medium">Disponível para agendamento esta semana</span>
       </div>
-      <h1 class="font-display text-6xl md:text-7xl lg:text-[8rem] leading-[0.9] tracking-tight mb-8">
+      <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[8rem] leading-[0.9] tracking-tight mb-6 sm:mb-8">
         Cabelo é<br>
         <em class="text-petrol">detalhe.</em><br>
         Estilo é forma.
@@ -91,7 +93,7 @@
 
 <!-- LOGOS / TRUSTBAR -->
 <section class="py-10 border-y border-black/5 bg-white/50">
-  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-12">
     <p class="text-center text-xs uppercase tracking-widest text-black/40 mb-6">Reconhecidos por</p>
     <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-4 text-black/40 font-display text-xl">
       <span>Vogue</span>
@@ -108,12 +110,12 @@
 </section>
 
 <!-- SOBRE -->
-<section id="sobre" class="py-24 md:py-32 px-6 lg:px-12">
+<section id="sobre" class="py-16 md:py-32 px-5 sm:px-6 lg:px-12">
   <div class="max-w-7xl mx-auto">
     <div class="grid md:grid-cols-12 gap-12 items-center">
       <div class="md:col-span-5">
         <p class="text-xs uppercase tracking-widest text-petrol mb-4">Sobre o Atelier</p>
-        <h2 class="font-display text-5xl md:text-6xl leading-[1.05] mb-8">
+        <h2 class="font-display text-3xl sm:text-5xl md:text-6xl leading-[1.05] mb-8">
           Espaço pensado<br>para o <em class="text-petrol">homem</em><br>contemporâneo.
         </h2>
         <p class="text-black/65 leading-relaxed text-lg">
@@ -148,12 +150,12 @@
 </section>
 
 <!-- SERVICOS -->
-<section id="servicos" class="py-24 md:py-32 bg-petrol text-bone">
-  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+<section id="servicos" class="py-16 md:py-32 bg-petrol text-bone">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-12">
     <div class="flex items-end justify-between flex-wrap gap-4 mb-16">
       <div>
         <p class="text-xs uppercase tracking-widest text-bone/60 mb-4">Carta de serviços</p>
-        <h2 class="font-display text-5xl md:text-6xl leading-tight">
+        <h2 class="font-display text-3xl sm:text-5xl md:text-6xl leading-tight">
           Cada serviço,<br>
           uma <em>experiência.</em>
         </h2>
@@ -215,10 +217,10 @@
 </section>
 
 <!-- EQUIPE -->
-<section id="equipe" class="py-24 md:py-32 px-6 lg:px-12">
+<section id="equipe" class="py-16 md:py-32 px-5 sm:px-6 lg:px-12">
   <div class="max-w-7xl mx-auto">
     <p class="text-xs uppercase tracking-widest text-petrol mb-4">Equipe</p>
-    <h2 class="font-display text-5xl md:text-6xl leading-tight mb-16 max-w-3xl">
+    <h2 class="font-display text-3xl sm:text-5xl md:text-6xl leading-tight mb-16 max-w-3xl">
       Mestres com mais<br>de uma <em class="text-petrol">década</em> de prática.
     </h2>
     <div class="grid md:grid-cols-3 gap-6">
@@ -249,9 +251,9 @@
 
 <!-- DEPOIMENTOS -->
 <section class="py-24 bg-sage/30">
-  <div class="max-w-5xl mx-auto px-6 lg:px-12">
+  <div class="max-w-5xl mx-auto px-5 sm:px-6 lg:px-12">
     <p class="text-xs uppercase tracking-widest text-petrol mb-4 text-center">Depoimentos</p>
-    <h2 class="font-display text-5xl md:text-6xl leading-tight mb-16 text-center">
+    <h2 class="font-display text-3xl sm:text-5xl md:text-6xl leading-tight mb-16 text-center">
       Avaliados por quem volta sempre.
     </h2>
     <div class="grid md:grid-cols-3 gap-6">
@@ -293,11 +295,11 @@
 </section>
 
 <!-- CONTATO -->
-<section id="contato" class="py-24 md:py-32 px-6 lg:px-12">
+<section id="contato" class="py-16 md:py-32 px-5 sm:px-6 lg:px-12">
   <div class="max-w-7xl mx-auto bg-bone rounded-[2.5rem] grid md:grid-cols-2 gap-0 overflow-hidden border border-black/10">
     <div class="p-10 md:p-16">
       <p class="text-xs uppercase tracking-widest text-petrol mb-4">Visite-nos</p>
-      <h2 class="font-display text-4xl md:text-5xl leading-tight mb-10">
+      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl leading-tight mb-10">
         Estamos te<br>esperando.
       </h2>
       <div class="space-y-6">
@@ -323,7 +325,7 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="py-10 px-6 lg:px-12 border-t border-black/5">
+<footer class="py-10 px-5 sm:px-6 lg:px-12 border-t border-black/5">
   <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-black/45">
     <div class="font-display text-base text-ink">Atelier · Barbearia</div>
     <div>© 2026 · Itaim Bibi, São Paulo</div>

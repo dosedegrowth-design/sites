@@ -6,7 +6,7 @@
 <title>SiteFlow · Vamos desenhar seu site</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Playfair+Display:wght@500;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=Archivo+Black&family=DM+Serif+Display&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Playfair+Display:wght@500;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=Archivo+Black&family=DM+Serif+Display&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink: #0a0a0a;
@@ -16,15 +16,23 @@
     --accent-soft: #fff1ea;
     --line: rgba(10,10,10,0.08);
   }
-  * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-  html { scroll-behavior: smooth; }
+  * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
     font-family: 'Inter', sans-serif;
     background: var(--bone);
     color: var(--ink);
     font-feature-settings: 'ss01', 'cv11';
+    min-height: 100dvh;
+    overflow-x: hidden;
   }
-  .font-display { font-family: 'Fraunces', serif; font-variation-settings: 'opsz' 144, 'SOFT' 50; letter-spacing: -0.02em; }
+  /* Mobile: bottom safe area + extra space for fixed nav */
+  @supports (padding: env(safe-area-inset-bottom)) {
+    .pb-nav { padding-bottom: calc(env(safe-area-inset-bottom) + 6.5rem); }
+    .nav-bottom-safe { padding-bottom: calc(env(safe-area-inset-bottom) + 1rem); }
+  }
+  .pb-nav { padding-bottom: 7rem; }
+  .font-display { font-family: 'Space Grotesk', 'Fraunces', serif; font-variation-settings: 'opsz' 144, 'SOFT' 50; letter-spacing: -0.025em; }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
   .text-accent { color: var(--accent); }
   .bg-paper { background: var(--paper); }
@@ -97,7 +105,9 @@
     transition: all 0.25s;
   }
   .field:focus-within { border-color: var(--ink); box-shadow: 0 0 0 4px rgba(10,10,10,0.04); }
+  input, textarea { font-size: 16px; } /* iOS zoom prevention */
   input:focus, textarea:focus { outline: none; }
+  input, textarea, button, select, label { -webkit-tap-highlight-color: transparent; }
 
   /* Swatches */
   .swatch {
@@ -150,7 +160,7 @@
   </div>
 </header>
 
-<main class="max-w-2xl mx-auto px-6 py-12 md:py-16 pb-40 min-h-[calc(100vh-100px)]">
+<main class="max-w-2xl mx-auto px-5 sm:px-6 py-8 md:py-16 pb-nav">
 
 <!-- STEP 0: WELCOME -->
 <section class="step active" data-step="0">
@@ -159,12 +169,12 @@
       <span class="w-2 h-2 rounded-full bg-[#ff5c1f] accent-dot"></span>
       <span class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/55">Briefing visual · 02 min</span>
     </div>
-    <h1 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-8 tracking-tight">
+    <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-6 sm:mb-8 tracking-tight">
       Vamos desenhar<br>
       o seu site<br>
       <em class="text-[#ff5c1f]">do jeito certo.</em>
     </h1>
-    <p class="text-xl text-black/65 leading-relaxed max-w-lg">
+    <p class="text-base sm:text-lg md:text-xl text-black/65 leading-relaxed max-w-lg">
       Oito perguntas curtas. Sem termos técnicos, sem rodeios. Só pra entender exatamente o seu gosto antes de começar.
     </p>
   </div>
@@ -182,8 +192,8 @@
       <div class="flex gap-4">
         <span class="font-display text-3xl text-[#ff5c1f] leading-none">02</span>
         <div>
-          <div class="font-semibold mb-0.5">Nosso time cria</div>
-          <p class="text-sm text-black/55 leading-relaxed">Designer + IA Claude Opus. Em 2-3 dias.</p>
+          <div class="font-semibold mb-0.5">Seu site é montado</div>
+          <p class="text-sm text-black/55 leading-relaxed">IA + designer DDG. Em poucos minutos.</p>
         </div>
       </div>
       <div class="flex gap-4">
@@ -214,11 +224,11 @@
 <section class="step" data-step="1">
   <div class="mb-10">
     <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-4">Pergunta 01 / 07</div>
-    <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Qual seu tipo de negócio?</h2>
-    <p class="text-black/55 text-lg">Isso direciona a estrutura inteira do site.</p>
+    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Qual seu tipo de negócio?</h2>
+    <p class="text-black/55 text-base sm:text-lg">Isso direciona a estrutura inteira do site.</p>
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-    <label class="opt rounded-2xl p-6 block" data-name="nicho" data-value="barbearia">
+    <label class="opt rounded-2xl p-4 sm:p-6 block" data-name="nicho" data-value="barbearia">
       <div class="flex items-start justify-between mb-8">
         <span class="font-mono text-xs tracking-widest opt-sub text-black/40">A</span>
         <div class="opt-check"></div>
@@ -226,7 +236,7 @@
       <div class="font-display text-3xl mb-1">Barbearia</div>
       <div class="opt-sub text-sm text-black/50">Cortes masculinos, barba, estilo</div>
     </label>
-    <label class="opt rounded-2xl p-6 block" data-name="nicho" data-value="salao">
+    <label class="opt rounded-2xl p-4 sm:p-6 block" data-name="nicho" data-value="salao">
       <div class="flex items-start justify-between mb-8">
         <span class="font-mono text-xs tracking-widest opt-sub text-black/40">B</span>
         <div class="opt-check"></div>
@@ -234,7 +244,7 @@
       <div class="font-display text-3xl mb-1">Salão de beleza</div>
       <div class="opt-sub text-sm text-black/50">Cabelo, escova, química, manicure</div>
     </label>
-    <label class="opt rounded-2xl p-6 block" data-name="nicho" data-value="estetica">
+    <label class="opt rounded-2xl p-4 sm:p-6 block" data-name="nicho" data-value="estetica">
       <div class="flex items-start justify-between mb-8">
         <span class="font-mono text-xs tracking-widest opt-sub text-black/40">C</span>
         <div class="opt-check"></div>
@@ -242,7 +252,7 @@
       <div class="font-display text-3xl mb-1">Estética facial</div>
       <div class="opt-sub text-sm text-black/50">Limpeza, peeling, tratamentos</div>
     </label>
-    <label class="opt rounded-2xl p-6 block" data-name="nicho" data-value="outro">
+    <label class="opt rounded-2xl p-4 sm:p-6 block" data-name="nicho" data-value="outro">
       <div class="flex items-start justify-between mb-8">
         <span class="font-mono text-xs tracking-widest opt-sub text-black/40">D</span>
         <div class="opt-check"></div>
@@ -257,11 +267,11 @@
 <section class="step" data-step="2">
   <div class="mb-10">
     <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-4">Pergunta 02 / 07</div>
-    <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Qual <em class="text-[#ff5c1f]">vibe</em> combina com você?</h2>
-    <p class="text-black/55 text-lg">Pode clicar em "Ver exemplo" pra dar uma olhada antes de escolher.</p>
+    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Qual <em class="text-[#ff5c1f]">vibe</em> combina com você?</h2>
+    <p class="text-black/55 text-base sm:text-lg">Pode clicar em "Ver exemplo" pra dar uma olhada antes de escolher.</p>
   </div>
   <div class="space-y-3">
-    <label class="opt rounded-2xl p-6 flex items-center gap-5" data-name="vibe" data-value="classico">
+    <label class="opt rounded-2xl p-4 sm:p-6 flex items-start sm:items-center gap-3 sm:gap-5" data-name="vibe" data-value="classico">
       <div class="w-16 h-16 rounded-2xl flex-shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, #0a0a0a 0%, #c9a96e 100%);">
         <span class="font-display text-2xl text-white">A</span>
       </div>
@@ -274,7 +284,7 @@
       </div>
       <div class="opt-check flex-shrink-0"></div>
     </label>
-    <label class="opt rounded-2xl p-6 flex items-center gap-5" data-name="vibe" data-value="industrial">
+    <label class="opt rounded-2xl p-4 sm:p-6 flex items-start sm:items-center gap-3 sm:gap-5" data-name="vibe" data-value="industrial">
       <div class="w-16 h-16 rounded-2xl flex-shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, #1c1c1e 0%, #ff5c1f 100%);">
         <span class="font-mono text-xl text-white font-bold">B</span>
       </div>
@@ -287,7 +297,7 @@
       </div>
       <div class="opt-check flex-shrink-0"></div>
     </label>
-    <label class="opt rounded-2xl p-6 flex items-center gap-5" data-name="vibe" data-value="moderno">
+    <label class="opt rounded-2xl p-4 sm:p-6 flex items-start sm:items-center gap-3 sm:gap-5" data-name="vibe" data-value="moderno">
       <div class="w-16 h-16 rounded-2xl flex-shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, #faf9f6 0%, #1f4847 100%);">
         <span class="font-display text-2xl text-[#1f4847]">C</span>
       </div>
@@ -300,7 +310,7 @@
       </div>
       <div class="opt-check flex-shrink-0"></div>
     </label>
-    <label class="opt rounded-2xl p-6 flex items-center gap-5" data-name="vibe" data-value="acolhedor">
+    <label class="opt rounded-2xl p-4 sm:p-6 flex items-start sm:items-center gap-3 sm:gap-5" data-name="vibe" data-value="acolhedor">
       <div class="w-16 h-16 rounded-2xl flex-shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, #fde2e4 0%, #d4a373 100%);">
         <span class="font-display text-2xl text-[#8b4d3f]">D</span>
       </div>
@@ -311,7 +321,7 @@
       </div>
       <div class="opt-check flex-shrink-0"></div>
     </label>
-    <label class="opt rounded-2xl p-6 flex items-center gap-5" data-name="vibe" data-value="premium-dark">
+    <label class="opt rounded-2xl p-4 sm:p-6 flex items-start sm:items-center gap-3 sm:gap-5" data-name="vibe" data-value="premium-dark">
       <div class="w-16 h-16 rounded-2xl flex-shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, #0a0a0a 0%, #2a2a2a 100%); border: 1px solid rgba(255,255,255,0.1);">
         <span style="font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.04em;" class="text-2xl text-white font-bold">E</span>
       </div>
@@ -331,11 +341,11 @@
 <section class="step" data-step="3">
   <div class="mb-10">
     <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-4">Pergunta 03 / 07</div>
-    <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Qual paleta te <em class="text-[#ff5c1f]">chama</em>?</h2>
-    <p class="text-black/55 text-lg">Vai pela intuição. Pode ser ajustada depois pelo nosso time.</p>
+    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Qual paleta te <em class="text-[#ff5c1f]">chama</em>?</h2>
+    <p class="text-black/55 text-base sm:text-lg">Vai pela intuição. Pode ser ajustada depois pelo nosso time.</p>
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-    <label class="opt rounded-2xl p-5" data-name="paleta" data-value="preto-dourado">
+    <label class="opt rounded-2xl p-4 sm:p-5" data-name="paleta" data-value="preto-dourado">
       <div class="flex gap-1.5 mb-5 h-20">
         <span class="swatch flex-1 rounded-lg" style="background: #0a0a0a"></span>
         <span class="swatch flex-1 rounded-lg" style="background: #c9a96e"></span>
@@ -349,7 +359,7 @@
         <div class="opt-check"></div>
       </div>
     </label>
-    <label class="opt rounded-2xl p-5" data-name="paleta" data-value="escuro-laranja">
+    <label class="opt rounded-2xl p-4 sm:p-5" data-name="paleta" data-value="escuro-laranja">
       <div class="flex gap-1.5 mb-5 h-20">
         <span class="swatch flex-1 rounded-lg" style="background: #1c1c1e"></span>
         <span class="swatch flex-1 rounded-lg" style="background: #ff5c1f"></span>
@@ -363,7 +373,7 @@
         <div class="opt-check"></div>
       </div>
     </label>
-    <label class="opt rounded-2xl p-5" data-name="paleta" data-value="branco-petroleo">
+    <label class="opt rounded-2xl p-4 sm:p-5" data-name="paleta" data-value="branco-petroleo">
       <div class="flex gap-1.5 mb-5 h-20">
         <span class="swatch flex-1 rounded-lg" style="background: #faf9f6"></span>
         <span class="swatch flex-1 rounded-lg" style="background: #1f4847"></span>
@@ -377,7 +387,7 @@
         <div class="opt-check"></div>
       </div>
     </label>
-    <label class="opt rounded-2xl p-5" data-name="paleta" data-value="rosa-beige">
+    <label class="opt rounded-2xl p-4 sm:p-5" data-name="paleta" data-value="rosa-beige">
       <div class="flex gap-1.5 mb-5 h-20">
         <span class="swatch flex-1 rounded-lg" style="background: #fde2e4"></span>
         <span class="swatch flex-1 rounded-lg" style="background: #d4a373"></span>
@@ -391,7 +401,7 @@
         <div class="opt-check"></div>
       </div>
     </label>
-    <label class="opt rounded-2xl p-5" data-name="paleta" data-value="azul-marinho">
+    <label class="opt rounded-2xl p-4 sm:p-5" data-name="paleta" data-value="azul-marinho">
       <div class="flex gap-1.5 mb-5 h-20">
         <span class="swatch flex-1 rounded-lg" style="background: #1e3a5f"></span>
         <span class="swatch flex-1 rounded-lg" style="background: #f5f5f0"></span>
@@ -405,7 +415,7 @@
         <div class="opt-check"></div>
       </div>
     </label>
-    <label class="opt rounded-2xl p-5" data-name="paleta" data-value="terracota">
+    <label class="opt rounded-2xl p-4 sm:p-5" data-name="paleta" data-value="terracota">
       <div class="flex gap-1.5 mb-5 h-20">
         <span class="swatch flex-1 rounded-lg" style="background: #c1666b"></span>
         <span class="swatch flex-1 rounded-lg" style="background: #e4b363"></span>
@@ -419,7 +429,7 @@
         <div class="opt-check"></div>
       </div>
     </label>
-    <label class="opt rounded-2xl p-5" data-name="paleta" data-value="dark-mono">
+    <label class="opt rounded-2xl p-4 sm:p-5" data-name="paleta" data-value="dark-mono">
       <div class="flex gap-1.5 mb-5 h-20">
         <span class="swatch flex-1 rounded-lg" style="background: #0a0a0a"></span>
         <span class="swatch flex-1 rounded-lg" style="background: #f5f5f5"></span>
@@ -440,34 +450,34 @@
 <section class="step" data-step="4">
   <div class="mb-10">
     <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-4">Pergunta 04 / 07</div>
-    <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Que <em class="text-[#ff5c1f]">tipografia</em> fala com você?</h2>
-    <p class="text-black/55 text-lg">A fonte muda totalmente a personalidade da marca.</p>
+    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Que <em class="text-[#ff5c1f]">tipografia</em> fala com você?</h2>
+    <p class="text-black/55 text-base sm:text-lg">A fonte muda totalmente a personalidade da marca.</p>
   </div>
   <div class="space-y-3">
-    <label class="opt rounded-2xl p-7" data-name="fonte" data-value="serif-elegante">
+    <label class="opt rounded-2xl p-5 sm:p-7" data-name="fonte" data-value="serif-elegante">
       <div class="flex items-end justify-between mb-3">
-        <div style="font-family: 'Fraunces', serif; font-variation-settings: 'opsz' 144;" class="text-5xl tracking-tight">Atelier Aa</div>
+        <div style="font-family: 'Fraunces', serif; font-variation-settings: 'opsz' 144;" class="text-4xl sm:text-5xl tracking-tight">Atelier Aa</div>
         <div class="opt-check flex-shrink-0"></div>
       </div>
       <div class="opt-sub text-sm text-black/55 leading-relaxed">Serif elegante · Fraunces, Playfair · atemporal, sofisticado, editorial</div>
     </label>
-    <label class="opt rounded-2xl p-7" data-name="fonte" data-value="sans-clean">
+    <label class="opt rounded-2xl p-5 sm:p-7" data-name="fonte" data-value="sans-clean">
       <div class="flex items-end justify-between mb-3">
-        <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;" class="text-5xl tracking-tight">Atelier Aa</div>
+        <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;" class="text-4xl sm:text-5xl tracking-tight">Atelier Aa</div>
         <div class="opt-check flex-shrink-0"></div>
       </div>
       <div class="opt-sub text-sm text-black/55 leading-relaxed">Sans-serif clean · Inter, Plus Jakarta · moderno, profissional, legível</div>
     </label>
-    <label class="opt rounded-2xl p-7" data-name="fonte" data-value="sans-bold">
+    <label class="opt rounded-2xl p-5 sm:p-7" data-name="fonte" data-value="sans-bold">
       <div class="flex items-end justify-between mb-3">
-        <div style="font-family: 'Archivo Black', sans-serif; letter-spacing: -0.02em;" class="text-5xl">ATELIER AA</div>
+        <div style="font-family: 'Archivo Black', sans-serif; letter-spacing: -0.02em;" class="text-3xl sm:text-5xl">ATELIER AA</div>
         <div class="opt-check flex-shrink-0"></div>
       </div>
       <div class="opt-sub text-sm text-black/55 leading-relaxed">Sans pesada · Archivo Black · atitude, marcante, urbano</div>
     </label>
-    <label class="opt rounded-2xl p-7" data-name="fonte" data-value="mono-tech">
+    <label class="opt rounded-2xl p-5 sm:p-7" data-name="fonte" data-value="mono-tech">
       <div class="flex items-end justify-between mb-3">
-        <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700;" class="text-4xl tracking-tight">{atelier}</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700;" class="text-2xl sm:text-4xl tracking-tight">{atelier}</div>
         <div class="opt-check flex-shrink-0"></div>
       </div>
       <div class="opt-sub text-sm text-black/55 leading-relaxed">Monoespaçada · JetBrains Mono · tech, raw, brutalist</div>
@@ -479,11 +489,11 @@
 <section class="step" data-step="5">
   <div class="mb-10">
     <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-4">Pergunta 05 / 07</div>
-    <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Quais <em class="text-[#ff5c1f]">seções</em> seu site precisa?</h2>
-    <p class="text-black/55 text-lg">Marque tudo que faz sentido. Pode quantas quiser.</p>
+    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Quais <em class="text-[#ff5c1f]">seções</em> seu site precisa?</h2>
+    <p class="text-black/55 text-base sm:text-lg">Marque tudo que faz sentido. Pode quantas quiser.</p>
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-    <label class="opt rounded-2xl p-5" data-name="secoes" data-value="hero" data-multi="true">
+    <label class="opt rounded-2xl p-4 sm:p-5" data-name="secoes" data-value="hero" data-multi="true">
       <div class="flex items-center justify-between gap-4">
         <div>
           <div class="font-display text-xl mb-0.5">Apresentação</div>
@@ -492,7 +502,7 @@
         <div class="opt-check flex-shrink-0"></div>
       </div>
     </label>
-    <label class="opt rounded-2xl p-5" data-name="secoes" data-value="sobre" data-multi="true">
+    <label class="opt rounded-2xl p-4 sm:p-5" data-name="secoes" data-value="sobre" data-multi="true">
       <div class="flex items-center justify-between gap-4">
         <div>
           <div class="font-display text-xl mb-0.5">Sobre nós</div>
@@ -501,7 +511,7 @@
         <div class="opt-check flex-shrink-0"></div>
       </div>
     </label>
-    <label class="opt rounded-2xl p-5" data-name="secoes" data-value="servicos" data-multi="true">
+    <label class="opt rounded-2xl p-4 sm:p-5" data-name="secoes" data-value="servicos" data-multi="true">
       <div class="flex items-center justify-between gap-4">
         <div>
           <div class="font-display text-xl mb-0.5">Serviços + Preços</div>
@@ -510,7 +520,7 @@
         <div class="opt-check flex-shrink-0"></div>
       </div>
     </label>
-    <label class="opt rounded-2xl p-5" data-name="secoes" data-value="galeria" data-multi="true">
+    <label class="opt rounded-2xl p-4 sm:p-5" data-name="secoes" data-value="galeria" data-multi="true">
       <div class="flex items-center justify-between gap-4">
         <div>
           <div class="font-display text-xl mb-0.5">Galeria</div>
@@ -519,7 +529,7 @@
         <div class="opt-check flex-shrink-0"></div>
       </div>
     </label>
-    <label class="opt rounded-2xl p-5" data-name="secoes" data-value="depoimentos" data-multi="true">
+    <label class="opt rounded-2xl p-4 sm:p-5" data-name="secoes" data-value="depoimentos" data-multi="true">
       <div class="flex items-center justify-between gap-4">
         <div>
           <div class="font-display text-xl mb-0.5">Depoimentos</div>
@@ -528,7 +538,7 @@
         <div class="opt-check flex-shrink-0"></div>
       </div>
     </label>
-    <label class="opt rounded-2xl p-5" data-name="secoes" data-value="equipe" data-multi="true">
+    <label class="opt rounded-2xl p-4 sm:p-5" data-name="secoes" data-value="equipe" data-multi="true">
       <div class="flex items-center justify-between gap-4">
         <div>
           <div class="font-display text-xl mb-0.5">Equipe</div>
@@ -537,7 +547,7 @@
         <div class="opt-check flex-shrink-0"></div>
       </div>
     </label>
-    <label class="opt rounded-2xl p-5" data-name="secoes" data-value="contato" data-multi="true">
+    <label class="opt rounded-2xl p-4 sm:p-5" data-name="secoes" data-value="contato" data-multi="true">
       <div class="flex items-center justify-between gap-4">
         <div>
           <div class="font-display text-xl mb-0.5">Contato + Mapa</div>
@@ -546,7 +556,7 @@
         <div class="opt-check flex-shrink-0"></div>
       </div>
     </label>
-    <label class="opt rounded-2xl p-5" data-name="secoes" data-value="agendamento" data-multi="true">
+    <label class="opt rounded-2xl p-4 sm:p-5" data-name="secoes" data-value="agendamento" data-multi="true">
       <div class="flex items-center justify-between gap-4">
         <div>
           <div class="font-display text-xl mb-0.5">Agendamento</div>
@@ -562,8 +572,8 @@
 <section class="step" data-step="6">
   <div class="mb-10">
     <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-4">Pergunta 06 / 07</div>
-    <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Conta sobre o <em class="text-[#ff5c1f]">negócio</em>.</h2>
-    <p class="text-black/55 text-lg">Vamos começar a alimentar com dados reais.</p>
+    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Conta sobre o <em class="text-[#ff5c1f]">negócio</em>.</h2>
+    <p class="text-black/55 text-base sm:text-lg">Vamos começar a alimentar com dados reais.</p>
   </div>
   <div class="space-y-5">
     <div class="field rounded-2xl px-5 py-4">
@@ -601,8 +611,8 @@
 <section class="step" data-step="7">
   <div class="mb-10">
     <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-4">Pergunta 07 / 07</div>
-    <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Pra <em class="text-[#ff5c1f]">finalizar</em>...</h2>
-    <p class="text-black/55 text-lg">Como o cliente chega até você + qual o domínio.</p>
+    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Pra <em class="text-[#ff5c1f]">finalizar</em>...</h2>
+    <p class="text-black/55 text-base sm:text-lg">Como o cliente chega até você + qual o domínio.</p>
   </div>
   <div class="space-y-5">
     <div class="field rounded-2xl px-5 py-4">
@@ -640,8 +650,8 @@
       <span class="w-2 h-2 rounded-full bg-[#ff5c1f] accent-dot"></span>
       <span class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/55">Briefing completo</span>
     </div>
-    <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Pronto. <em class="text-[#ff5c1f]">É isso.</em></h2>
-    <p class="text-black/55 text-lg">Confere o resumo abaixo. Se algo precisar ajustar, é só voltar.</p>
+    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl leading-[1.05] mb-4 tracking-tight">Pronto. <em class="text-[#ff5c1f]">É isso.</em></h2>
+    <p class="text-black/55 text-base sm:text-lg">Confere o resumo abaixo. Se algo precisar ajustar, é só voltar.</p>
   </div>
 
   <div class="bg-paper border border-black/[0.08] rounded-3xl p-7 mb-5">
@@ -663,7 +673,7 @@
         <span class="font-display text-2xl text-[#ff5c1f] leading-none">02</span>
         <div>
           <div class="font-semibold mb-0.5">Designer + IA Claude criam seu site</div>
-          <div class="text-sm text-white/55">Em 2-3 dias úteis, você recebe um link de preview.</div>
+          <div class="text-sm text-white/55">Em poucos minutos você recebe o link de preview pelo WhatsApp.</div>
         </div>
       </li>
       <li class="flex gap-4">
@@ -699,8 +709,8 @@
       <span class="text-3xl text-[#ff5c1f]">✓</span>
       <span class="absolute inset-0 rounded-full border-2 border-[#ff5c1f] animate-ping opacity-75"></span>
     </div>
-    <h2 class="font-display text-5xl md:text-6xl leading-[0.95] tracking-tight mb-5">Briefing<br><em class="text-[#ff5c1f]">recebido.</em></h2>
-    <p class="text-black/55 text-lg max-w-md mx-auto mb-10 leading-relaxed">Agora é com a gente. Em até 3 dias úteis você recebe o link do seu site pronto pelo mesmo WhatsApp.</p>
+    <h2 class="font-display text-4xl sm:text-5xl md:text-6xl leading-[0.95] tracking-tight mb-5">Briefing<br><em class="text-[#ff5c1f]">recebido.</em></h2>
+    <p class="text-black/55 text-base sm:text-lg max-w-md mx-auto mb-10 leading-relaxed">Agora é com a gente. Em poucos minutos você recebe o link do seu site pronto pelo mesmo WhatsApp.</p>
     <div class="bg-paper border border-black/[0.08] rounded-2xl p-6 max-w-sm mx-auto text-left">
       <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/40 mb-2">Lembrete</div>
       <p class="font-medium leading-relaxed">Você só paga depois de aprovar o site. Se não gostar, não tem cobrança nenhuma.</p>
@@ -711,12 +721,12 @@
 </main>
 
 <!-- NAV BUTTONS -->
-<div id="navBtns" class="fixed bottom-0 inset-x-0 bg-paper/95 backdrop-blur-md border-t border-black/[0.06] py-4 z-30 hidden">
-  <div class="max-w-2xl mx-auto px-6 flex gap-3">
-    <button id="prevBtn" onclick="prev()" class="flex-shrink-0 px-6 py-4 rounded-2xl font-medium text-black/65 hover:text-black hover:bg-black/[0.04] transition flex items-center gap-2">
+<div id="navBtns" class="fixed bottom-0 inset-x-0 bg-paper/95 backdrop-blur-md border-t border-black/[0.06] py-3 sm:py-4 nav-bottom-safe z-30 hidden">
+  <div class="max-w-2xl mx-auto px-5 sm:px-6 flex gap-2.5 sm:gap-3">
+    <button id="prevBtn" onclick="prev()" class="flex-shrink-0 px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-medium text-black/65 hover:text-black hover:bg-black/[0.04] active:bg-black/[0.08] transition flex items-center gap-2 text-sm sm:text-base">
       <span>←</span><span class="hidden sm:inline">Voltar</span>
     </button>
-    <button id="nextBtn" onclick="next()" class="group flex-1 bg-[#0a0a0a] hover:bg-[#1a1a1a] disabled:bg-black/20 disabled:cursor-not-allowed text-[#f8f6f1] font-semibold py-4 rounded-2xl transition flex items-center justify-center gap-3">
+    <button id="nextBtn" onclick="next()" class="group flex-1 bg-[#0a0a0a] hover:bg-[#1a1a1a] active:bg-[#222] disabled:bg-black/20 disabled:cursor-not-allowed text-[#f8f6f1] font-semibold py-3.5 sm:py-4 rounded-xl sm:rounded-2xl transition flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base">
       <span>Continuar</span>
       <span class="transition-transform group-hover:translate-x-1">→</span>
     </button>
@@ -752,7 +762,8 @@ function showStep(n) {
     navBtns.classList.remove('hidden');
     document.getElementById('prevBtn').style.visibility = n === 1 ? 'hidden' : 'visible';
   }
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Scroll instantâneo pro topo (smooth pode brigar com o focus do mobile)
+  window.scrollTo(0, 0);
   validateStep();
 }
 

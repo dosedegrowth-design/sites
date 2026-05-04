@@ -2,170 +2,249 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>SiteFlow · Dose de Growth</title>
-<meta name="description" content="Site profissional pronto em poucos dias. Você só paga se gostar.">
+<meta name="description" content="Catálogo interno DDG · Wizard de briefing visual + demos de referência por estilo">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  * { -webkit-font-smoothing: antialiased; }
-  body { font-family: 'Inter', sans-serif; background: #f8f6f1; color: #0a0a0a; }
-  .font-display { font-family: 'Fraunces', serif; font-variation-settings: 'opsz' 144, 'SOFT' 50; letter-spacing: -0.02em; }
+  * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f8f6f1;
+    color: #0a0a0a;
+    overflow-x: hidden;
+  }
+  .font-display {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.04em;
+  }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* Pulse */
   .accent-dot { animation: pulse 2.4s ease-in-out infinite; }
-  @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.3); } }
-  .demo-card { transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
-  .demo-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px -20px rgba(0,0,0,0.2); }
+  @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.55; transform: scale(1.4); } }
+
+  /* Card hover */
+  .card {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(10,10,10,0.06);
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(10,10,10,0.18);
+    box-shadow: 0 18px 50px -25px rgba(0,0,0,0.25);
+  }
+
+  /* Wizard card (CTA principal) */
+  .wizard-card {
+    background: #0a0a0a;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .wizard-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(255,92,31,0.18), transparent 60%);
+    transition: opacity 0.4s;
+  }
+  .wizard-card:hover { transform: translateY(-3px); box-shadow: 0 30px 60px -25px rgba(0,0,0,0.5); }
+  .wizard-card:hover::before { opacity: 0.7; }
+
+  /* Demo thumb */
+  .thumb {
+    aspect-ratio: 4 / 3;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .card:hover .thumb { transform: scale(1.02); }
+
+  /* Tag pílula */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
 </style>
 </head>
-<body class="bg-[#f8f6f1]">
+<body>
 
-<header class="border-b border-black/[0.06] bg-[#fdfcf8]/80 backdrop-blur-sm sticky top-0 z-40">
-  <div class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
+<!-- HEADER -->
+<header class="border-b border-black/[0.06] bg-[#fdfcf8]/85 backdrop-blur-md sticky top-0 z-40">
+  <div class="max-w-5xl mx-auto px-5 sm:px-6 py-4 flex items-center justify-between">
     <div class="flex items-center gap-3">
       <div class="relative w-7 h-7">
         <div class="absolute inset-0 bg-[#ff5c1f] rounded-md"></div>
         <div class="absolute inset-1 bg-[#0a0a0a] rounded-sm"></div>
       </div>
       <div class="leading-tight">
-        <div class="font-display text-lg leading-none">Site<em>Flow</em></div>
-        <div class="text-[10px] tracking-[0.2em] uppercase text-black/40 mt-0.5">por Dose de Growth</div>
+        <div class="font-display text-base sm:text-lg font-bold leading-none">SiteFlow</div>
+        <div class="font-mono text-[9px] sm:text-[10px] tracking-[0.2em] uppercase text-black/40 mt-0.5">por Dose de Growth</div>
       </div>
     </div>
-    <span class="font-mono text-xs text-black/45 tracking-wider">v0.1 · MVP</span>
+    <span class="font-mono text-[10px] sm:text-xs text-black/40 tracking-wider">v0.1 · MVP</span>
   </div>
 </header>
 
-<main class="max-w-5xl mx-auto px-6 py-16 md:py-24">
+<main>
 
-  <div class="flex items-center gap-2.5 mb-10">
-    <span class="w-2 h-2 rounded-full bg-[#ff5c1f] accent-dot"></span>
-    <span class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/55">Repositório de demos · Acesso interno DDG</span>
-  </div>
+<!-- HERO -->
+<section class="max-w-5xl mx-auto px-5 sm:px-6 pt-12 sm:pt-16 md:pt-24 pb-10 md:pb-16">
+  <span class="pill bg-[#ff5c1f]/10 text-[#ff5c1f] mb-6 sm:mb-8">
+    <span class="w-1.5 h-1.5 rounded-full bg-[#ff5c1f] accent-dot"></span>
+    <span>Catálogo interno · Acesso DDG</span>
+  </span>
 
-  <h1 class="font-display text-5xl md:text-7xl leading-[0.95] tracking-tight mb-8 max-w-3xl">
-    Site profissional pronto em <em class="text-[#ff5c1f]">3 dias</em>.<br>
-    Você só paga se gostar.
+  <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.95] mb-5 sm:mb-7 max-w-3xl">
+    Site profissional<br>
+    em poucos minutos.<br>
+    <span class="text-[#ff5c1f]">Você só paga se gostar.</span>
   </h1>
-  <p class="text-xl text-black/65 leading-relaxed max-w-2xl mb-14">
-    Página de testes do projeto SiteFlow DDG — wizard de briefing visual e demos de referência por estilo. Para clientes, este link sempre vem direto da nossa equipe via WhatsApp.
+  <p class="text-base sm:text-lg md:text-xl text-black/55 leading-relaxed max-w-xl">
+    Repositório de demos do projeto SiteFlow DDG. Acesse o wizard de briefing ou veja os polos estéticos por nicho.
   </p>
+</section>
 
-  <!-- WIZARD CARD -->
-  <a href="/wizard/" class="block bg-[#0a0a0a] text-[#f8f6f1] rounded-3xl p-10 md:p-14 mb-6 demo-card group">
-    <div class="flex items-start justify-between flex-wrap gap-6">
+<!-- WIZARD CTA -->
+<section class="max-w-5xl mx-auto px-5 sm:px-6 mb-10 sm:mb-16">
+  <a href="/wizard" class="wizard-card block rounded-2xl sm:rounded-3xl p-7 sm:p-10 md:p-14 text-[#f8f6f1] group">
+    <div class="relative z-10 flex items-start justify-between flex-wrap gap-5">
       <div class="flex-1 min-w-0">
-        <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-[#ff5c1f] mb-4">Briefing Wizard</div>
-        <h2 class="font-display text-4xl md:text-5xl leading-[1.05] mb-4">
-          Vamos desenhar<br>seu site <em class="text-[#ff5c1f]">do jeito certo</em>.
+        <span class="pill bg-white/10 text-[#ff5c1f] mb-5 sm:mb-7">
+          <span>01 / Briefing</span>
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.05] mb-4">
+          Wizard de gosto visual
         </h2>
-        <p class="text-white/65 max-w-md leading-relaxed">
-          7 perguntas curtas em 2 minutos. Cor, fonte, vibe, blocos. No final, nosso time recebe um brief estruturado e começa a criação.
+        <p class="text-white/65 text-base sm:text-lg max-w-md leading-relaxed mb-6 sm:mb-8">
+          7 perguntas curtas sobre cor, fonte, vibe e blocos. Output direto pro time DDG.
         </p>
-        <div class="mt-8 inline-flex items-center gap-3 text-[#ff5c1f] font-medium border-b border-[#ff5c1f]/40 pb-1 group-hover:border-[#ff5c1f] transition">
+        <span class="inline-flex items-center gap-2 sm:gap-3 text-[#ff5c1f] font-semibold border-b border-[#ff5c1f]/40 pb-1 group-hover:border-[#ff5c1f] transition text-sm sm:text-base">
           <span>Abrir wizard</span>
           <span class="transition-transform group-hover:translate-x-1">→</span>
-        </div>
+        </span>
       </div>
-      <div class="font-display text-7xl md:text-8xl text-[#ff5c1f] leading-none opacity-90">01</div>
+      <div class="font-display text-6xl sm:text-7xl md:text-9xl text-[#ff5c1f] leading-none font-bold opacity-90 hidden sm:block">01</div>
     </div>
   </a>
+</section>
 
-  <!-- DEMOS HEADER -->
-  <div class="mt-16 mb-8 flex items-end justify-between flex-wrap gap-4">
+<!-- DEMOS SECTION -->
+<section class="max-w-5xl mx-auto px-5 sm:px-6 mb-10 sm:mb-16">
+  <div class="flex items-end justify-between flex-wrap gap-3 mb-6 sm:mb-8">
     <div>
-      <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/45 mb-3">Demos de referência · Barbearia</div>
-      <h2 class="font-display text-3xl md:text-4xl tracking-tight">4 polos estéticos pra mostrar pro cliente</h2>
+      <span class="pill bg-black/5 text-black/55 mb-3">— Polos estéticos · Barbearia</span>
+      <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mt-2">
+        4 referências de estilo
+      </h2>
     </div>
+    <span class="font-mono text-[10px] sm:text-xs text-black/40 uppercase tracking-widest">04 demos</span>
   </div>
 
-  <!-- DEMO GRID -->
-  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
 
-    <a href="/demos/barbearia/classico.html" class="demo-card group block bg-[#fdfcf8] rounded-3xl overflow-hidden border border-black/[0.06]">
-      <div class="aspect-[4/5] flex items-center justify-center" style="background: linear-gradient(135deg, #0a0a0a 0%, #c9a96e 100%);">
-        <span class="font-display text-7xl text-white">A</span>
+    <!-- CLASSICO -->
+    <a href="/demos/barbearia/classico.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
+      <div class="thumb flex items-center justify-center" style="background: linear-gradient(135deg, #0a0a0a 0%, #c9a96e 100%);">
+        <span class="font-display text-6xl sm:text-7xl md:text-8xl text-white font-light">A</span>
       </div>
-      <div class="p-6">
-        <div class="font-display text-2xl mb-1">Clássico</div>
+      <div class="p-5 sm:p-6">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40">A · Clássico</span>
+          <span class="text-xs text-[#ff5c1f] font-medium opacity-0 group-hover:opacity-100 transition">→</span>
+        </div>
+        <h3 class="font-display text-xl sm:text-2xl font-bold mb-1.5">Clássico & Elegante</h3>
         <p class="text-sm text-black/55 leading-relaxed">Preto + dourado, serif editorial. Tradição, premium.</p>
-        <div class="mt-4 inline-flex items-center gap-2 text-xs text-[#ff5c1f] font-medium">
-          <span>Abrir demo</span>
-          <span class="transition-transform group-hover:translate-x-1">→</span>
-        </div>
       </div>
     </a>
 
-    <a href="/demos/barbearia/industrial.html" class="demo-card group block bg-[#fdfcf8] rounded-3xl overflow-hidden border border-black/[0.06]">
-      <div class="aspect-[4/5] flex items-center justify-center" style="background: linear-gradient(135deg, #1c1c1e 0%, #ff5c1f 100%);">
-        <span class="font-mono text-6xl text-white font-bold">B</span>
+    <!-- INDUSTRIAL -->
+    <a href="/demos/barbearia/industrial.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
+      <div class="thumb flex items-center justify-center" style="background: linear-gradient(135deg, #1c1c1e 0%, #ff5c1f 100%);">
+        <span class="font-mono text-6xl sm:text-7xl md:text-8xl text-white font-bold">B</span>
       </div>
-      <div class="p-6">
-        <div class="font-display text-2xl mb-1">Industrial</div>
+      <div class="p-5 sm:p-6">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40">B · Industrial</span>
+          <span class="text-xs text-[#ff5c1f] font-medium opacity-0 group-hover:opacity-100 transition">→</span>
+        </div>
+        <h3 class="font-display text-xl sm:text-2xl font-bold mb-1.5">Industrial & Urbano</h3>
         <p class="text-sm text-black/55 leading-relaxed">Escuro + laranja, brutalist, mono. Atitude, urbano.</p>
-        <div class="mt-4 inline-flex items-center gap-2 text-xs text-[#ff5c1f] font-medium">
-          <span>Abrir demo</span>
-          <span class="transition-transform group-hover:translate-x-1">→</span>
-        </div>
       </div>
     </a>
 
-    <a href="/demos/barbearia/moderno.html" class="demo-card group block bg-[#fdfcf8] rounded-3xl overflow-hidden border border-black/[0.06]">
-      <div class="aspect-[4/5] flex items-center justify-center" style="background: linear-gradient(135deg, #faf9f6 0%, #1f4847 100%);">
-        <span class="font-display text-7xl text-[#1f4847]">C</span>
+    <!-- MODERNO -->
+    <a href="/demos/barbearia/moderno.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
+      <div class="thumb flex items-center justify-center" style="background: linear-gradient(135deg, #faf9f6 0%, #1f4847 100%);">
+        <span class="font-display text-6xl sm:text-7xl md:text-8xl text-[#1f4847] font-light">C</span>
       </div>
-      <div class="p-6">
-        <div class="font-display text-2xl mb-1">Moderno</div>
+      <div class="p-5 sm:p-6">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40">C · Moderno</span>
+          <span class="text-xs text-[#ff5c1f] font-medium opacity-0 group-hover:opacity-100 transition">→</span>
+        </div>
+        <h3 class="font-display text-xl sm:text-2xl font-bold mb-1.5">Moderno & Minimalista</h3>
         <p class="text-sm text-black/55 leading-relaxed">Branco + petróleo, sans clean. Premium contemporâneo.</p>
-        <div class="mt-4 inline-flex items-center gap-2 text-xs text-[#ff5c1f] font-medium">
-          <span>Abrir demo</span>
-          <span class="transition-transform group-hover:translate-x-1">→</span>
-        </div>
       </div>
     </a>
 
-    <a href="/demos/barbearia/premium-dark.html" class="demo-card group block bg-[#fdfcf8] rounded-3xl overflow-hidden border border-black/[0.06]">
-      <div class="aspect-[4/5] flex items-center justify-center relative" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); border-bottom: 2px solid #25d366;">
-        <span style="font-family: 'Inter', sans-serif; letter-spacing: -0.04em;" class="text-7xl text-white font-bold">D</span>
-        <span class="absolute top-4 right-4 bg-[#25d366] text-black text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 rounded-full font-bold">novo</span>
+    <!-- PREMIUM DARK -->
+    <a href="/demos/barbearia/premium-dark.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
+      <div class="thumb flex items-center justify-center relative" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); border-bottom: 2px solid #25d366;">
+        <span class="font-display text-6xl sm:text-7xl md:text-8xl text-white font-bold tracking-tighter">D</span>
+        <span class="absolute top-3 right-3 sm:top-4 sm:right-4 bg-[#25d366] text-black text-[9px] sm:text-[10px] font-mono uppercase tracking-widest px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full font-bold">novo</span>
       </div>
-      <div class="p-6">
-        <div class="font-display text-2xl mb-1">Premium Dark</div>
-        <p class="text-sm text-black/55 leading-relaxed">Preto absoluto, tipografia bold CAPS, cinematográfico. Luxury.</p>
-        <div class="mt-4 inline-flex items-center gap-2 text-xs text-[#ff5c1f] font-medium">
-          <span>Abrir demo</span>
-          <span class="transition-transform group-hover:translate-x-1">→</span>
+      <div class="p-5 sm:p-6">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40">D · Premium Dark</span>
+          <span class="text-xs text-[#ff5c1f] font-medium opacity-0 group-hover:opacity-100 transition">→</span>
         </div>
+        <h3 class="font-display text-xl sm:text-2xl font-bold mb-1.5">Premium Dark</h3>
+        <p class="text-sm text-black/55 leading-relaxed">Preto absoluto, bold CAPS, cinematográfico. Luxury.</p>
       </div>
     </a>
 
   </div>
+</section>
 
-  <div class="mt-16 pt-10 border-t border-black/[0.08]">
-    <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-black/45 mb-4">Status</div>
-    <div class="grid sm:grid-cols-3 gap-6 text-sm">
+<!-- INFO STRIP -->
+<section class="max-w-5xl mx-auto px-5 sm:px-6 mb-10 sm:mb-16">
+  <div class="border-t border-black/[0.08] pt-8 sm:pt-10">
+    <div class="font-mono text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-black/45 mb-5 sm:mb-6">— Status do projeto</div>
+    <div class="grid grid-cols-3 gap-3 sm:gap-6 text-sm">
       <div>
-        <div class="font-display text-2xl text-[#ff5c1f] mb-1">Fase 0</div>
-        <div class="text-black/60">Validação manual em andamento</div>
+        <div class="font-display text-xl sm:text-2xl md:text-3xl text-[#ff5c1f] font-bold mb-1">Fase 0</div>
+        <div class="text-xs sm:text-sm text-black/55">Validação<br class="sm:hidden"> manual</div>
       </div>
       <div>
-        <div class="font-display text-2xl text-[#ff5c1f] mb-1">2 nichos</div>
-        <div class="text-black/60">Barbearia · Salão/Estética</div>
+        <div class="font-display text-xl sm:text-2xl md:text-3xl text-[#ff5c1f] font-bold mb-1">2 nichos</div>
+        <div class="text-xs sm:text-sm text-black/55">Barbearia ·<br class="sm:hidden"> Salão</div>
       </div>
       <div>
-        <div class="font-display text-2xl text-[#ff5c1f] mb-1">SP</div>
-        <div class="text-black/60">Capital, expansão futura</div>
+        <div class="font-display text-xl sm:text-2xl md:text-3xl text-[#ff5c1f] font-bold mb-1">SP</div>
+        <div class="text-xs sm:text-sm text-black/55">Capital,<br class="sm:hidden"> expansão futura</div>
       </div>
     </div>
   </div>
+</section>
 
 </main>
 
-<footer class="border-t border-black/[0.08] py-10 mt-12">
-  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-black/45">
-    <div class="font-display text-base text-[#0a0a0a]">SiteFlow · Dose de Growth</div>
-    <div class="font-mono text-xs">© 2026 · Repositório interno</div>
+<!-- FOOTER -->
+<footer class="border-t border-black/[0.08] py-8 sm:py-10">
+  <div class="max-w-5xl mx-auto px-5 sm:px-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 text-xs sm:text-sm text-black/45">
+    <div class="font-display font-bold text-sm sm:text-base text-[#0a0a0a]">SiteFlow · DDG</div>
+    <div class="font-mono text-[10px] sm:text-xs">© 2026 · Repositório interno</div>
   </div>
 </footer>
 

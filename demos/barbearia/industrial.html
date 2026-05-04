@@ -14,7 +14,9 @@
     --steel: #2a2a2c;
     --bone: #e8e6e0;
   }
-  body { font-family: 'Inter', sans-serif; background: var(--concrete); color: var(--bone); }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: 'Inter', sans-serif; background: var(--concrete); color: var(--bone); overflow-x: hidden; }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
   .font-heavy { font-family: 'Archivo Black', sans-serif; letter-spacing:-0.02em; }
   .text-orange { color: var(--orange); }
@@ -54,7 +56,7 @@
 
 <!-- NAV -->
 <nav class="sticky top-0 z-50 bg-[#1c1c1e]/95 backdrop-blur border-b border-[#2a2a2c]">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 py-4 flex items-center justify-between">
     <div class="flex items-center gap-3">
       <div class="w-8 h-8 bg-orange flex items-center justify-center">
         <span class="font-heavy text-black text-lg">N</span>
@@ -73,27 +75,27 @@
 </nav>
 
 <!-- HERO -->
-<section class="relative grid-pattern min-h-[90vh] flex items-center overflow-hidden">
-  <div class="absolute right-0 top-0 w-1/2 h-full opacity-30">
+<section class="relative grid-pattern min-h-[80vh] md:min-h-[90vh] flex items-center overflow-hidden">
+  <div class="absolute right-0 top-0 w-full md:w-1/2 h-full opacity-20 md:opacity-30">
     <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1200&q=80" class="w-full h-full object-cover" alt="">
     <div class="absolute inset-0 bg-gradient-to-l from-transparent to-[#1c1c1e]"></div>
   </div>
-  <div class="max-w-7xl mx-auto px-6 py-32 relative w-full">
-    <div class="font-mono text-xs text-orange uppercase mb-6 flex items-center gap-3">
-      <span class="w-12 h-px bg-orange"></span>
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 py-20 md:py-32 relative w-full">
+    <div class="font-mono text-[10px] sm:text-xs text-orange uppercase mb-5 sm:mb-6 flex items-center gap-3">
+      <span class="w-8 sm:w-12 h-px bg-orange"></span>
       <span>Est. 2019 · São Paulo · BR</span>
     </div>
-    <h1 class="font-heavy text-6xl md:text-8xl lg:text-9xl leading-[0.85] mb-8">
+    <h1 class="font-heavy text-5xl sm:text-6xl md:text-8xl lg:text-9xl leading-[0.85] mb-6 sm:mb-8">
       CORTE.<br>
       BARBA.<br>
       <span class="text-orange">SEM ENROLAÇÃO.</span>
     </h1>
-    <p class="max-w-xl text-[#e8e6e0]/70 text-lg leading-relaxed mb-10 font-mono">
+    <p class="max-w-xl text-[#e8e6e0]/70 text-base sm:text-lg leading-relaxed mb-8 sm:mb-10 font-mono">
       Barbearia raiz pra galera que sabe o que quer. Sem playlist genérica, sem papo furado. Você senta, a gente entrega.
     </p>
-    <div class="flex flex-col sm:flex-row gap-4">
-      <a href="#contact" class="bg-orange text-black px-8 py-5 font-heavy text-sm uppercase tracking-wider hover:bg-[#ff7140] transition text-center">Agendar agora →</a>
-      <a href="#services" class="border-2 border-[#e8e6e0] text-[#e8e6e0] px-8 py-5 font-heavy text-sm uppercase tracking-wider hover:bg-[#e8e6e0] hover:text-black transition text-center">Ver tabela</a>
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+      <a href="#contact" class="bg-orange text-black px-7 sm:px-8 py-4 sm:py-5 font-heavy text-xs sm:text-sm uppercase tracking-wider hover:bg-[#ff7140] transition text-center">Agendar agora →</a>
+      <a href="#services" class="border-2 border-[#e8e6e0] text-[#e8e6e0] px-7 sm:px-8 py-4 sm:py-5 font-heavy text-xs sm:text-sm uppercase tracking-wider hover:bg-[#e8e6e0] hover:text-black transition text-center">Ver tabela</a>
     </div>
     <div class="mt-16 grid grid-cols-3 gap-6 max-w-2xl border-t border-[#2a2a2c] pt-8">
       <div>
@@ -114,10 +116,10 @@
 
 <!-- ABOUT -->
 <section id="about" class="py-24 border-t border-[#2a2a2c]">
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 grid md:grid-cols-12 gap-12">
     <div class="md:col-span-4">
       <div class="font-mono text-xs text-orange uppercase mb-4">[01] / About</div>
-      <h2 class="font-heavy text-4xl md:text-5xl leading-[0.95] mb-6">
+      <h2 class="font-heavy text-3xl sm:text-4xl md:text-5xl leading-[0.95] mb-6">
         Não é<br>
         salão.<br>
         <span class="text-orange">É oficina.</span>
@@ -143,60 +145,60 @@
 
 <!-- SERVICES -->
 <section id="services" class="py-24 bg-[#161618] border-y border-[#2a2a2c]">
-  <div class="max-w-7xl mx-auto px-6">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6">
     <div class="flex items-end justify-between mb-12 flex-wrap gap-4">
       <div>
         <div class="font-mono text-xs text-orange uppercase mb-4">[02] / Services</div>
-        <h2 class="font-heavy text-5xl md:text-6xl">Tabela <span class="text-orange">/ Preços</span></h2>
+        <h2 class="font-heavy text-3xl sm:text-5xl md:text-6xl">Tabela <span class="text-orange">/ Preços</span></h2>
       </div>
       <div class="font-mono text-sm text-[#e8e6e0]/50">v.2026.04 · sem reajuste há 8 meses</div>
     </div>
     <div class="space-y-0">
-      <div class="grid grid-cols-12 items-center py-6 border-t border-[#2a2a2c] gap-4 hover:bg-[#1c1c1e] transition cursor-pointer">
-        <div class="col-span-1 font-mono text-orange">001</div>
-        <div class="col-span-7">
+      <div class="grid grid-cols-12 items-center py-5 sm:py-6 border-t border-[#2a2a2c] gap-3 sm:gap-4 hover:bg-[#1c1c1e] transition cursor-pointer">
+        <div class="col-span-2 sm:col-span-1 font-mono text-orange text-xs sm:text-base">001</div>
+        <div class="col-span-7 sm:col-span-7">
           <h3 class="font-heavy text-2xl mb-1">CORTE STANDARD</h3>
           <p class="text-sm text-[#e8e6e0]/55 font-mono">máquina + tesoura · finalização rápida · ~15min</p>
         </div>
-        <div class="col-span-2 font-mono text-xs text-[#e8e6e0]/40 uppercase">15min</div>
-        <div class="col-span-2 font-heavy text-2xl text-right text-orange">R$ 45</div>
+        <div class="hidden sm:block sm:col-span-2 font-mono text-xs text-[#e8e6e0]/40 uppercase">15min</div>
+        <div class="col-span-12 sm:col-span-2 font-heavy text-xl sm:text-2xl text-left sm:text-right text-orange pl-12 sm:pl-0">R$ 45</div>
       </div>
       <div class="grid grid-cols-12 items-center py-6 border-t border-[#2a2a2c] gap-4 hover:bg-[#1c1c1e] transition cursor-pointer">
-        <div class="col-span-1 font-mono text-orange">002</div>
-        <div class="col-span-7">
-          <h3 class="font-heavy text-2xl mb-1">BARBA NA NAVALHA</h3>
+        <div class="col-span-2 sm:col-span-1 font-mono text-orange text-xs sm:text-base">002</div>
+        <div class="col-span-10 sm:col-span-7">
+          <h3 class="font-heavy text-lg sm:text-2xl mb-1">BARBA NA NAVALHA</h3>
           <p class="text-sm text-[#e8e6e0]/55 font-mono">toalha quente · óleo · pós-barba · ~20min</p>
         </div>
-        <div class="col-span-2 font-mono text-xs text-[#e8e6e0]/40 uppercase">20min</div>
-        <div class="col-span-2 font-heavy text-2xl text-right text-orange">R$ 40</div>
+        <div class="hidden sm:block sm:col-span-2 font-mono text-xs text-[#e8e6e0]/40 uppercase">20min</div>
+        <div class="col-span-12 sm:col-span-2 font-heavy text-xl sm:text-2xl text-left sm:text-right text-orange pl-12 sm:pl-0">R$ 40</div>
       </div>
       <div class="grid grid-cols-12 items-center py-6 border-t border-[#2a2a2c] gap-4 hover:bg-[#1c1c1e] transition cursor-pointer relative">
         <div class="absolute right-0 top-1/2 -translate-y-1/2 font-mono text-[10px] uppercase bg-orange text-black px-2 py-1 -mt-12">+ vendido</div>
-        <div class="col-span-1 font-mono text-orange">003</div>
-        <div class="col-span-7">
-          <h3 class="font-heavy text-2xl mb-1">COMBO COMPLETO</h3>
+        <div class="col-span-2 sm:col-span-1 font-mono text-orange text-xs sm:text-base">003</div>
+        <div class="col-span-10 sm:col-span-7">
+          <h3 class="font-heavy text-lg sm:text-2xl mb-1">COMBO COMPLETO</h3>
           <p class="text-sm text-[#e8e6e0]/55 font-mono">corte + barba + sobrancelha · ~40min</p>
         </div>
-        <div class="col-span-2 font-mono text-xs text-[#e8e6e0]/40 uppercase">40min</div>
-        <div class="col-span-2 font-heavy text-2xl text-right text-orange">R$ 95</div>
+        <div class="hidden sm:block sm:col-span-2 font-mono text-xs text-[#e8e6e0]/40 uppercase">40min</div>
+        <div class="col-span-12 sm:col-span-2 font-heavy text-xl sm:text-2xl text-left sm:text-right text-orange pl-12 sm:pl-0">R$ 95</div>
       </div>
       <div class="grid grid-cols-12 items-center py-6 border-t border-[#2a2a2c] gap-4 hover:bg-[#1c1c1e] transition cursor-pointer">
-        <div class="col-span-1 font-mono text-orange">004</div>
-        <div class="col-span-7">
-          <h3 class="font-heavy text-2xl mb-1">DESENHO + CORTE</h3>
+        <div class="col-span-2 sm:col-span-1 font-mono text-orange text-xs sm:text-base">004</div>
+        <div class="col-span-10 sm:col-span-7">
+          <h3 class="font-heavy text-lg sm:text-2xl mb-1">DESENHO + CORTE</h3>
           <p class="text-sm text-[#e8e6e0]/55 font-mono">degradê · linhas · listras · estilo livre</p>
         </div>
-        <div class="col-span-2 font-mono text-xs text-[#e8e6e0]/40 uppercase">25min</div>
-        <div class="col-span-2 font-heavy text-2xl text-right text-orange">R$ 60</div>
+        <div class="hidden sm:block sm:col-span-2 font-mono text-xs text-[#e8e6e0]/40 uppercase">25min</div>
+        <div class="col-span-12 sm:col-span-2 font-heavy text-xl sm:text-2xl text-left sm:text-right text-orange pl-12 sm:pl-0">R$ 60</div>
       </div>
       <div class="grid grid-cols-12 items-center py-6 border-t border-b border-[#2a2a2c] gap-4 hover:bg-[#1c1c1e] transition cursor-pointer">
-        <div class="col-span-1 font-mono text-orange">005</div>
-        <div class="col-span-7">
-          <h3 class="font-heavy text-2xl mb-1">PIGMENTAÇÃO</h3>
+        <div class="col-span-2 sm:col-span-1 font-mono text-orange text-xs sm:text-base">005</div>
+        <div class="col-span-10 sm:col-span-7">
+          <h3 class="font-heavy text-lg sm:text-2xl mb-1">PIGMENTAÇÃO</h3>
           <p class="text-sm text-[#e8e6e0]/55 font-mono">disfarce de cabelo branco · 30 dias de durabilidade</p>
         </div>
-        <div class="col-span-2 font-mono text-xs text-[#e8e6e0]/40 uppercase">15min</div>
-        <div class="col-span-2 font-heavy text-2xl text-right text-orange">R$ 70</div>
+        <div class="hidden sm:block sm:col-span-2 font-mono text-xs text-[#e8e6e0]/40 uppercase">15min</div>
+        <div class="col-span-12 sm:col-span-2 font-heavy text-xl sm:text-2xl text-left sm:text-right text-orange pl-12 sm:pl-0">R$ 70</div>
       </div>
     </div>
   </div>
@@ -204,9 +206,9 @@
 
 <!-- SHOP / GALLERY -->
 <section id="shop" class="py-24 border-t border-[#2a2a2c]">
-  <div class="max-w-7xl mx-auto px-6">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6">
     <div class="font-mono text-xs text-orange uppercase mb-4">[03] / The shop</div>
-    <h2 class="font-heavy text-5xl md:text-6xl mb-12">Por dentro <span class="text-orange">da oficina</span></h2>
+    <h2 class="font-heavy text-3xl sm:text-5xl md:text-6xl mb-12">Por dentro <span class="text-orange">da oficina</span></h2>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-1">
       <div class="aspect-square overflow-hidden">
         <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700 grayscale hover:grayscale-0" alt="">
@@ -265,11 +267,11 @@
 
 <!-- CONTACT -->
 <section id="contact" class="py-24">
-  <div class="max-w-7xl mx-auto px-6">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6">
     <div class="font-mono text-xs text-orange uppercase mb-4">[04] / Contact</div>
     <div class="grid md:grid-cols-2 gap-12">
       <div>
-        <h2 class="font-heavy text-5xl md:text-6xl mb-10">Vem<br>aí.</h2>
+        <h2 class="font-heavy text-3xl sm:text-5xl md:text-6xl mb-10">Vem<br>aí.</h2>
         <div class="space-y-8 font-mono">
           <div class="border-l-2 border-orange pl-6">
             <div class="text-xs uppercase text-orange mb-2">Endereço</div>
@@ -295,7 +297,7 @@
 
 <!-- FOOTER -->
 <footer class="bg-[#0a0a0b] py-10 border-t-2 border-orange">
-  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 font-mono text-xs uppercase text-[#e8e6e0]/40">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-6 font-mono text-xs uppercase text-[#e8e6e0]/40">
     <div class="flex items-center gap-3">
       <div class="w-7 h-7 bg-orange flex items-center justify-center font-heavy text-black text-sm">N</div>
       <span>NORTE BARBER CO. · 2026</span>
