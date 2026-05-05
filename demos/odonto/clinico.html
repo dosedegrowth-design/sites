@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>DR. RAFAEL MEDEIROS — Odontologia | Demo Clínico</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --navy: #0d2240; --navy-deep: #07172d; --navy-mid: #1a3a66; --gold: #b89968; --bone: #f5f0e6; --sky: #c5d6e8; }
+  * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--bone); color: var(--navy); overflow-x: hidden; }
+  .font-display { font-family: 'Cormorant Garamond', serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .text-navy { color: var(--navy); } .bg-navy { background: var(--navy); } .border-navy { border-color: var(--navy); }
+  .text-gold { color: var(--gold); } .bg-gold { background: var(--gold); }
+  .caps { text-transform: uppercase; letter-spacing: 0.18em; }
+  .hero-bg { background: linear-gradient(180deg, rgba(245,240,230,0.0) 0%, rgba(245,240,230,0.0) 50%, rgba(245,240,230,1) 100%), url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=2200&q=90') center/cover; }
+  .reveal { opacity: 0; transform: translateY(28px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-track { animation: marquee 50s linear infinite; }
+  @keyframes bounce { 0%,100% { transform: translateY(0); opacity: .5; } 50% { transform: translateY(8px); opacity: 1; } }
+  .scroll-bounce { animation: bounce 2.4s ease-in-out infinite; }
+  .num-tnum { font-variant-numeric: tabular-nums; }
+  .service-card { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid rgba(13,34,64,0.1); }
+  .service-card:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 18px 40px -20px rgba(13,34,64,0.2); }
+</style>
+</head>
+<body>
+
+<div class="bg-navy text-bone py-2.5 overflow-hidden" style="background:#0d2240;color:#f5f0e6;">
+  <div class="marquee-track flex gap-12 whitespace-nowrap font-mono text-[10px] sm:text-xs caps font-bold">
+    <span>· DR. RAFAEL MEDEIROS · CRO-SP 87.452 · ODONTOLOGIA · IMPLANTES · ESTÉTICA · MOEMA · BOOK ONLINE · DR. RAFAEL MEDEIROS · CRO-SP 87.452 · ODONTOLOGIA · IMPLANTES · ESTÉTICA · MOEMA · BOOK ONLINE</span>
+    <span>· DR. RAFAEL MEDEIROS · CRO-SP 87.452 · ODONTOLOGIA · IMPLANTES · ESTÉTICA · MOEMA · BOOK ONLINE · DR. RAFAEL MEDEIROS · CRO-SP 87.452 · ODONTOLOGIA · IMPLANTES · ESTÉTICA · MOEMA · BOOK ONLINE</span>
+  </div>
+</div>
+
+<nav class="fixed top-9 inset-x-0 z-40 transition-all duration-500" id="nav">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10 py-4 sm:py-5 flex items-center justify-between">
+    <a href="#" class="flex items-baseline gap-2"><span class="font-display text-xl sm:text-2xl italic">Dr.</span><span class="font-display text-xl sm:text-2xl">Rafael Medeiros</span></a>
+    <div class="hidden md:flex items-center gap-9 font-mono text-[10px] caps text-navy/65">
+      <a href="#sobre" class="hover:text-gold transition">O doutor</a><a href="#tratamentos" class="hover:text-gold transition">Tratamentos</a><a href="#metodo" class="hover:text-gold transition">Método</a><a href="#contato" class="hover:text-gold transition">Agendar</a>
+    </div>
+    <a href="#contato" class="hidden md:inline-flex items-center gap-2 bg-navy text-bone px-5 py-2.5 rounded-full font-mono text-[10px] caps font-bold hover:bg-navy-deep transition" style="background:#0d2240;color:#f5f0e6;">Consulta →</a>
+  </div>
+</nav>
+
+<section class="hero-bg min-h-screen relative flex items-center pt-32 pb-20">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10 w-full relative z-10">
+    <div class="max-w-5xl">
+      <div class="inline-flex items-center gap-2.5 mb-8 sm:mb-10 reveal"><span class="w-px h-8 bg-gold"></span><span class="font-mono text-[10px] caps text-gold">Odontologia · Estética · Implantodontia</span></div>
+      <h1 class="font-display text-6xl sm:text-7xl md:text-9xl lg:text-[12rem] leading-[0.9] mb-6 sm:mb-10 reveal">
+        <span class="block italic font-light">Sorriso é</span>
+        <span class="block font-bold">a sua <em class="text-gold not-italic">assinatura.</em></span>
+      </h1>
+      <p class="text-lg sm:text-xl md:text-2xl text-navy/65 leading-relaxed max-w-2xl mb-10 sm:mb-14 font-light reveal">
+        Odontologia integrada em Moema. Implantes, lentes, ortodontia e estética dental — protocolo médico sem improviso.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 reveal">
+        <a href="#contato" class="group inline-flex items-center justify-center gap-3 bg-navy text-bone px-8 sm:px-10 py-4 sm:py-5 rounded-full font-mono text-xs caps font-bold hover:bg-navy-deep transition" style="background:#0d2240;color:#f5f0e6;">Agendar consulta <span class="transition-transform group-hover:translate-x-1">→</span></a>
+        <a href="#tratamentos" class="inline-flex items-center justify-center gap-3 border border-navy/30 text-navy px-8 sm:px-10 py-4 sm:py-5 rounded-full font-mono text-xs caps font-bold hover:bg-navy/5 transition">Tratamentos</a>
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 scroll-bounce"><span class="font-mono text-[9px] caps text-navy/45">scroll</span><div class="w-px h-10 bg-gradient-to-b from-navy/40 to-transparent"></div></div>
+</section>
+
+<section class="py-14 border-y border-gold/15" style="background:#e8dec8;">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10">
+    <p class="text-center font-mono text-[10px] caps text-navy/40 mb-8 tracking-[0.3em]">Reconhecido por</p>
+    <div class="flex flex-wrap justify-center items-center gap-x-10 sm:gap-x-14 gap-y-5 font-display text-xl sm:text-2xl text-navy/35 italic">
+      <span>Veja Saúde</span><span class="not-italic text-gold/40">·</span><span>SBOO</span><span class="not-italic text-gold/40">·</span><span>Doctoralia</span><span class="not-italic text-gold/40">·</span><span>Forbes</span><span class="not-italic text-gold/40">·</span><span>Veja SP</span>
+    </div>
+  </div>
+</section>
+
+<section id="sobre" class="py-20 sm:py-32 md:py-40">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10 grid md:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <div class="md:col-span-7 reveal">
+      <p class="font-mono text-[10px] caps text-gold mb-6 tracking-[0.3em]">— Sobre o doutor</p>
+      <h2 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] mb-8 sm:mb-12">
+        <span class="block italic font-light">Ciência</span>
+        <span class="block font-bold">e <em class="text-gold not-italic">precisão.</em></span>
+      </h2>
+      <div class="space-y-5 text-navy/70 leading-relaxed text-base sm:text-lg max-w-xl font-light">
+        <p>Formado pela USP, especialização em implantodontia pela UNICAMP e fellowship em estética dental no Brånemark Institute, Suécia.</p>
+        <p>Atende em Moema há 12 anos, com mais de 8 mil casos clínicos. Filosofia: nada substitui o diagnóstico bem feito.</p>
+      </div>
+    </div>
+    <div class="md:col-span-5 reveal"><div class="aspect-[3/4] overflow-hidden rounded-2xl"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=900&q=85" class="w-full h-full object-cover" alt=""></div></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10 mt-20 sm:mt-24 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 pt-10 sm:pt-12 border-t border-gold/15">
+    <div class="reveal"><div class="font-display text-5xl sm:text-7xl text-gold num-tnum mb-2">12</div><div class="font-mono text-[10px] caps text-navy/50 tracking-widest">Anos em Moema</div></div>
+    <div class="reveal"><div class="font-display text-5xl sm:text-7xl text-gold num-tnum mb-2">8k+</div><div class="font-mono text-[10px] caps text-navy/50 tracking-widest">Casos clínicos</div></div>
+    <div class="reveal"><div class="font-display text-5xl sm:text-7xl text-gold num-tnum mb-2">5.0</div><div class="font-mono text-[10px] caps text-navy/50 tracking-widest">Doctoralia</div></div>
+    <div class="reveal"><div class="font-display text-5xl sm:text-7xl text-gold num-tnum mb-2">99%</div><div class="font-mono text-[10px] caps text-navy/50 tracking-widest">Sucesso clínico</div></div>
+  </div>
+</section>
+
+<section id="tratamentos" class="py-20 sm:py-32 md:py-40 text-bone border-y border-gold/15" style="background:#0d2240;color:#f5f0e6;">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10">
+    <div class="flex items-end justify-between flex-wrap gap-6 mb-16 sm:mb-20 reveal">
+      <div>
+        <p class="font-mono text-[10px] caps text-gold mb-6 tracking-[0.3em]">— Tratamentos</p>
+        <h2 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95]"><span class="block italic font-light">Diagnóstico</span><span class="block font-bold">primeiro. <em class="text-gold not-italic">Sempre.</em></span></h2>
+      </div>
+      <a href="#contato" class="font-mono text-[10px] caps text-bone/65 hover:text-gold border-b border-bone/30 hover:border-gold pb-1 transition">Agendar →</a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+      <div class="service-card rounded-3xl p-7 sm:p-8 reveal" style="background:#1a3a66;border-color:rgba(184,153,104,0.18);">
+        <div class="flex justify-between items-start mb-10"><div class="w-11 h-11 rounded-full border border-bone/25 flex items-center justify-center font-display text-lg">01</div><div class="font-display text-3xl text-gold">R$ 4.800</div></div>
+        <h3 class="font-display text-2xl sm:text-3xl mb-2 italic">Implante unitário</h3>
+        <p class="text-bone/65 text-sm sm:text-base leading-relaxed">Pino + coroa em zircônia ou metalo-cerâmica. Cirurgia guiada por TC.</p>
+      </div>
+      <div class="service-card rounded-3xl p-7 sm:p-8 reveal" style="background:#1a3a66;border-color:rgba(184,153,104,0.18);">
+        <div class="flex justify-between items-start mb-10"><div class="w-11 h-11 rounded-full border border-bone/25 flex items-center justify-center font-display text-lg">02</div><div class="font-display text-3xl text-gold">R$ 18.000</div></div>
+        <h3 class="font-display text-2xl sm:text-3xl mb-2 italic">Lentes de contato</h3>
+        <p class="text-bone/65 text-sm sm:text-base leading-relaxed">Set superior 8 dentes. Porcelana E-Max minimamente invasivas.</p>
+      </div>
+      <div class="service-card rounded-3xl p-7 sm:p-8 reveal relative bg-bone text-navy" style="color:#0d2240;">
+        <span class="absolute top-5 right-5 bg-gold text-navy text-[9px] font-mono caps font-bold px-2 py-0.5 rounded-full" style="color:#0d2240;">+ procurado</span>
+        <div class="flex justify-between items-start mb-10"><div class="w-11 h-11 rounded-full border border-navy/20 flex items-center justify-center font-display text-lg">03</div><div class="font-display text-3xl">R$ 24.000</div></div>
+        <h3 class="font-display text-2xl sm:text-3xl mb-2 italic">Smile design</h3>
+        <p class="text-navy/65 text-sm sm:text-base leading-relaxed">Planejamento digital + lentes superior + clareamento + simulação 3D.</p>
+      </div>
+      <div class="service-card rounded-3xl p-7 sm:p-8 reveal" style="background:#1a3a66;border-color:rgba(184,153,104,0.18);">
+        <div class="flex justify-between items-start mb-10"><div class="w-11 h-11 rounded-full border border-bone/25 flex items-center justify-center font-display text-lg">04</div><div class="font-display text-3xl text-gold">R$ 1.800</div></div>
+        <h3 class="font-display text-2xl sm:text-3xl mb-2 italic">Clareamento</h3>
+        <p class="text-bone/65 text-sm sm:text-base leading-relaxed">Sistema combinado consultório + caseiro. 6 a 8 tons mais claro.</p>
+      </div>
+      <div class="service-card rounded-3xl p-7 sm:p-8 reveal" style="background:#1a3a66;border-color:rgba(184,153,104,0.18);">
+        <div class="flex justify-between items-start mb-10"><div class="w-11 h-11 rounded-full border border-bone/25 flex items-center justify-center font-display text-lg">05</div><div class="font-display text-3xl text-gold">R$ 12.000</div></div>
+        <h3 class="font-display text-2xl sm:text-3xl mb-2 italic">Ortodontia Invisalign</h3>
+        <p class="text-bone/65 text-sm sm:text-base leading-relaxed">Alinhadores transparentes Invisalign. Tratamento médio 12-18 meses.</p>
+      </div>
+      <div class="service-card rounded-3xl p-7 sm:p-8 reveal" style="background:#1a3a66;border-color:rgba(184,153,104,0.18);">
+        <div class="flex justify-between items-start mb-10"><div class="w-11 h-11 rounded-full border border-bone/25 flex items-center justify-center font-display text-lg">06</div><div class="font-display text-3xl text-gold">R$ 350</div></div>
+        <h3 class="font-display text-2xl sm:text-3xl mb-2 italic">Limpeza profilática</h3>
+        <p class="text-bone/65 text-sm sm:text-base leading-relaxed">Profilaxia + ultrassom + jato de bicarbonato + flúor + check-up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="metodo" class="py-20 sm:py-32 md:py-40">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10">
+    <p class="font-mono text-[10px] caps text-gold mb-6 tracking-[0.3em] reveal">— O método</p>
+    <h2 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] mb-16 sm:mb-20 max-w-3xl reveal">
+      <span class="block italic font-light">Quatro passos.</span>
+      <span class="block font-bold">Resultado <em class="text-gold not-italic">previsível.</em></span>
+    </h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+      <div class="reveal"><div class="font-display text-7xl text-gold/20 mb-4">01</div><h3 class="font-display text-2xl mb-3 italic">Diagnóstico</h3><p class="text-navy/60 text-sm leading-relaxed">Exame clínico completo + radiografia panorâmica + TC quando necessária.</p></div>
+      <div class="reveal"><div class="font-display text-7xl text-gold/20 mb-4">02</div><h3 class="font-display text-2xl mb-3 italic">Plano</h3><p class="text-navy/60 text-sm leading-relaxed">Plano de tratamento com cronograma, orçamento e simulação 3D.</p></div>
+      <div class="reveal"><div class="font-display text-7xl text-gold/20 mb-4">03</div><h3 class="font-display text-2xl mb-3 italic">Execução</h3><p class="text-navy/60 text-sm leading-relaxed">Procedimentos por especialistas, sob padrão internacional de assepsia.</p></div>
+      <div class="reveal"><div class="font-display text-7xl text-gold/20 mb-4">04</div><h3 class="font-display text-2xl mb-3 italic">Manutenção</h3><p class="text-navy/60 text-sm leading-relaxed">Retornos semestrais inclusos, garantia clínica, acompanhamento de longo prazo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 sm:py-32 md:py-40 border-y border-gold/15" style="background:#e8dec8;">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10">
+    <p class="font-mono text-[10px] caps text-gold mb-6 tracking-[0.3em] reveal">— Depoimentos</p>
+    <h2 class="font-display text-5xl sm:text-6xl md:text-7xl leading-[0.95] mb-16 sm:mb-20 max-w-3xl reveal"><span class="block italic font-light">Avaliados por</span><span class="block font-bold">quem <em class="text-gold not-italic">confia.</em></span></h2>
+    <div class="grid md:grid-cols-3 gap-8 sm:gap-12">
+      <div class="reveal"><div class="text-gold text-xl mb-5">★★★★★</div><p class="text-lg sm:text-xl text-navy/85 leading-relaxed mb-7 italic font-light">"Implante perfeito, sem dor. Dr. Rafael explicou cada passo, sem pressa."</p><div class="pt-5 border-t border-gold/15"><div class="font-display text-lg sm:text-xl">Marcelo Andrade</div><div class="font-mono text-[10px] caps text-navy/50 tracking-widest mt-1">paciente desde 2019</div></div></div>
+      <div class="reveal"><div class="text-gold text-xl mb-5">★★★★★</div><p class="text-lg sm:text-xl text-navy/85 leading-relaxed mb-7 italic font-light">"Smile design transformou meu sorriso e minha autoestima. Resultado natural."</p><div class="pt-5 border-t border-gold/15"><div class="font-display text-lg sm:text-xl">Gabriela Stein</div><div class="font-mono text-[10px] caps text-navy/50 tracking-widest mt-1">paciente desde 2022</div></div></div>
+      <div class="reveal"><div class="text-gold text-xl mb-5">★★★★★</div><p class="text-lg sm:text-xl text-navy/85 leading-relaxed mb-7 italic font-light">"Levo minha família toda. Filhos, esposa, sogros. Confiança total."</p><div class="pt-5 border-t border-gold/15"><div class="font-display text-lg sm:text-xl">Rodrigo Pessoa</div><div class="font-mono text-[10px] caps text-navy/50 tracking-widest mt-1">paciente desde 2017</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="py-20 sm:py-32 md:py-44">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10 grid md:grid-cols-12 gap-10 md:gap-12">
+    <div class="md:col-span-7 reveal">
+      <p class="font-mono text-[10px] caps text-gold mb-6 tracking-[0.3em]">— Agendamento</p>
+      <h2 class="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] mb-10 sm:mb-12"><span class="block italic font-light">Seu sorriso</span><span class="block font-bold">merece <em class="text-gold not-italic">cuidado.</em></span></h2>
+      <p class="text-lg sm:text-xl text-navy/65 leading-relaxed max-w-lg mb-10 sm:mb-12 font-light">Consulta inicial inclui exame clínico + radiografia panorâmica + plano de tratamento. R$ 280 (creditados em procedimento futuro).</p>
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+        <a href="#" class="group inline-flex items-center justify-center gap-3 bg-navy text-bone px-8 sm:px-10 py-4 sm:py-5 rounded-full font-mono text-xs caps font-bold hover:bg-navy-deep transition" style="background:#0d2240;color:#f5f0e6;">WhatsApp <span class="transition-transform group-hover:translate-x-1">→</span></a>
+        <a href="#" class="inline-flex items-center justify-center gap-3 border border-navy/30 text-navy px-8 sm:px-10 py-4 sm:py-5 rounded-full font-mono text-xs caps font-bold hover:bg-navy/5 transition">Doctoralia</a>
+      </div>
+    </div>
+    <div class="md:col-span-5 reveal">
+      <div class="text-bone p-8 sm:p-10 rounded-2xl space-y-7" style="background:#0d2240;color:#f5f0e6;">
+        <div><div class="font-mono text-[10px] caps text-gold mb-2 tracking-[0.3em]">Endereço</div><div class="text-lg sm:text-xl leading-relaxed font-light">Av. dos Eucaliptos, 845<br>Moema · São Paulo</div></div>
+        <div class="pt-7 border-t border-gold/15"><div class="font-mono text-[10px] caps text-gold mb-2 tracking-[0.3em]">Atendimento</div><div class="text-base sm:text-lg leading-relaxed space-y-1 font-light"><div class="flex justify-between"><span class="text-bone/65">Seg — Sex</span><span>9h às 19h</span></div><div class="flex justify-between"><span class="text-bone/65">Sáb</span><span>9h às 14h</span></div></div></div>
+        <div class="pt-7 border-t border-gold/15"><div class="font-mono text-[10px] caps text-gold mb-2 tracking-[0.3em]">Direto</div><div class="text-base sm:text-lg font-light">(11) 5078-3456<br>contato@drrafaelmedeiros.com.br</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-10 sm:py-12 border-t border-gold/15" style="background:#e8dec8;">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10 flex flex-col md:flex-row justify-between items-center gap-5 sm:gap-6 font-mono text-[10px] caps tracking-widest text-navy/40">
+    <div class="flex items-baseline gap-2 normal-case tracking-normal"><span class="font-display text-base italic">Dr.</span><span class="font-display text-base">Rafael Medeiros</span></div>
+    <div>CRO-SP 87.452 · Especialista em Implantodontia</div>
+    <div class="flex gap-6 sm:gap-8"><a href="#" class="hover:text-gold transition">Instagram</a><a href="#" class="hover:text-gold transition">Doctoralia</a><a href="#" class="hover:text-gold transition">WhatsApp</a></div>
+  </div>
+</footer>
+
+<a href="#" class="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 bg-[#25d366] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition">
+  <svg class="w-6 h-6 sm:w-7 sm:h-7 text-black" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('visible')), { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+reveals.forEach(r => io.observe(r));
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { if (window.scrollY > 80) { nav.classList.add('bg-bone/85','backdrop-blur-md','shadow-sm'); nav.classList.remove('top-9'); nav.classList.add('top-0'); } else { nav.classList.remove('bg-bone/85','backdrop-blur-md','shadow-sm'); nav.classList.add('top-9'); nav.classList.remove('top-0'); } });
+</script>
+</body>
+</html>
