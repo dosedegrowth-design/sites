@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Maison Lima — Salão de Beleza | Demo Clássico</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose-gold: #b08d75;
+    --champagne: #d4b896;
+    --black: #1a1110;
+    --cream: #f7f1ea;
+    --soft: #ebe1d5;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--black); overflow-x: hidden; }
+  .font-display { font-family: 'Cormorant Garamond', serif; letter-spacing: 0.005em; }
+  .text-rose { color: var(--rose-gold); }
+  .bg-rose { background: var(--rose-gold); }
+  .border-rose { border-color: var(--rose-gold); }
+  .text-champagne { color: var(--champagne); }
+  .hero-img {
+    background:
+      linear-gradient(rgba(247,241,234,0.4), rgba(247,241,234,0.85)),
+      url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1600&q=80') center/cover;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="fixed top-0 inset-x-0 z-50 bg-cream/85 backdrop-blur border-b border-rose/15" style="background: rgba(247,241,234,0.9);">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex items-center justify-between">
+    <div class="font-display text-xl sm:text-2xl tracking-wide">
+      <span class="text-rose italic">Maison</span> Lima
+    </div>
+    <div class="hidden md:flex gap-8 text-sm tracking-widest uppercase text-black/65">
+      <a href="#sobre" class="hover:text-rose transition">Sobre</a>
+      <a href="#servicos" class="hover:text-rose transition">Serviços</a>
+      <a href="#galeria" class="hover:text-rose transition">Galeria</a>
+      <a href="#contato" class="hover:text-rose transition">Contato</a>
+    </div>
+    <a href="#contato" class="hidden md:inline-block bg-rose text-white px-5 py-2.5 text-xs font-semibold tracking-widest uppercase hover:bg-[#9c7a64] transition">Agendar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-img relative min-h-[85vh] md:min-h-screen flex items-center pt-24 md:pt-20">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 py-16 md:py-32 relative">
+    <p class="text-rose text-[10px] sm:text-xs tracking-[0.4em] uppercase mb-5 sm:mb-6">Desde 2014 · Jardins, SP</p>
+    <h1 class="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl leading-[0.95] mb-6 sm:mb-8 italic">
+      Beleza<br>
+      <span class="text-rose not-italic font-medium">é detalhe.</span>
+    </h1>
+    <p class="max-w-xl text-black/65 text-base sm:text-lg leading-relaxed mb-8 sm:mb-10 font-light">
+      Salão de beleza no coração dos Jardins. Cuidado capilar, química delicada, atendimento sem pressa.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+      <a href="#contato" class="inline-block bg-rose text-white px-7 sm:px-8 py-4 text-xs sm:text-sm font-semibold tracking-widest uppercase hover:bg-[#9c7a64] transition text-center">Agendar horário</a>
+      <a href="#servicos" class="inline-block border border-rose text-rose px-7 sm:px-8 py-4 text-xs sm:text-sm font-semibold tracking-widest uppercase hover:bg-rose hover:text-white transition text-center">Ver serviços</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="py-16 md:py-32 border-t border-rose/15">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+    <div>
+      <p class="text-rose text-xs tracking-[0.4em] uppercase mb-6">A casa</p>
+      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl leading-tight mb-8 italic">
+        Cuidamos da sua beleza<br>
+        <span class="not-italic font-medium text-rose">há mais de 10 anos.</span>
+      </h2>
+      <div class="space-y-5 text-black/65 leading-relaxed font-light">
+        <p>Aberto em 2014 por Camila Lima, a Maison nasceu do desejo de criar um espaço onde o cuidado da beleza vem antes da pressa do dia.</p>
+        <p>Hoje somos uma equipe de seis profissionais formadas em Paris e Milão, atendendo as mulheres mais exigentes da capital paulista.</p>
+      </div>
+      <div class="mt-10 grid grid-cols-3 gap-6 pt-8 border-t border-rose/20">
+        <div>
+          <div class="font-display text-3xl sm:text-4xl text-rose">10+</div>
+          <div class="text-[10px] tracking-widest uppercase text-black/55 mt-1">Anos no Jardins</div>
+        </div>
+        <div>
+          <div class="font-display text-3xl sm:text-4xl text-rose">6</div>
+          <div class="text-[10px] tracking-widest uppercase text-black/55 mt-1">Profissionais</div>
+        </div>
+        <div>
+          <div class="font-display text-3xl sm:text-4xl text-rose">8k+</div>
+          <div class="text-[10px] tracking-widest uppercase text-black/55 mt-1">Clientes atendidas</div>
+        </div>
+      </div>
+    </div>
+    <div class="relative">
+      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80" alt="" class="w-full h-[420px] sm:h-[600px] object-cover">
+      <div class="absolute -bottom-4 -right-4 w-24 h-24 sm:w-32 sm:h-32 border-2 border-rose -z-10"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICOS -->
+<section id="servicos" class="py-16 md:py-32 bg-soft">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6">
+    <div class="text-center mb-12 sm:mb-16">
+      <p class="text-rose text-xs tracking-[0.4em] uppercase mb-4">Carta de serviços</p>
+      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl italic">A arte do <span class="text-rose font-medium not-italic">cuidado</span></h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-x-12 lg:gap-x-16 gap-y-1">
+      <div class="border-b border-rose/20 py-5 sm:py-6 flex justify-between items-baseline gap-4">
+        <div>
+          <h3 class="font-display text-xl sm:text-2xl mb-0.5 italic">Corte feminino</h3>
+          <p class="text-xs sm:text-sm text-black/55 font-light">Análise + corte + finalização</p>
+        </div>
+        <div class="font-display text-xl sm:text-2xl text-rose whitespace-nowrap">R$ 180</div>
+      </div>
+      <div class="border-b border-rose/20 py-5 sm:py-6 flex justify-between items-baseline gap-4">
+        <div>
+          <h3 class="font-display text-xl sm:text-2xl mb-0.5 italic">Escova progressiva</h3>
+          <p class="text-xs sm:text-sm text-black/55 font-light">Tratamento alisante sem formol</p>
+        </div>
+        <div class="font-display text-xl sm:text-2xl text-rose whitespace-nowrap">R$ 450</div>
+      </div>
+      <div class="border-b border-rose/20 py-5 sm:py-6 flex justify-between items-baseline gap-4">
+        <div>
+          <h3 class="font-display text-xl sm:text-2xl mb-0.5 italic">Coloração</h3>
+          <p class="text-xs sm:text-sm text-black/55 font-light">Cor única ou retoque de raiz</p>
+        </div>
+        <div class="font-display text-xl sm:text-2xl text-rose whitespace-nowrap">R$ 220</div>
+      </div>
+      <div class="border-b border-rose/20 py-5 sm:py-6 flex justify-between items-baseline gap-4">
+        <div>
+          <h3 class="font-display text-xl sm:text-2xl mb-0.5 italic">Mechas / Luzes</h3>
+          <p class="text-xs sm:text-sm text-black/55 font-light">Babylights, balayage, ombré</p>
+        </div>
+        <div class="font-display text-xl sm:text-2xl text-rose whitespace-nowrap">R$ 380</div>
+      </div>
+      <div class="border-b border-rose/20 py-5 sm:py-6 flex justify-between items-baseline gap-4">
+        <div>
+          <h3 class="font-display text-xl sm:text-2xl mb-0.5 italic">Hidratação Profunda</h3>
+          <p class="text-xs sm:text-sm text-black/55 font-light">Máscara + massagem + finalização</p>
+        </div>
+        <div class="font-display text-xl sm:text-2xl text-rose whitespace-nowrap">R$ 95</div>
+      </div>
+      <div class="border-b border-rose/20 py-5 sm:py-6 flex justify-between items-baseline gap-4">
+        <div>
+          <h3 class="font-display text-xl sm:text-2xl mb-0.5 italic">Penteado social</h3>
+          <p class="text-xs sm:text-sm text-black/55 font-light">Para eventos, festas, casamentos</p>
+        </div>
+        <div class="font-display text-xl sm:text-2xl text-rose whitespace-nowrap">R$ 150</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section id="galeria" class="py-16 md:py-32">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6">
+    <div class="text-center mb-12 sm:mb-16">
+      <p class="text-rose text-xs tracking-[0.4em] uppercase mb-4">Trabalhos</p>
+      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl italic">Galeria</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80" class="w-full h-48 sm:h-64 md:h-72 object-cover hover:scale-105 transition duration-700" alt="">
+      <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80" class="w-full h-48 sm:h-64 md:h-72 object-cover hover:scale-105 transition duration-700" alt="">
+      <img src="https://images.unsplash.com/photo-1595163225931-7d6727f4691c?w=600&q=80" class="w-full h-48 sm:h-64 md:h-72 object-cover hover:scale-105 transition duration-700" alt="">
+      <img src="https://images.unsplash.com/photo-1633681926022-84cdb4ad9a25?w=600&q=80" class="w-full h-48 sm:h-64 md:h-72 object-cover hover:scale-105 transition duration-700" alt="">
+      <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&q=80" class="w-full h-48 sm:h-64 md:h-72 object-cover hover:scale-105 transition duration-700" alt="">
+      <img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=600&q=80" class="w-full h-48 sm:h-64 md:h-72 object-cover hover:scale-105 transition duration-700" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="py-16 md:py-32 bg-soft">
+  <div class="max-w-4xl mx-auto px-5 sm:px-6 text-center">
+    <p class="text-rose text-xs tracking-[0.4em] uppercase mb-4">Depoimentos</p>
+    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl italic mb-12 sm:mb-16">Quem volta sempre.</h2>
+    <div class="grid md:grid-cols-3 gap-10 sm:gap-12">
+      <div>
+        <div class="text-rose text-3xl font-display mb-4">"</div>
+        <p class="text-black/75 leading-relaxed mb-6 font-light">Há 6 anos é meu salão de cabeceira. Camila e equipe são extensão da família.</p>
+        <p class="text-xs tracking-widest uppercase text-rose">Beatriz M.</p>
+      </div>
+      <div>
+        <div class="text-rose text-3xl font-display mb-4">"</div>
+        <p class="text-black/75 leading-relaxed mb-6 font-light">Atendimento sem pressa. Saio sempre me sentindo cuidada de verdade.</p>
+        <p class="text-xs tracking-widest uppercase text-rose">Renata C.</p>
+      </div>
+      <div>
+        <div class="text-rose text-3xl font-display mb-4">"</div>
+        <p class="text-black/75 leading-relaxed mb-6 font-light">As mechas mais bonitas que já fiz. Viraram tendência entre minhas amigas.</p>
+        <p class="text-xs tracking-widest uppercase text-rose">Patrícia A.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="py-16 md:py-32">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 grid md:grid-cols-2 gap-10 md:gap-16">
+    <div>
+      <p class="text-rose text-xs tracking-[0.4em] uppercase mb-4">Encontre-nos</p>
+      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl italic mb-10">Visite a Maison.</h2>
+      <div class="space-y-6 text-black/75 font-light">
+        <div>
+          <p class="text-xs tracking-widest uppercase text-rose mb-2">Endereço</p>
+          <p>Alameda Lorena, 1850<br>Jardins, São Paulo · 01424-002</p>
+        </div>
+        <div>
+          <p class="text-xs tracking-widest uppercase text-rose mb-2">Horário</p>
+          <p>Terça a sábado · 10h às 20h<br>Domingo · 10h às 16h</p>
+        </div>
+        <div>
+          <p class="text-xs tracking-widest uppercase text-rose mb-2">Contato</p>
+          <p>(11) 9 8765-4321<br>contato@maisonlima.com.br</p>
+        </div>
+      </div>
+      <a href="#" class="inline-block mt-10 bg-rose text-white px-7 sm:px-8 py-4 text-xs sm:text-sm font-semibold tracking-widest uppercase hover:bg-[#9c7a64] transition">Agendar via WhatsApp</a>
+    </div>
+    <div class="bg-soft aspect-square flex items-center justify-center text-black/30 text-sm">
+      [Mapa Google embedado aqui]
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-10 sm:py-12 border-t border-rose/15 bg-black text-cream" style="background: #1a1110;">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 text-xs tracking-widest uppercase text-cream/55">
+    <div class="font-display text-base text-rose normal-case tracking-normal italic">Maison Lima</div>
+    <div>© 2026 · Todos os direitos reservados</div>
+    <div class="flex gap-6">
+      <a href="#" class="hover:text-rose transition">Instagram</a>
+      <a href="#" class="hover:text-rose transition">Facebook</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
