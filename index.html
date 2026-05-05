@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>SiteFlow · Dose de Growth</title>
-<meta name="description" content="Catálogo interno DDG · Wizard de briefing visual + demos de referência por estilo">
+<meta name="description" content="Catálogo interno DDG · Wizard de briefing visual + demos de referência por nicho">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body {
     font-family: 'Inter', sans-serif;
     background: #f8f6f1;
@@ -27,7 +27,7 @@
   .accent-dot { animation: pulse 2.4s ease-in-out infinite; }
   @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.55; transform: scale(1.4); } }
 
-  /* Card hover */
+  /* Card */
   .card {
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     border: 1px solid rgba(10,10,10,0.06);
@@ -38,7 +38,47 @@
     box-shadow: 0 18px 50px -25px rgba(0,0,0,0.25);
   }
 
-  /* Wizard card (CTA principal) */
+  /* Nicho card */
+  .nicho-card {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(10,10,10,0.08);
+    cursor: pointer;
+    background: #fdfcf8;
+    position: relative;
+  }
+  .nicho-card:hover:not(.disabled):not(.active) {
+    transform: translateY(-2px);
+    border-color: rgba(10,10,10,0.25);
+  }
+  .nicho-card.active {
+    background: #0a0a0a;
+    color: #f8f6f1;
+    border-color: #0a0a0a;
+    box-shadow: 0 14px 40px -15px rgba(0,0,0,0.35);
+  }
+  .nicho-card.active .nicho-meta { color: rgba(248,246,241,0.55); }
+  .nicho-card.active .nicho-icon { background: #ff5c1f; color: #0a0a0a; }
+  .nicho-card.disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    background: rgba(10,10,10,0.02);
+  }
+  .nicho-card.disabled:hover { transform: none; }
+
+  .nicho-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(10,10,10,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    transition: all 0.3s;
+  }
+
+  /* Wizard CTA */
   .wizard-card {
     background: #0a0a0a;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -62,7 +102,7 @@
   }
   .card:hover .thumb { transform: scale(1.02); }
 
-  /* Tag pílula */
+  /* Pílula */
   .pill {
     display: inline-flex;
     align-items: center;
@@ -74,6 +114,14 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     font-weight: 500;
+  }
+
+  /* Painel demos */
+  .demos-panel { display: none; animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+  .demos-panel.active { display: block; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 </style>
 </head>
@@ -92,32 +140,32 @@
         <div class="font-mono text-[9px] sm:text-[10px] tracking-[0.2em] uppercase text-black/40 mt-0.5">por Dose de Growth</div>
       </div>
     </div>
-    <span class="font-mono text-[10px] sm:text-xs text-black/40 tracking-wider">v0.1 · MVP</span>
+    <span class="font-mono text-[10px] sm:text-xs text-black/40 tracking-wider">v0.2 · MVP</span>
   </div>
 </header>
 
 <main>
 
 <!-- HERO -->
-<section class="max-w-5xl mx-auto px-5 sm:px-6 pt-12 sm:pt-16 md:pt-24 pb-10 md:pb-16">
-  <span class="pill bg-[#ff5c1f]/10 text-[#ff5c1f] mb-6 sm:mb-8">
+<section class="max-w-5xl mx-auto px-5 sm:px-6 pt-10 sm:pt-14 md:pt-20 pb-8 md:pb-12">
+  <span class="pill bg-[#ff5c1f]/10 text-[#ff5c1f] mb-5 sm:mb-7">
     <span class="w-1.5 h-1.5 rounded-full bg-[#ff5c1f] accent-dot"></span>
     <span>Catálogo interno · Acesso DDG</span>
   </span>
 
-  <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.95] mb-5 sm:mb-7 max-w-3xl">
+  <h1 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[0.95] mb-4 sm:mb-6 max-w-3xl">
     Site profissional<br>
     em poucos minutos.<br>
     <span class="text-[#ff5c1f]">Você só paga se gostar.</span>
   </h1>
-  <p class="text-base sm:text-lg md:text-xl text-black/55 leading-relaxed max-w-xl">
-    Repositório de demos do projeto SiteFlow DDG. Acesse o wizard de briefing ou veja os polos estéticos por nicho.
+  <p class="text-base sm:text-lg text-black/55 leading-relaxed max-w-xl">
+    Repositório interno DDG · Wizard de briefing + demos de referência por nicho.
   </p>
 </section>
 
 <!-- WIZARD CTA -->
-<section class="max-w-5xl mx-auto px-5 sm:px-6 mb-10 sm:mb-16">
-  <a href="/wizard" class="wizard-card block rounded-2xl sm:rounded-3xl p-7 sm:p-10 md:p-14 text-[#f8f6f1] group">
+<section class="max-w-5xl mx-auto px-5 sm:px-6 mb-12 sm:mb-16">
+  <a href="/wizard" class="wizard-card block rounded-2xl sm:rounded-3xl p-7 sm:p-10 md:p-12 text-[#f8f6f1] group">
     <div class="relative z-10 flex items-start justify-between flex-wrap gap-5">
       <div class="flex-1 min-w-0">
         <span class="pill bg-white/10 text-[#ff5c1f] mb-5 sm:mb-7">
@@ -127,7 +175,7 @@
           Wizard de gosto visual
         </h2>
         <p class="text-white/65 text-base sm:text-lg max-w-md leading-relaxed mb-6 sm:mb-8">
-          7 perguntas curtas sobre cor, fonte, vibe e blocos. Output direto pro time DDG.
+          9 perguntas curtas: cor, fonte, vibe, blocos, serviços. Output direto pro time DDG.
         </p>
         <span class="inline-flex items-center gap-2 sm:gap-3 text-[#ff5c1f] font-semibold border-b border-[#ff5c1f]/40 pb-1 group-hover:border-[#ff5c1f] transition text-sm sm:text-base">
           <span>Abrir wizard</span>
@@ -139,144 +187,219 @@
   </a>
 </section>
 
-<!-- DEMOS SECTION -->
-<section class="max-w-5xl mx-auto px-5 sm:px-6 mb-10 sm:mb-16">
+<!-- SELEÇÃO DE NICHO -->
+<section class="max-w-5xl mx-auto px-5 sm:px-6 mb-8 sm:mb-12">
   <div class="flex items-end justify-between flex-wrap gap-3 mb-6 sm:mb-8">
     <div>
-      <span class="pill bg-black/5 text-black/55 mb-3">— Polos estéticos · Barbearia</span>
+      <span class="pill bg-black/5 text-black/55 mb-3">— 02 / Demos</span>
       <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mt-2">
-        4 referências de estilo
+        Escolha o nicho
       </h2>
+      <p class="text-sm sm:text-base text-black/55 mt-2">Clique pra ver os polos estéticos disponíveis.</p>
     </div>
-    <span class="font-mono text-[10px] sm:text-xs text-black/40 uppercase tracking-widest">04 demos</span>
+    <span class="font-mono text-[10px] sm:text-xs text-black/40 uppercase tracking-widest">02 ativos · 04 em breve</span>
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+  <!-- Grid de nichos -->
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
 
-    <!-- CLASSICO -->
-    <a href="/demos/barbearia/classico.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
-      <div class="thumb flex items-center justify-center" style="background: linear-gradient(135deg, #0a0a0a 0%, #c9a96e 100%);">
-        <span class="font-display text-6xl sm:text-7xl md:text-8xl text-white font-light">A</span>
+    <div class="nicho-card active rounded-2xl p-5 sm:p-6" data-nicho="barbearia">
+      <div class="flex items-center justify-between mb-6 sm:mb-8">
+        <div class="nicho-icon">A</div>
+        <span class="font-mono text-[10px] uppercase tracking-widest opacity-65">04 demos</span>
       </div>
-      <div class="p-5 sm:p-6">
-        <div class="flex items-center justify-between mb-2">
-          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40">A · Clássico</span>
-          <span class="text-xs text-[#ff5c1f] font-medium opacity-0 group-hover:opacity-100 transition">→</span>
-        </div>
-        <h3 class="font-display text-xl sm:text-2xl font-bold mb-1.5">Clássico & Elegante</h3>
-        <p class="text-sm text-black/55 leading-relaxed">Preto + dourado, serif editorial. Tradição, premium.</p>
-      </div>
-    </a>
+      <h3 class="font-display text-xl sm:text-2xl font-bold mb-1">Barbearia</h3>
+      <p class="nicho-meta text-xs sm:text-sm text-black/55">Cortes masculinos, barba</p>
+    </div>
 
-    <!-- INDUSTRIAL -->
-    <a href="/demos/barbearia/industrial.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
-      <div class="thumb flex items-center justify-center" style="background: linear-gradient(135deg, #1c1c1e 0%, #ff5c1f 100%);">
-        <span class="font-mono text-6xl sm:text-7xl md:text-8xl text-white font-bold">B</span>
+    <div class="nicho-card rounded-2xl p-5 sm:p-6" data-nicho="salao">
+      <div class="flex items-center justify-between mb-6 sm:mb-8">
+        <div class="nicho-icon">B</div>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-black/45">03 demos</span>
       </div>
-      <div class="p-5 sm:p-6">
-        <div class="flex items-center justify-between mb-2">
-          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40">B · Industrial</span>
-          <span class="text-xs text-[#ff5c1f] font-medium opacity-0 group-hover:opacity-100 transition">→</span>
-        </div>
-        <h3 class="font-display text-xl sm:text-2xl font-bold mb-1.5">Industrial & Urbano</h3>
-        <p class="text-sm text-black/55 leading-relaxed">Escuro + laranja, brutalist, mono. Atitude, urbano.</p>
-      </div>
-    </a>
+      <h3 class="font-display text-xl sm:text-2xl font-bold mb-1">Salão de Beleza</h3>
+      <p class="nicho-meta text-xs sm:text-sm text-black/55">Cabelo, química, estética</p>
+    </div>
 
-    <!-- MODERNO -->
-    <a href="/demos/barbearia/moderno.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
-      <div class="thumb flex items-center justify-center" style="background: linear-gradient(135deg, #faf9f6 0%, #1f4847 100%);">
-        <span class="font-display text-6xl sm:text-7xl md:text-8xl text-[#1f4847] font-light">C</span>
+    <div class="nicho-card disabled rounded-2xl p-5 sm:p-6" data-nicho="estetica">
+      <div class="flex items-center justify-between mb-6 sm:mb-8">
+        <div class="nicho-icon">C</div>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-black/45">em breve</span>
       </div>
-      <div class="p-5 sm:p-6">
-        <div class="flex items-center justify-between mb-2">
-          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40">C · Moderno</span>
-          <span class="text-xs text-[#ff5c1f] font-medium opacity-0 group-hover:opacity-100 transition">→</span>
-        </div>
-        <h3 class="font-display text-xl sm:text-2xl font-bold mb-1.5">Moderno & Minimalista</h3>
-        <p class="text-sm text-black/55 leading-relaxed">Branco + petróleo, sans clean. Premium contemporâneo.</p>
-      </div>
-    </a>
+      <h3 class="font-display text-xl sm:text-2xl font-bold mb-1">Estética Facial</h3>
+      <p class="nicho-meta text-xs sm:text-sm text-black/55">Limpeza, peeling, tratamentos</p>
+    </div>
 
-    <!-- PREMIUM DARK -->
-    <a href="/demos/barbearia/premium-dark.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
-      <div class="thumb flex items-center justify-center relative" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); border-bottom: 2px solid #25d366;">
-        <span class="font-display text-6xl sm:text-7xl md:text-8xl text-white font-bold tracking-tighter">D</span>
-        <span class="absolute top-3 right-3 sm:top-4 sm:right-4 bg-[#25d366] text-black text-[9px] sm:text-[10px] font-mono uppercase tracking-widest px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full font-bold">novo</span>
+    <div class="nicho-card disabled rounded-2xl p-5 sm:p-6" data-nicho="odonto">
+      <div class="flex items-center justify-between mb-6 sm:mb-8">
+        <div class="nicho-icon">D</div>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-black/45">em breve</span>
       </div>
-      <div class="p-5 sm:p-6">
-        <div class="flex items-center justify-between mb-2">
-          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40">D · Premium Dark</span>
-          <span class="text-xs text-[#ff5c1f] font-medium opacity-0 group-hover:opacity-100 transition">→</span>
-        </div>
-        <h3 class="font-display text-xl sm:text-2xl font-bold mb-1.5">Premium Dark</h3>
-        <p class="text-sm text-black/55 leading-relaxed">Preto absoluto, bold CAPS, cinematográfico. Luxury.</p>
+      <h3 class="font-display text-xl sm:text-2xl font-bold mb-1">Clínica Odonto</h3>
+      <p class="nicho-meta text-xs sm:text-sm text-black/55">Odontologia, ortodontia</p>
+    </div>
+
+    <div class="nicho-card disabled rounded-2xl p-5 sm:p-6" data-nicho="fisio">
+      <div class="flex items-center justify-between mb-6 sm:mb-8">
+        <div class="nicho-icon">E</div>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-black/45">em breve</span>
       </div>
-    </a>
+      <h3 class="font-display text-xl sm:text-2xl font-bold mb-1">Fisio · Pilates</h3>
+      <p class="nicho-meta text-xs sm:text-sm text-black/55">Reabilitação, postural</p>
+    </div>
+
+    <div class="nicho-card disabled rounded-2xl p-5 sm:p-6" data-nicho="massagem">
+      <div class="flex items-center justify-between mb-6 sm:mb-8">
+        <div class="nicho-icon">F</div>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-black/45">em breve</span>
+      </div>
+      <h3 class="font-display text-xl sm:text-2xl font-bold mb-1">Massagem · Spa</h3>
+      <p class="nicho-meta text-xs sm:text-sm text-black/55">Relax, terapias corporais</p>
+    </div>
 
   </div>
 </section>
 
-<!-- DEMOS SALÃO -->
-<section class="max-w-5xl mx-auto px-5 sm:px-6 mb-10 sm:mb-16">
-  <div class="flex items-end justify-between flex-wrap gap-3 mb-6 sm:mb-8">
-    <div>
-      <span class="pill bg-black/5 text-black/55 mb-3">— Polos estéticos · Salão</span>
-      <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mt-2">
-        3 referências de salão
-      </h2>
+<!-- DEMOS DO NICHO ATIVO -->
+<section id="demos-section" class="max-w-5xl mx-auto px-5 sm:px-6 mb-12 sm:mb-16">
+
+  <!-- BARBEARIA -->
+  <div class="demos-panel active" data-panel="barbearia">
+    <div class="flex items-center justify-between flex-wrap gap-3 mb-5 sm:mb-6 pb-4 border-b border-black/[0.08]">
+      <div class="flex items-center gap-3">
+        <span class="font-mono text-[10px] uppercase tracking-widest text-[#ff5c1f] font-semibold">› Barbearia</span>
+        <span class="text-black/30">·</span>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-black/45">4 polos estéticos</span>
+      </div>
     </div>
-    <span class="font-mono text-[10px] sm:text-xs text-black/40 uppercase tracking-widest">03 demos</span>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      <a href="/demos/barbearia/classico.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
+        <div class="thumb flex items-center justify-center" style="background: linear-gradient(135deg, #0a0a0a 0%, #c9a96e 100%);">
+          <span class="font-display text-6xl sm:text-7xl text-white font-light">A</span>
+        </div>
+        <div class="p-5 sm:p-6">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40 block mb-2">A · Clássico</span>
+          <h3 class="font-display text-lg sm:text-xl font-bold mb-1.5">Clássico & Elegante</h3>
+          <p class="text-sm text-black/55 leading-relaxed">Preto + dourado, serif. Tradição, premium.</p>
+        </div>
+      </a>
+
+      <a href="/demos/barbearia/industrial.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
+        <div class="thumb flex items-center justify-center" style="background: linear-gradient(135deg, #1c1c1e 0%, #ff5c1f 100%);">
+          <span class="font-mono text-6xl sm:text-7xl text-white font-bold">B</span>
+        </div>
+        <div class="p-5 sm:p-6">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40 block mb-2">B · Industrial</span>
+          <h3 class="font-display text-lg sm:text-xl font-bold mb-1.5">Industrial & Urbano</h3>
+          <p class="text-sm text-black/55 leading-relaxed">Escuro + laranja, brutalist. Atitude, urbano.</p>
+        </div>
+      </a>
+
+      <a href="/demos/barbearia/moderno.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
+        <div class="thumb flex items-center justify-center" style="background: linear-gradient(135deg, #faf9f6 0%, #1f4847 100%);">
+          <span class="font-display text-6xl sm:text-7xl text-[#1f4847] font-light">C</span>
+        </div>
+        <div class="p-5 sm:p-6">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40 block mb-2">C · Moderno</span>
+          <h3 class="font-display text-lg sm:text-xl font-bold mb-1.5">Moderno & Minimalista</h3>
+          <p class="text-sm text-black/55 leading-relaxed">Branco + petróleo, sans clean. Premium contemporâneo.</p>
+        </div>
+      </a>
+
+      <a href="/demos/barbearia/premium-dark.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
+        <div class="thumb flex items-center justify-center relative" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); border-bottom: 2px solid #25d366;">
+          <span class="font-display text-6xl sm:text-7xl text-white font-bold tracking-tighter">D</span>
+          <span class="absolute top-3 right-3 bg-[#25d366] text-black text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full font-bold">novo</span>
+        </div>
+        <div class="p-5 sm:p-6">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40 block mb-2">D · Premium Dark</span>
+          <h3 class="font-display text-lg sm:text-xl font-bold mb-1.5">Premium Dark</h3>
+          <p class="text-sm text-black/55 leading-relaxed">Preto absoluto, bold CAPS. Luxury, cinematográfico.</p>
+        </div>
+      </a>
+    </div>
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-
-    <!-- SALAO CLASSICO -->
-    <a href="/demos/salao/classico.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
-      <div class="thumb flex items-center justify-center" style="background: linear-gradient(135deg, #f7f1ea 0%, #b08d75 100%);">
-        <span class="font-display text-6xl sm:text-7xl md:text-8xl text-[#1a1110] italic" style="font-family: 'Cormorant Garamond', serif;">A</span>
+  <!-- SALÃO -->
+  <div class="demos-panel" data-panel="salao">
+    <div class="flex items-center justify-between flex-wrap gap-3 mb-5 sm:mb-6 pb-4 border-b border-black/[0.08]">
+      <div class="flex items-center gap-3">
+        <span class="font-mono text-[10px] uppercase tracking-widest text-[#ff5c1f] font-semibold">› Salão de Beleza</span>
+        <span class="text-black/30">·</span>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-black/45">3 polos estéticos</span>
       </div>
-      <div class="p-5 sm:p-6">
-        <div class="flex items-center justify-between mb-2">
-          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40">A · Clássico</span>
-          <span class="text-xs text-[#ff5c1f] font-medium opacity-0 group-hover:opacity-100 transition">→</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+      <a href="/demos/salao/classico.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
+        <div class="thumb flex items-center justify-center" style="background: linear-gradient(135deg, #f7f1ea 0%, #b08d75 100%);">
+          <span class="text-6xl sm:text-7xl text-[#1a1110] italic" style="font-family: 'Cormorant Garamond', serif;">A</span>
         </div>
-        <h3 class="font-display text-xl sm:text-2xl font-bold mb-1.5">Maison Lima</h3>
-        <p class="text-sm text-black/55 leading-relaxed">Rosé + champagne, serif italic. Sofisticado, atemporal.</p>
-      </div>
-    </a>
-
-    <!-- SALAO ACOLHEDOR -->
-    <a href="/demos/salao/acolhedor.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
-      <div class="thumb flex items-center justify-center" style="background: linear-gradient(135deg, #fdf8f3 0%, #e8a5a5 100%);">
-        <span class="text-6xl sm:text-7xl md:text-8xl text-[#5a4438]" style="font-family: 'DM Serif Display', serif;">❀</span>
-      </div>
-      <div class="p-5 sm:p-6">
-        <div class="flex items-center justify-between mb-2">
-          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40">B · Acolhedor</span>
-          <span class="text-xs text-[#ff5c1f] font-medium opacity-0 group-hover:opacity-100 transition">→</span>
+        <div class="p-5 sm:p-6">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40 block mb-2">A · Clássico</span>
+          <h3 class="font-display text-lg sm:text-xl font-bold mb-1.5">Maison Lima</h3>
+          <p class="text-sm text-black/55 leading-relaxed">Rosé + champagne, serif italic. Sofisticado, atemporal.</p>
         </div>
-        <h3 class="font-display text-xl sm:text-2xl font-bold mb-1.5">Florais Studio</h3>
-        <p class="text-sm text-black/55 leading-relaxed">Rosa + beige, serifs delicadas. Convidativo, feminino.</p>
-      </div>
-    </a>
+      </a>
 
-    <!-- SALAO MODERNO -->
-    <a href="/demos/salao/moderno.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
-      <div class="thumb flex items-center justify-center" style="background: linear-gradient(135deg, #faf9f6 0%, #1f4847 100%);">
-        <span class="text-6xl sm:text-7xl md:text-8xl text-[#1f4847] italic" style="font-family: 'Fraunces', serif; font-variation-settings: 'opsz' 144;">C</span>
-      </div>
-      <div class="p-5 sm:p-6">
-        <div class="flex items-center justify-between mb-2">
-          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40">C · Moderno</span>
-          <span class="text-xs text-[#ff5c1f] font-medium opacity-0 group-hover:opacity-100 transition">→</span>
+      <a href="/demos/salao/acolhedor.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
+        <div class="thumb flex items-center justify-center" style="background: linear-gradient(135deg, #fdf8f3 0%, #e8a5a5 100%);">
+          <span class="text-6xl sm:text-7xl text-[#5a4438]" style="font-family: 'DM Serif Display', serif;">❀</span>
         </div>
-        <h3 class="font-display text-xl sm:text-2xl font-bold mb-1.5">Atelier Bem</h3>
-        <p class="text-sm text-black/55 leading-relaxed">Branco + petróleo, sans+serif. Premium contemporâneo.</p>
-      </div>
-    </a>
+        <div class="p-5 sm:p-6">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40 block mb-2">B · Acolhedor</span>
+          <h3 class="font-display text-lg sm:text-xl font-bold mb-1.5">Florais Studio</h3>
+          <p class="text-sm text-black/55 leading-relaxed">Rosa + beige, serifs delicadas. Convidativo, feminino.</p>
+        </div>
+      </a>
 
+      <a href="/demos/salao/moderno.html" class="card group block bg-[#fdfcf8] rounded-2xl overflow-hidden">
+        <div class="thumb flex items-center justify-center" style="background: linear-gradient(135deg, #faf9f6 0%, #1f4847 100%);">
+          <span class="text-6xl sm:text-7xl text-[#1f4847] italic" style="font-family: 'Fraunces', serif;">C</span>
+        </div>
+        <div class="p-5 sm:p-6">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40 block mb-2">C · Moderno</span>
+          <h3 class="font-display text-lg sm:text-xl font-bold mb-1.5">Atelier Bem</h3>
+          <p class="text-sm text-black/55 leading-relaxed">Branco + petróleo, sans+serif. Premium contemporâneo.</p>
+        </div>
+      </a>
+    </div>
   </div>
+
+  <!-- EM BREVE PLACEHOLDERS -->
+  <div class="demos-panel" data-panel="estetica">
+    <div class="rounded-3xl border border-dashed border-black/15 p-10 sm:p-16 text-center bg-white/30">
+      <div class="font-mono text-[10px] uppercase tracking-widest text-[#ff5c1f] font-semibold mb-3">› Estética Facial</div>
+      <h3 class="font-display text-2xl sm:text-3xl font-bold mb-3">Demos em construção</h3>
+      <p class="text-black/55 max-w-md mx-auto">Próxima leva de demos: clean minimal, spa-vibe e wellness premium.</p>
+    </div>
+  </div>
+
+  <div class="demos-panel" data-panel="odonto">
+    <div class="rounded-3xl border border-dashed border-black/15 p-10 sm:p-16 text-center bg-white/30">
+      <div class="font-mono text-[10px] uppercase tracking-widest text-[#ff5c1f] font-semibold mb-3">› Clínica Odontológica</div>
+      <h3 class="font-display text-2xl sm:text-3xl font-bold mb-3">Demos em construção</h3>
+      <p class="text-black/55 max-w-md mx-auto">Próxima leva de demos: clinical, family-friendly e premium-tech.</p>
+    </div>
+  </div>
+
+  <div class="demos-panel" data-panel="fisio">
+    <div class="rounded-3xl border border-dashed border-black/15 p-10 sm:p-16 text-center bg-white/30">
+      <div class="font-mono text-[10px] uppercase tracking-widest text-[#ff5c1f] font-semibold mb-3">› Fisio · Pilates</div>
+      <h3 class="font-display text-2xl sm:text-3xl font-bold mb-3">Demos em construção</h3>
+      <p class="text-black/55 max-w-md mx-auto">Próxima leva de demos: clean-wellness, performance e movimento orgânico.</p>
+    </div>
+  </div>
+
+  <div class="demos-panel" data-panel="massagem">
+    <div class="rounded-3xl border border-dashed border-black/15 p-10 sm:p-16 text-center bg-white/30">
+      <div class="font-mono text-[10px] uppercase tracking-widest text-[#ff5c1f] font-semibold mb-3">› Massagem · Spa</div>
+      <h3 class="font-display text-2xl sm:text-3xl font-bold mb-3">Demos em construção</h3>
+      <p class="text-black/55 max-w-md mx-auto">Próxima leva de demos: zen-spa, terapêutico e holístico premium.</p>
+    </div>
+  </div>
+
 </section>
 
 <!-- INFO STRIP -->
@@ -289,8 +412,8 @@
         <div class="text-xs sm:text-sm text-black/55">Wizard +<br class="sm:hidden"> 7 demos</div>
       </div>
       <div>
-        <div class="font-display text-xl sm:text-2xl md:text-3xl text-[#ff5c1f] font-bold mb-1">2 nichos</div>
-        <div class="text-xs sm:text-sm text-black/55">Barbearia ·<br class="sm:hidden"> Salão</div>
+        <div class="font-display text-xl sm:text-2xl md:text-3xl text-[#ff5c1f] font-bold mb-1">2 / 6</div>
+        <div class="text-xs sm:text-sm text-black/55">Nichos<br class="sm:hidden"> ativos</div>
       </div>
       <div>
         <div class="font-display text-xl sm:text-2xl md:text-3xl text-[#ff5c1f] font-bold mb-1">SP</div>
@@ -309,6 +432,45 @@
     <div class="font-mono text-[10px] sm:text-xs">© 2026 · Repositório interno</div>
   </div>
 </footer>
+
+<script>
+  // Lógica de troca de nicho
+  const nichoCards = document.querySelectorAll('.nicho-card');
+  const panels = document.querySelectorAll('.demos-panel');
+
+  nichoCards.forEach(card => {
+    card.addEventListener('click', () => {
+      if (card.classList.contains('disabled')) {
+        // Mesmo desabilitado, mostra o painel "em breve"
+        const nicho = card.dataset.nicho;
+        nichoCards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        panels.forEach(p => p.classList.remove('active'));
+        const panel = document.querySelector(`.demos-panel[data-panel="${nicho}"]`);
+        if (panel) panel.classList.add('active');
+        // scroll suave
+        document.getElementById('demos-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+      const nicho = card.dataset.nicho;
+      nichoCards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      panels.forEach(p => p.classList.remove('active'));
+      const panel = document.querySelector(`.demos-panel[data-panel="${nicho}"]`);
+      if (panel) panel.classList.add('active');
+      document.getElementById('demos-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Permite clicar nos disabled também (pra ver "em breve") - já tratado acima
+  // Remove cursor not-allowed pros disabled pq agora são clicáveis
+  document.querySelectorAll('.nicho-card.disabled').forEach(c => {
+    c.style.cursor = 'pointer';
+  });
+</script>
+
+<!-- Carrega fontes especiais usadas nos thumbs do salão -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=DM+Serif+Display&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
 
 </body>
 </html>
